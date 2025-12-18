@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio - Steeve Junix
 
-## Getting Started
+Portfolio personnel développé avec Next.js 16, présentant mes compétences en développement IA et Machine Learning.
 
-First, run the development server:
+## 🚀 Technologies utilisées
+
+- **Framework**: Next.js 16 avec Turbopack
+- **Style**: Tailwind CSS 4
+- **Animations**: Framer Motion
+- **Icônes**: React Icons
+- **TypeScript**: Pour un code type-safe
+
+## 📦 Installation
 
 ```bash
+# Installer les dépendances
+npm install
+
+# Lancer le serveur de développement
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build de production
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Caractéristiques
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Design minimaliste style développeur/terminal
+- Thème sombre professionnel
+- Interface responsive (mobile & desktop)
+- Animations fluides et subtiles
+- Navigation intuitive
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📝 Structure du projet
 
-## Learn More
+```
+portfolio-junix/
+├── src/
+│   ├── app/
+│   │   ├── components/     # Composants React
+│   │   ├── globals.css     # Styles globaux
+│   │   └── page.tsx        # Page principale
+│   └── ...
+├── public/                 # Assets statiques
+└── package.json
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🔧 Personnalisation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Pour personnaliser ce portfolio :
+1. Modifier les informations personnelles dans `src/app/components/Hero.tsx`
+2. Ajouter votre photo de profil dans `public/profile.jpg` (si souhaité)
+3. Mettre à jour les liens sociaux (GitHub, LinkedIn, Email)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📄 Licence
 
-## Deploy on Vercel
+Ce projet est sous licence MIT.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Développé avec ❤️ par Steeve Junix
