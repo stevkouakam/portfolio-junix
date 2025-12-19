@@ -38,11 +38,8 @@ export default function Navbar() {
             href="#home"
             className="text-2xl font-bold"
           >
-            <span className="text-white">
-              JuniX
-            </span>
-            <span className="text-purple-500">
-              .AI
+            <span className="text-white font-mono">
+              juniX
             </span>
           </a>
 

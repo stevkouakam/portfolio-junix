@@ -36,26 +36,28 @@ export default function Hero() {
 
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold mb-6 leading-tight ml-6">
               <span className="text-white font-mono">
-                Steeve Junix
+                Steeve JuniX
               </span>
             </h1>
 
             <div className="mb-8 font-mono text-base md:text-lg ml-6 space-y-2">
               <div>
                 <span className="text-gray-500">  role: </span>
-                <span className="text-green-400">"Développeur IA & Machine Learning"</span>,
+                <span className="text-green-400">" AI Software Developer"</span>,
               </div>
               <div>
                 <span className="text-gray-500">  skills: [</span>
-                <span className="text-yellow-400">"Python"</span>,
-                <span className="text-yellow-400"> "TensorFlow"</span>,
-                <span className="text-yellow-400"> "PyTorch"</span>,
-                <span className="text-yellow-400"> "React"</span>
+                <span className="text-yellow-400">"Developpement logiciel"</span>,
+                <span className="text-yellow-400"> "Machine Learning (LLM)"</span>,
+                <span className="text-yellow-400"> "Developpment Web"</span>,
+                <span className="text-yellow-400"> "Python"</span>
+                <span className="text-yellow-400"> "Java"</span>
+
                 <span className="text-gray-500">],</span>
               </div>
               <div>
                 <span className="text-gray-500">  passion: </span>
-                <span className="text-green-400">"Transformer les données en solutions intelligentes"</span>
+                <span className="text-green-400">"Creation de solution logiciel Intelligent"</span>
               </div>
             </div>
 
@@ -72,7 +74,7 @@ export default function Hero() {
             {/* Social Links - command output style */}
             <div className="flex flex-wrap gap-4 mb-8 ml-4">
               <a
-                href="https://github.com/votreusername"
+                href="https://github.com/stevkouakam"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors font-mono text-sm"
@@ -81,7 +83,7 @@ export default function Hero() {
                 <span>github</span>
               </a>
               <a
-                href="https://linkedin.com/in/votreusername"
+                href="https://www.linkedin.com/in/steeve-junix-044659284"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors font-mono text-sm"
@@ -90,7 +92,7 @@ export default function Hero() {
                 <span>linkedin</span>
               </a>
               <a
-                href="mailto:votre@email.com"
+                href="mailto:kouakamsteve782@gmail.com"
                 className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors font-mono text-sm"
               >
                 <FiMail size={18} />
@@ -108,7 +110,8 @@ export default function Hero() {
                 ./projets
               </a>
               <a
-                href="#contact"
+                href="/cv/CV-Steeve-Junix.pdf"
+                download="CV-Steeve-Junix.pdf"
                 className="px-6 py-3 bg-transparent border border-purple-600/40 hover:border-purple-600 text-purple-400 font-mono text-sm transition-colors duration-200 flex items-center gap-2"
               >
                 <FiDownload size={16} />
