@@ -6,36 +6,36 @@ import { FiTerminal, FiGithub, FiExternalLink } from 'react-icons/fi';
 export default function Projects() {
   const projects = [
     {
-      title: "Projet 1",
-      description: "Description de votre projet principal avec les technologies utilisées et les problèmes résolus",
-      tags: ["Python", "Machine Learning", "TensorFlow"],
+      title: "Logiciel de découpe CNC",
+      description: "Développement d'un logiciel personnalisé permettant d'utiliser une table de découpe CNC (modèle AVID 5x10) comme une scie à panneaux traditionnelle.",
+      tags: ["Java", "Swing", "GCODE", "UML "],
       github: "https://github.com/stevkouakam",
       demo: "#",
-      status: "Production"
+      status: "Terminer"
     },
     {
-      title: "Projet 2",
-      description: "Application web full-stack développée avec les dernières technologies",
-      tags: ["React", "Next.js", "TypeScript", "Tailwind"],
+      title: "Projet - Ufood",
+      description: "Developpement d'une application web de localisation de restaurant et de partage de favoris entre amis",
+      tags: ["Vuetify", "Vue.js", "JavaScript", "APIrest"],
       github: "https://github.com/stevkouakam",
       demo: "#",
-      status: "En cours"
+      status: "Terminer"
     },
     {
-      title: "Projet 3",
-      description: "Système d'intelligence artificielle utilisant des LLM pour automatiser des tâches complexes",
-      tags: ["Python", "LLM", "API"],
+      title: "Projet - Utasks",
+      description: "Developpement d'une application web de gestion de taches avec intégration d'un modèle LLM pour assistance intelligente",
+      tags: ["MongoDB", "LLM", "API", "React", "OpenAI"],
       github: "https://github.com/stevkouakam",
       demo: "#",
-      status: "Production"
+      status: "Terminer"
     },
     {
-      title: "Projet 4",
-      description: "Backend robuste et scalable avec microservices architecture",
-      tags: ["Java", "Spring Boot", "PostgreSQL"],
+      title: "Projet - SplitUL",
+      description: "Application de partage de factures entre amis",
+      tags: ["Java", "Docker", "PostgreSQL", "APIrest"],
       github: "https://github.com/stevkouakam",
       demo: "#",
-      status: "Production"
+      status: "Terminer"
     }
   ];
 

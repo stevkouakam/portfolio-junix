@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^2.0.56",
-    "ai": "^5.0.114",
+    "@ai-sdk/openai": "^2.0.88",
+    "ai": "^5.0.116",
     "framer-motion": "^12.23.26",
     "next": "16.0.10",
     "react": "19.2.1",

@@ -56,34 +56,13 @@ export default function About() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="space-y-6"
             >
-              <div className="font-mono text-sm">
-                <span className="text-purple-400">class</span>{' '}
-                <span className="text-blue-400">Developer</span>{' '}
-                <span className="text-gray-500">{'{'}</span>
-              </div>
-
               <div className="ml-6 space-y-4 text-gray-300 leading-relaxed">
                 <p>
-                  <span className="text-gray-500 font-mono">// </span>
-                  Passionné par le développement logiciel et l'intelligence artificielle,
-                  je transforme des idées complexes en solutions technologiques élégantes et efficaces.
-                </p>
-
-                <p>
-                  <span className="text-gray-500 font-mono">// </span>
-                  Mon approche combine rigueur technique et créativité pour concevoir
-                  des applications qui répondent aux besoins réels des utilisateurs.
-                </p>
-
-                <p>
-                  <span className="text-gray-500 font-mono">// </span>
-                  Spécialisé dans le développement avec Python, Java, et les technologies web modernes,
-                  j'explore continuellement les dernières innovations en Machine Learning et LLM.
+                Passionné par l'ingénierie logicielle, je mets l'intelligence artificielle au service de solutions concrètes et élégantes. Mon objectif : simplifier la complexité. Je combine une approche rigoureuse du code avec une vision créative pour bâtir des applications à fort impact, centrées sur les besoins réels et l'optimisation des performances.
                 </p>
               </div>
 
-              <div className="font-mono text-sm text-gray-500">
-                {'}'}
+              <div className="font-mono text-sm text-gray-500">               
               </div>
             </motion.div>
 
@@ -131,8 +110,8 @@ export default function About() {
             className="grid grid-cols-2 md:grid-cols-4 gap-6"
           >
             {[
-              { label: 'Projets', value: '20+' },
-              { label: 'Technologies', value: '15+' },
+              { label: 'Projets', value: '15+' },
+              { label: 'Technologies', value: '20+' },
               { label: 'Expérience', value: '3+ ans' },
               { label: 'Passion', value: '100%' }
             ].map((stat, index) => (
