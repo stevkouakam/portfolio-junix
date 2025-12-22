@@ -23,6 +23,14 @@ export default function ChatBot() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Suggestions de questions prédéfinies
+  const suggestedQuestions = [
+    "Quels sont tes projets principaux ?",
+    "Quelles technologies maîtrises-tu ?",
+    "Parle-moi de ton expérience avec les LLM",
+    "Comment te contacter ?",
+  ];
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -128,7 +136,7 @@ export default function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-6 z-50 w-[380px] h-[600px] bg-slate-900 border border-purple-600/30 shadow-2xl flex flex-col"
+            className="fixed inset-0 md:inset-auto md:bottom-24 md:right-6 z-50 md:w-[400px] md:h-[650px] w-full h-full bg-slate-900 border-0 md:border border-purple-600/30 md:shadow-2xl flex flex-col md:rounded-lg"
           >
             {/* Header */}
             <div className="p-4 border-b border-purple-600/30 bg-slate-800/50">
@@ -147,16 +155,32 @@ export default function ChatBot() {
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {/* Message de bienvenue */}
               {messages.length === 0 && (
-                <div className="flex gap-3">
-                  <div className="w-8 h-8 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0">
-                    <FiCpu className="text-purple-400" size={16} />
+                <>
+                  <div className="flex gap-3">
+                    <div className="w-8 h-8 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0">
+                      <FiCpu className="text-purple-400" size={16} />
+                    </div>
+                    <div className="bg-slate-800/50 border border-purple-600/20 p-3 rounded-lg max-w-[80%]">
+                      <p className="text-gray-300 text-sm">
+                        👋 Bonjour ! Je suis l&apos;assistant virtuel de Steeve. Posez-moi des questions sur son parcours, ses projets ou ses compétences !
+                      </p>
+                    </div>
                   </div>
-                  <div className="bg-slate-800/50 border border-purple-600/20 p-3 rounded-lg max-w-[80%]">
-                    <p className="text-gray-300 text-sm">
-                      👋 Bonjour ! Je suis l&apos;assistant virtuel de Steeve. Posez-moi des questions sur son parcours, ses projets ou ses compétences !
-                    </p>
+
+                  {/* Suggestions de questions */}
+                  <div className="space-y-2 ml-10">
+                    <p className="text-gray-500 text-xs font-mono mb-2">Questions suggérées :</p>
+                    {suggestedQuestions.map((question, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setInput(question)}
+                        className="block w-full text-left px-3 py-2 text-sm text-gray-400 hover:text-white bg-slate-800/30 hover:bg-slate-800/60 border border-purple-600/20 hover:border-purple-600/50 rounded transition-all"
+                      >
+                        {question}
+                      </button>
+                    ))}
                   </div>
-                </div>
+                </>
               )}
 
               {/* Liste des messages */}
