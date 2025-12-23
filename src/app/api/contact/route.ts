@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
+// import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Temporairement désactivé - Configurez RESEND_API_KEY dans Vercel pour activer
+// const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
@@ -24,10 +25,22 @@ export async function POST(req: Request) {
       );
     }
 
-    // Envoyer l'email avec Resend
+    // TODO: Activer Resend en configurant RESEND_API_KEY dans Vercel
+    // Pour l'instant, on simule le succès et on log les données
+    console.log('Message reçu (Resend désactivé):', { name, email, message });
+
+    return NextResponse.json(
+      {
+        success: true,
+        message: 'Message reçu ! La fonctionnalité d\'envoi d\'email sera bientôt activée.'
+      },
+      { status: 200 }
+    );
+
+    /* Code à réactiver une fois RESEND_API_KEY configuré:
     const data = await resend.emails.send({
-      from: 'Portfolio Contact <onboarding@resend.dev>', // Utilisez votre domaine vérifié
-      to: ['kouakamsteve782@gmail.com'], // Votre email
+      from: 'Portfolio Contact <onboarding@resend.dev>',
+      to: ['kouakamsteve782@gmail.com'],
       replyTo: email,
       subject: `Nouveau message de ${name} via Portfolio`,
       html: `
@@ -53,6 +66,7 @@ export async function POST(req: Request) {
       { success: true, data },
       { status: 200 }
     );
+    */
   } catch (error) {
     console.error('Erreur envoi email:', error);
     return NextResponse.json(
