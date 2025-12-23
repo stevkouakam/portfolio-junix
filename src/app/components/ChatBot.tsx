@@ -117,16 +117,29 @@ export default function ChatBot() {
 
   return (
     <>
-      {/* Bouton flottant */}
-      <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 p-4 bg-purple-600 hover:bg-purple-700 text-white rounded-full shadow-lg transition-colors"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label="Ouvrir le chat"
-      >
-        {isOpen ? <FiX size={24} /> : <FiMessageCircle size={24} />}
-      </motion.button>
+      {/* Bouton flottant avec label */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-2">
+        <motion.button
+          onClick={() => setIsOpen(!isOpen)}
+          className="p-4 bg-purple-600 hover:bg-purple-700 text-white rounded-full shadow-lg transition-colors"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Ouvrir le chat"
+        >
+          {isOpen ? <FiX size={24} /> : <FiMessageCircle size={24} />}
+        </motion.button>
+        {!isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-slate-900/95 backdrop-blur-sm border border-purple-600/30 px-3 py-1.5 rounded-full shadow-lg"
+          >
+            <p className="text-white font-mono text-xs font-bold whitespace-nowrap">
+              juniXbot
+            </p>
+          </motion.div>
+        )}
+      </div>
 
       {/* Fenêtre de chat */}
       <AnimatePresence>
@@ -140,14 +153,23 @@ export default function ChatBot() {
           >
             {/* Header */}
             <div className="p-4 border-b border-purple-600/30 bg-slate-800/50">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-purple-600/20 flex items-center justify-center">
-                  <FiCpu className="text-purple-400" size={20} />
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-purple-600/20 flex items-center justify-center">
+                    <FiCpu className="text-purple-400" size={20} />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-mono font-bold">juniXbot</h3>
+                    <p className="text-gray-400 text-xs font-mono">Assistant IA • En ligne</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-white font-mono font-bold">Assistant Steeve</h3>
-                  <p className="text-gray-400 text-xs font-mono">En ligne</p>
-                </div>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
+                  aria-label="Fermer le chat"
+                >
+                  <FiX size={20} />
+                </button>
               </div>
             </div>
 
@@ -162,7 +184,7 @@ export default function ChatBot() {
                     </div>
                     <div className="bg-slate-800/50 border border-purple-600/20 p-3 rounded-lg max-w-[80%]">
                       <p className="text-gray-300 text-sm">
-                        👋 Bonjour ! Je suis l&apos;assistant virtuel de Steeve. Posez-moi des questions sur son parcours, ses projets ou ses compétences !
+                        👋 Bonjour ! Je suis <span className="text-purple-400 font-bold">juniXbot</span>, l&apos;assistant virtuel de Steeve. Posez-moi des questions sur son parcours, ses projets ou ses compétences !
                       </p>
                     </div>
                   </div>
