@@ -36,31 +36,30 @@ export default function Hero() {
 
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold mb-6 leading-tight ml-6">
               <span className="text-white font-mono">
-                Steeve JuniX
+                Steeve juniX
               </span>
             </h1>
 
             <div className="mb-8 font-mono text-base md:text-lg ml-6 space-y-2">
               <div>
                 <span className="text-gray-500">  role: </span>
-                <span className="text-green-400">" AI Software Developer"</span>,
+                <span className="text-green-400">&quot;Développeur logiciel | IA&quot;</span>,
               </div>
               <div>
                 <span className="text-gray-500">  skills: [</span>
-                <span className="text-yellow-400">"Developpement logiciel"</span>,
-                <span className="text-yellow-400"> "Machine Learning (LLM)"</span>,
-                <span className="text-yellow-400"> "Developpment Web"</span>,
-                <span className="text-yellow-400"> "Python"</span>
-                <span className="text-yellow-400"> "Java"</span>
-
-                <span className="text-gray-500">],</span>
+                <div className="ml-4 space-y-1">
+                  <div><span className="text-yellow-400">&quot;Développement Full-Stack&quot;</span>,</div>
+                  <div><span className="text-yellow-400">&quot;Intégration de LLM (OpenAI, Claude)&quot;</span>,</div>
+                  <div><span className="text-yellow-400">&quot;API & Systèmes Backend&quot;</span>,</div>
+                  <div><span className="text-yellow-400">&quot;Applications Web Modernes (Vue.js, React, Next.js)&quot;</span></div>
+                </div>
+                <span className="text-gray-500">  ],</span>
               </div>
               <div>
                 <span className="text-gray-500">  passion: </span>
-                <span className="text-green-400">"Creation de solution logiciel Intelligent"</span>
+                <span className="text-green-400">&quot;Je conçois des applications robustes intégrant des modèles LLM pour automatiser, assister et optimiser des processus réels&quot;</span>
               </div>
             </div>
-
             <div className="mb-8 font-mono text-sm text-gray-500">
               {'}'};
             </div>

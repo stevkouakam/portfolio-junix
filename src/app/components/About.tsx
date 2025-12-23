@@ -58,7 +58,8 @@ export default function About() {
             >
               <div className="ml-6 space-y-4 text-gray-300 leading-relaxed">
                 <p>
-                Passionné par l'ingénierie logicielle, je mets l'intelligence artificielle au service de solutions concrètes et élégantes. Mon objectif : simplifier la complexité. Je combine une approche rigoureuse du code avec une vision créative pour bâtir des applications à fort impact, centrées sur les besoins réels et l'optimisation des performances.
+                Étudiant en informatique passionné par l’ingénierie logicielle et l’intelligence artificielle, je développe des solutions logicielles modernes, performantes et évolutives.
+                Mon objectif est de concevoir des applications à fort impact en intégrant des modèles d’IA avancés dans des architectures logicielles propres, maintenables et orientées utilisateurs.
                 </p>
               </div>
 
