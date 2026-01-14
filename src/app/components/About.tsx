@@ -5,21 +5,21 @@ import { FiTerminal, FiCode, FiCpu, FiBriefcase } from 'react-icons/fi';
 
 export default function About() {
   const experiences = [
-    {
-      icon: <FiCode />,
-      title: "Développement Logiciel",
-      description: "Création de solutions logicielles robustes et scalables avec des technologies modernes"
-    },
-    {
-      icon: <FiCpu />,
-      title: "Machine Learning & LLM",
-      description: "Développement et intégration de modèles d'intelligence artificielle pour résoudre des problèmes complexes"
-    },
-    {
-      icon: <FiBriefcase />,
-      title: "Développement Web",
-      description: "Applications web performantes et responsive avec les derniers frameworks"
-    }
+   {
+  icon: <FiCode />,
+  title: "Génie Logiciel",
+  description: "Conception d’applications robustes et maintenables, basées sur des architectures propres (API, MVC, Clean Code) et des pratiques professionnelles (Git, tests, CI/CD)."
+},
+{
+  icon: <FiCpu />,
+  title: "Intelligence Artificielle & LLM",
+  description: "Intégration de modèles de langage (OpenAI, Claude) pour créer des chatbots, assistants intelligents, systèmes RAG et automatisations basées sur l’IA."
+},
+{
+  icon: <FiBriefcase />,
+  title: "Développement Web Moderne",
+  description: "Développement d’interfaces performantes et d’APIs backend avec React, Vue, Next.js, Node, Flask, pour des produits web complets et scalables."
+}
   ];
 
   return (
@@ -58,9 +58,12 @@ export default function About() {
             >
               <div className="ml-6 space-y-4 text-gray-300 leading-relaxed">
                 <p>
-                Étudiant en informatique passionné par l’ingénierie logicielle et l’intelligence artificielle, je développe des solutions logicielles modernes, performantes et évolutives.
-                Mon objectif est de concevoir des applications à fort impact en intégrant des modèles d’IA avancés dans des architectures logicielles propres, maintenables et orientées utilisateurs.
-                </p>
+               Étudiant en 3ᵉ année en informatique, je suis animé par une passion profonde pour le développement logiciel et l’intelligence artificielle. Pour moi, coder ne se limite pas à écrire des programmes : c’est concevoir des systèmes intelligents, comprendre leur logique en profondeur et transformer des idées en solutions concrètes à fort impact.</p>
+
+              <p>Je m’épanouis dans la création d’applications robustes, performantes et évolutives, en combinant les bonnes pratiques du génie logiciel avec la puissance des technologies d’IA modernes, notamment les modèles de langage (LLM). J’aime explorer, expérimenter et bâtir des architectures propres, maintenables et orientées utilisateurs, capables d’automatiser, d’assister et d’optimiser des processus réels.</p>
+
+              <p>Mon objectif est de devenir tres bon dans mon domaine pour capable de concevoir des produits intelligents utiles, fiables et innovants, et de contribuer activement à des équipes techniques ambitieuses, d’abord à travers un stage, puis dans des projets à grande échelle.
+              </p>
               </div>
 
               <div className="font-mono text-sm text-gray-500">               

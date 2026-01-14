@@ -48,16 +48,17 @@ export default function Hero() {
               <div>
                 <span className="text-gray-500">  skills: [</span>
                 <div className="ml-4 space-y-1">
-                  <div><span className="text-yellow-400">&quot;Développement Full-Stack&quot;</span>,</div>
-                  <div><span className="text-yellow-400">&quot;Intégration de LLM (OpenAI, Claude)&quot;</span>,</div>
+                  <div><span className="text-yellow-400">&quot;Développement Full-Stack (React, Vue, Next.js, Node, Java, Python)&quot;</span>,</div>
+                  <div><span className="text-yellow-400">&quot;IA & LLM Engineering (OpenAI, Claude, RAG, Prompt Engineering)&quot;</span>,</div>
                   <div><span className="text-yellow-400">&quot;API & Systèmes Backend&quot;</span>,</div>
-                  <div><span className="text-yellow-400">&quot;Applications Web Modernes (Vue.js, React, Next.js)&quot;</span></div>
+                  <div><span className="text-yellow-400">&quot;Automatisation de processus par agents intelligents&quot;</span></div>
+
                 </div>
                 <span className="text-gray-500">  ],</span>
               </div>
               <div>
-                <span className="text-gray-500">  passion: </span>
-                <span className="text-green-400">&quot;Je conçois des applications robustes intégrant des modèles LLM pour automatiser, assister et optimiser des processus réels&quot;</span>
+                <span className="text-gray-500">  Passion: </span>
+                <span className="text-green-400">&quot;Je conçois les solutions logiciel robustes intégrant la puissances des modèles LLM pour automatiser, assister et optimiser des processus réels&quot;</span>
               </div>
             </div>
             <div className="mb-8 font-mono text-sm text-gray-500">
