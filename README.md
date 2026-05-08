@@ -1,7 +1,6 @@
 # Portfolio — Steeve JuniX
 
 Portfolio personnel de **Steeve JuniX**, développeur logiciel spécialisé en IA & LLM Engineering.
-Déployé sur [steeve-junix.vercel.app](https://steeve-junix.vercel.app)
 
 ---
 
