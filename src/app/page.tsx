@@ -10,8 +10,8 @@ import ChatBot from './components/ChatBot';
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#060b18] relative overflow-hidden">
-      {/* Subtle dot grid */}
-      <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] bg-[size:32px_32px] opacity-40" />
+      {/* Fine grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0d1f3c_1px,transparent_1px),linear-gradient(to_bottom,#0d1f3c_1px,transparent_1px)] bg-[size:60px_60px] opacity-60" />
 
       {/* Ambient glow — top left */}
       <div className="absolute top-[-200px] left-[-150px] w-[700px] h-[700px] bg-indigo-600/[0.07] rounded-full blur-[120px]" />

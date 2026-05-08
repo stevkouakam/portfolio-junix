@@ -31,7 +31,7 @@ export default function Hero() {
           >
             <span className="text-slate-50">Steeve </span>
             <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
-              JuniX
+              juniX
             </span>
           </motion.h1>
 
