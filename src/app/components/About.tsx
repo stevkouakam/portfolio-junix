@@ -1,104 +1,99 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FiTerminal, FiCode, FiCpu, FiBriefcase } from 'react-icons/fi';
+import { FiCpu, FiCode, FiLayers } from 'react-icons/fi';
 
 export default function About() {
-  const experiences = [
-   {
-  icon: <FiCode />,
-  title: "Génie Logiciel",
-  description: "Conception d’applications robustes et maintenables, basées sur des architectures propres (API, MVC, Clean Code) et des pratiques professionnelles (Git, tests, CI/CD)."
-},
-{
-  icon: <FiCpu />,
-  title: "Intelligence Artificielle & LLM",
-  description: "Intégration de modèles de langage (OpenAI, Claude) pour créer des chatbots, assistants intelligents, systèmes RAG et automatisations basées sur l’IA."
-},
-{
-  icon: <FiBriefcase />,
-  title: "Développement Web Moderne",
-  description: "Développement d’interfaces performantes et d’APIs backend avec React, Vue, Next.js, Node, Flask, pour des produits web complets et scalables."
-}
+  const areas = [
+    {
+      icon: <FiCpu size={18} />,
+      title: 'IA & LLM Engineering',
+      description: "Intégration de modèles de langage (OpenAI, Claude) pour créer des chatbots, assistants intelligents, systèmes RAG et automatisations basées sur l'IA.",
+      color: 'text-violet-400',
+      bg: 'bg-violet-500/10',
+    },
+    {
+      icon: <FiCode size={18} />,
+      title: 'Génie Logiciel',
+      description: "Conception d'applications robustes basées sur des architectures propres (API, MVC, Clean Code) et des pratiques professionnelles (Git, tests, CI/CD).",
+      color: 'text-indigo-400',
+      bg: 'bg-indigo-500/10',
+    },
+    {
+      icon: <FiLayers size={18} />,
+      title: 'Développement Web',
+      description: "Développement d'interfaces performantes et d'APIs backend avec React, Vue, Next.js, Node et Flask, pour des produits web complets et scalables.",
+      color: 'text-cyan-400',
+      bg: 'bg-cyan-500/10',
+    },
   ];
 
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center py-20 relative">
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+    <section id="about" className="py-24 relative">
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
 
-          {/* Terminal Header */}
+          {/* Section header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-12"
+            className="mb-16"
           >
-            <div className="flex items-center gap-2 text-gray-500 text-sm mb-4">
-              <FiTerminal size={16} />
-              <span className="font-mono">~/about</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white font-mono mb-4">
-              $ cat about.txt
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3 block">
+              À propos
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
+              Qui suis-je ?
             </h2>
-            <div className="h-1 w-20 bg-gradient-to-r from-purple-600 to-blue-600"></div>
+            <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400" />
           </motion.div>
 
-          {/* Content Grid */}
-          <div className="grid md:grid-cols-2 gap-12 mb-16">
+          <div className="grid md:grid-cols-2 gap-16 mb-16">
 
-            {/* Left Column - Bio */}
+            {/* Bio */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="space-y-6"
+              className="space-y-5 text-slate-400 leading-relaxed text-base"
             >
-              <div className="ml-6 space-y-4 text-gray-300 leading-relaxed">
-                <p>
-               Étudiant en 3ᵉ année en informatique, je suis animé par une passion profonde pour le développement logiciel et l’intelligence artificielle. Pour moi, coder ne se limite pas à écrire des programmes : c’est concevoir des systèmes intelligents, comprendre leur logique en profondeur et transformer des idées en solutions concrètes à fort impact.</p>
-
-              <p>Je m’épanouis dans la création d’applications robustes, performantes et évolutives, en combinant les bonnes pratiques du génie logiciel avec la puissance des technologies d’IA modernes, notamment les modèles de langage (LLM). J’aime explorer, expérimenter et bâtir des architectures propres, maintenables et orientées utilisateurs, capables d’automatiser, d’assister et d’optimiser des processus réels.</p>
-
-              <p>Mon objectif est de devenir tres bon dans mon domaine pour capable de concevoir des produits intelligents utiles, fiables et innovants, et de contribuer activement à des équipes techniques ambitieuses, d’abord à travers un stage, puis dans des projets à grande échelle.
+              <p>
+                Développeur logiciel passionné par l&apos;IA, je combine ingénierie logicielle rigoureuse et intégration de modèles LLMs pour construire des produits à fort impact. Avec 3 ans d&apos;expérience et plus de 15 projets livrés, je conçois des architectures propres, performantes et orientées résultats.
               </p>
-              </div>
-
-              <div className="font-mono text-sm text-gray-500">               
-              </div>
+              <p>
+                Je m&apos;épanouis dans la création d&apos;applications full-stack robustes et scalables, en exploitant la puissance des technologies d&apos;IA modernes — automatisation intelligente, assistants conversationnels, systèmes RAG — pour résoudre des problèmes réels.
+              </p>
+              <p>
+                Mon objectif : rejoindre une équipe technique ambitieuse pour contribuer à des projets d&apos;envergure, en apportant à la fois solidité technique et vision orientée IA.
+              </p>
             </motion.div>
 
-            {/* Right Column - Experience Cards */}
+            {/* Expertise cards */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               className="space-y-4"
             >
-              {experiences.map((exp, index) => (
+              {areas.map((area, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                  className="group p-6 bg-slate-900/50 backdrop-blur-sm border border-purple-600/20 hover:border-purple-600/50 transition-all duration-300"
+                  transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                  className="group flex gap-4 p-5 bg-[#0d1526] border border-white/5 rounded-2xl hover:border-white/10 hover:bg-[#111c35] transition-all duration-300"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="text-purple-400 text-2xl group-hover:scale-110 transition-transform duration-300">
-                      {exp.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-white font-mono text-lg mb-2 group-hover:text-purple-400 transition-colors">
-                        {exp.title}
-                      </h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">
-                        {exp.description}
-                      </p>
-                    </div>
+                  <div className={`shrink-0 w-10 h-10 rounded-xl ${area.bg} flex items-center justify-center ${area.color} group-hover:scale-110 transition-transform duration-300`}>
+                    {area.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-slate-100 font-semibold mb-1.5">{area.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{area.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -110,25 +105,23 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4"
           >
             {[
-              { label: 'Projets', value: '15+' },
+              { label: 'Projets réalisés', value: '15+' },
               { label: 'Technologies', value: '20+' },
-              { label: 'Expérience', value: '3+ ans' },
-              { label: 'Passion', value: '100%' }
+              { label: "Années d'exp.", value: '3+' },
+              { label: 'Passion', value: '100%' },
             ].map((stat, index) => (
               <div
                 key={index}
-                className="text-center p-6 bg-slate-900/30 border border-purple-600/10 hover:border-purple-600/30 transition-all duration-300"
+                className="text-center p-6 bg-[#0d1526] border border-white/5 rounded-2xl hover:border-indigo-500/20 transition-all duration-300"
               >
-                <div className="text-3xl font-bold text-purple-400 font-mono mb-2">
+                <div className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent mb-1.5">
                   {stat.value}
                 </div>
-                <div className="text-gray-400 text-sm font-mono">
-                  {stat.label}
-                </div>
+                <div className="text-slate-500 text-sm">{stat.label}</div>
               </div>
             ))}
           </motion.div>

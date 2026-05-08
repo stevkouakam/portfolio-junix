@@ -1,68 +1,72 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FiTerminal, FiGithub, FiExternalLink } from 'react-icons/fi';
+import { FiGithub, FiExternalLink } from 'react-icons/fi';
 
 export default function Projects() {
   const projects = [
     {
-      title: "Logiciel de découpe CNC",
-      description: "Développement d'un logiciel personnalisé permettant d'utiliser une table de découpe CNC (modèle AVID 5x10) comme une scie à panneaux traditionnelle.",
-      tags: ["Java", "Swing", "GCODE", "UML "],
-      github: "https://github.com/stevkouakam",
-      demo: "#",
-      status: "Terminer"
+      title: 'Logiciel de découpe CNC',
+      description:
+        "Logiciel personnalisé permettant d'utiliser une table de découpe CNC (AVID 5x10) comme une scie à panneaux traditionnelle. Génération de fichiers GCODE optimisés, interface intuitive pour opérateurs non-techniques.",
+      tags: ['Java', 'Swing', 'GCODE', 'UML'],
+      github: 'https://github.com/stevkouakam',
+      demo: null,
+      accent: 'from-violet-500 to-indigo-500',
     },
     {
-      title: "Projet - Ufood",
-      description: "Developpement d'une application web de localisation de restaurant et de partage de favoris entre amis",
-      tags: ["Vuetify", "Vue.js", "JavaScript", "APIrest"],
-      github: "https://github.com/stevkouakam",
-      demo: "#",
-      status: "Terminer"
+      title: 'UFood',
+      description:
+        "Application web de localisation de restaurants et de partage de favoris entre amis. Intégration d'une API REST pour la recherche géolocalisée et gestion des listes collaboratives en temps réel.",
+      tags: ['Vue.js', 'Vuetify', 'JavaScript', 'API REST'],
+      github: 'https://github.com/stevkouakam',
+      demo: null,
+      accent: 'from-cyan-500 to-blue-500',
     },
     {
-      title: "Projet - Utasks",
-      description: "Developpement d'une application web de gestion de taches avec intégration d'un modèle LLM pour assistance intelligente",
-      tags: ["MongoDB", "LLM", "API", "React", "OpenAI"],
-      github: "https://github.com/stevkouakam",
-      demo: "#",
-      status: "Terminer"
+      title: 'UTasks — LLM Task Manager',
+      description:
+        "Application de gestion de tâches avec assistant IA intégré. L'agent LLM (OpenAI) analyse les tâches, propose des priorités, génère des sous-tâches et répond aux questions contextuelles de l'utilisateur.",
+      tags: ['React', 'MongoDB', 'OpenAI', 'LLM', 'API'],
+      github: 'https://github.com/stevkouakam',
+      demo: null,
+      accent: 'from-indigo-500 to-purple-500',
+      featured: true,
     },
     {
-      title: "Projet - SplitUL",
-      description: "Application de partage de factures entre amis",
-      tags: ["Java", "Docker", "PostgreSQL", "APIrest"],
-      github: "https://github.com/stevkouakam",
-      demo: "#",
-      status: "Terminer"
-    }
+      title: 'SplitUL',
+      description:
+        "Application de partage de factures entre amis avec gestion des groupes, des dettes et des remboursements. Backend Java avec persistance PostgreSQL et API REST documentée.",
+      tags: ['Java', 'PostgreSQL', 'Docker', 'API REST'],
+      github: 'https://github.com/stevkouakam',
+      demo: null,
+      accent: 'from-emerald-500 to-cyan-500',
+    },
   ];
 
   return (
-    <section id="projects" className="min-h-screen flex items-center justify-center py-20 relative">
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+    <section id="projects" className="py-24 relative">
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
 
-          {/* Terminal Header */}
+          {/* Section header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-12"
+            className="mb-16"
           >
-            <div className="flex items-center gap-2 text-gray-500 text-sm mb-4">
-              <FiTerminal size={16} />
-              <span className="font-mono">~/projects</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white font-mono mb-4">
-              $ ls -la ./projets
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3 block">
+              Projets
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
+              Ce que j&apos;ai construit
             </h2>
-            <div className="h-1 w-20 bg-gradient-to-r from-purple-600 to-blue-600"></div>
+            <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400" />
           </motion.div>
 
-          {/* Projects Grid */}
+          {/* Grid */}
           <div className="grid md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <motion.div
@@ -71,75 +75,70 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative bg-slate-900/50 backdrop-blur-sm border border-purple-600/20 hover:border-purple-600/60 transition-all duration-300 overflow-hidden"
+                className={`group relative bg-[#0d1526] border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 hover:-translate-y-1 transition-all duration-300 ${
+                  project.featured ? 'ring-1 ring-indigo-500/25' : ''
+                }`}
               >
-                {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Accent top line */}
+                <div className={`h-px w-full bg-gradient-to-r ${project.accent}`} />
 
-                <div className="relative p-6">
+                <div className="p-6">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                        <span className="text-xs font-mono text-gray-500">{project.status}</span>
-                      </div>
-                      <h3 className="text-2xl font-bold text-white font-mono group-hover:text-purple-400 transition-colors">
+                      {project.featured && (
+                        <span className="inline-block text-xs font-semibold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-1 rounded-lg mb-2">
+                          Featured
+                        </span>
+                      )}
+                      <h3 className="text-lg font-bold text-slate-100 group-hover:text-white transition-colors">
                         {project.title}
                       </h3>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-1 shrink-0 ml-4">
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 text-gray-400 hover:text-white transition-colors"
+                        className="p-2 text-slate-500 hover:text-slate-200 hover:bg-white/5 rounded-lg transition-all"
                         aria-label="GitHub"
                       >
-                        <FiGithub size={20} />
+                        <FiGithub size={18} />
                       </a>
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 text-gray-400 hover:text-white transition-colors"
-                        aria-label="Demo"
-                      >
-                        <FiExternalLink size={20} />
-                      </a>
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 text-slate-500 hover:text-slate-200 hover:bg-white/5 rounded-lg transition-all"
+                          aria-label="Demo"
+                        >
+                          <FiExternalLink size={18} />
+                        </a>
+                      )}
                     </div>
                   </div>
 
-                  {/* Description */}
-                  <p className="text-gray-400 mb-6 leading-relaxed">
+                  <p className="text-slate-400 text-sm leading-relaxed mb-5">
                     {project.description}
                   </p>
 
-                  {/* Tags */}
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="px-3 py-1 text-xs font-mono bg-purple-600/10 text-purple-400 border border-purple-600/30 hover:bg-purple-600/20 transition-colors"
+                        className="px-2.5 py-1 text-xs font-mono text-slate-400 bg-white/5 border border-white/5 rounded-lg"
                       >
                         {tag}
                       </span>
                     ))}
-                  </div>
-
-                  {/* Command line style */}
-                  <div className="mt-6 pt-4 border-t border-purple-600/20">
-                    <div className="font-mono text-xs text-gray-600">
-                      <span className="text-gray-500">$ </span>
-                      <span className="text-gray-400">git clone {project.title.toLowerCase().replace(' ', '-')}.git</span>
-                    </div>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          {/* View More */}
+          {/* GitHub CTA */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -151,10 +150,10 @@ export default function Projects() {
               href="https://github.com/stevkouakam"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-transparent border border-purple-600/40 hover:border-purple-600 hover:bg-purple-600/10 text-purple-400 font-mono text-sm transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-slate-300 font-medium rounded-xl transition-all duration-200"
             >
               <FiGithub size={18} />
-              Voir plus sur GitHub
+              Voir tous mes projets sur GitHub
             </a>
           </motion.div>
 

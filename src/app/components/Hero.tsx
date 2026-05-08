@@ -1,124 +1,125 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiMail, FiDownload, FiTerminal, FiCode } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowRight } from 'react-icons/fi';
 
 export default function Hero() {
-  return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-16 relative">
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto">
+  const roles = ['Full-Stack Developer', 'LLM Engineer', 'AI Builder'];
 
-          {/* Terminal Header */}
+  return (
+    <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
+
+          {/* Availability badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8"
+            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-sm font-medium mb-10"
           >
-            <div className="flex items-center gap-2 text-gray-500 text-sm mb-2">
-              <FiTerminal size={16} />
-              <span className="font-mono">~/steeve-junix/portfolio</span>
-            </div>
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+            Disponible — Recherche de stage
           </motion.div>
 
-          {/* Contenu principal */}
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6 tracking-tight"
+          >
+            <span className="text-slate-50">Steeve </span>
+            <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
+              JuniX
+            </span>
+          </motion.h1>
+
+          {/* Role badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-wrap justify-center gap-2 mb-8"
+          >
+            {roles.map((role) => (
+              <span
+                key={role}
+                className="px-3 py-1.5 text-xs font-mono font-semibold text-slate-300 bg-[#0d1526] border border-white/10 rounded-lg"
+              >
+                {role}
+              </span>
+            ))}
+          </motion.div>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10"
+          >
+            Je conçois des solutions logicielles robustes en intégrant la puissance des modèles LLMs — pour automatiser, assister et optimiser des processus réels.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14"
+          >
+            <a
+              href="#projects"
+              className="group inline-flex items-center gap-2 px-7 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5"
+            >
+              Voir mes projets
+              <FiArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a
+              href="/cv/CV-Steeve-Junix.pdf"
+              download="CV-Steeve-Junix.pdf"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-slate-200 font-semibold rounded-xl transition-all duration-200"
+            >
+              <FiDownload size={17} />
+              Télécharger CV
+            </a>
+          </motion.div>
+
+          {/* Social links */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-left"
+            transition={{ duration: 0.5, delay: 0.55 }}
+            className="flex items-center justify-center gap-3"
           >
-            {/* Code-style intro */}
-            <div className="mb-6 font-mono text-sm text-gray-500">
-              <span className="text-purple-400">const</span> <span className="text-blue-400">developer</span> = {'{'}
-            </div>
-
-            <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold mb-6 leading-tight ml-6">
-              <span className="text-white font-mono">
-                Steeve juniX
-              </span>
-            </h1>
-
-            <div className="mb-8 font-mono text-base md:text-lg ml-6 space-y-2">
-              <div>
-                <span className="text-gray-500">  role: </span>
-                <span className="text-green-400">&quot;Développeur logiciel | IA&quot;</span>,
-              </div>
-              <div>
-                <span className="text-gray-500">  skills: [</span>
-                <div className="ml-4 space-y-1">
-                  <div><span className="text-yellow-400">&quot;Développement Full-Stack (React, Vue, Next.js, Node, Java, Python)&quot;</span>,</div>
-                  <div><span className="text-yellow-400">&quot;IA & LLM Engineering (OpenAI, Claude, RAG, Prompt Engineering)&quot;</span>,</div>
-                  <div><span className="text-yellow-400">&quot;API & Systèmes Backend&quot;</span>,</div>
-                  <div><span className="text-yellow-400">&quot;Automatisation de processus par agents intelligents&quot;</span></div>
-
-                </div>
-                <span className="text-gray-500">  ],</span>
-              </div>
-              <div>
-                <span className="text-gray-500">  Passion: </span>
-                <span className="text-green-400">&quot;Je conçois les solutions logiciel robustes intégrant la puissances des modèles LLM pour automatiser, assister et optimiser des processus réels&quot;</span>
-              </div>
-            </div>
-            <div className="mb-8 font-mono text-sm text-gray-500">
-              {'}'};
-            </div>
-
-            {/* Command line style */}
-            <div className="mb-8 font-mono text-sm">
-              <span className="text-gray-600">$ </span>
-              <span className="text-gray-400">ls ./contact/</span>
-            </div>
-
-            {/* Social Links - command output style */}
-            <div className="flex flex-wrap gap-4 mb-8 ml-4">
-              <a
-                href="https://github.com/stevkouakam"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors font-mono text-sm"
-              >
-                <FiGithub size={18} />
-                <span>github</span>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/steeve-junix-044659284"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors font-mono text-sm"
-              >
-                <FiLinkedin size={18} />
-                <span>linkedin</span>
-              </a>
-              <a
-                href="mailto:kouakamsteve782@gmail.com"
-                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors font-mono text-sm"
-              >
-                <FiMail size={18} />
-                <span>email</span>
-              </a>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 mt-12">
-              <a
-                href="#projects"
-                className="group px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-mono text-sm transition-colors duration-200 flex items-center gap-2"
-              >
-                <FiCode size={16} />
-                ./projets
-              </a>
-              <a
-                href="/cv/CV-Steeve-Junix.pdf"
-                download="CV-Steeve-Junix.pdf"
-                className="px-6 py-3 bg-transparent border border-purple-600/40 hover:border-purple-600 text-purple-400 font-mono text-sm transition-colors duration-200 flex items-center gap-2"
-              >
-                <FiDownload size={16} />
-                télécharger CV
-              </a>
-            </div>
+            <a
+              href="https://github.com/stevkouakam"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2.5 text-slate-500 hover:text-slate-200 hover:bg-white/5 rounded-xl transition-all"
+              aria-label="GitHub"
+            >
+              <FiGithub size={20} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/steeve-junix-044659284"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2.5 text-slate-500 hover:text-slate-200 hover:bg-white/5 rounded-xl transition-all"
+              aria-label="LinkedIn"
+            >
+              <FiLinkedin size={20} />
+            </a>
+            <a
+              href="mailto:kouakamsteve782@gmail.com"
+              className="p-2.5 text-slate-500 hover:text-slate-200 hover:bg-white/5 rounded-xl transition-all"
+              aria-label="Email"
+            >
+              <FiMail size={20} />
+            </a>
           </motion.div>
+
         </div>
       </div>
     </section>
