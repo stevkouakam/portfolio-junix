@@ -54,7 +54,7 @@ export default function Contact() {
       icon: <FiLinkedin size={18} />,
       label: 'LinkedIn',
       value: 'steeve-junix',
-      href: 'https://www.linkedin.com/in/steeve-junix-044659284',
+      href: 'https://www.linkedin.com/in/steeve-junix-kouakam-044659284/',
       external: true,
     },
     {
