@@ -5,7 +5,7 @@ import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowRight } from 'react-ic
 
 export default function Hero() {
   const roles = ['IA & Solfware Developer', 'Agentic IA', 'Full-Stack'];
-  const techTags = ['Claude', 'React', 'RAG', 'Java', 'Python', 'API REST', 'LangChain', 'Node.js'];
+  const techTags = ['Claude IA', 'React', 'RAG', 'Java', 'Python', 'API REST', 'LangChain', 'Node.js', 'genini', 'FlastApi'];
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative">
@@ -66,7 +66,7 @@ export default function Hero() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="text-slate-400 text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 mb-10"
               >
-                Passionate about software development and artificial intelligence, I build robust applications with real-world impact — combining clean engineering with the power of LLMs to create solutions that automate, assist, and innovate.
+                Passionate about software development and artificial intelligence, I build robust solution with real-world impact — combining IA engineering with the power of LLM to create solutions that automate, assist, and innovate.
               </motion.p>
 
               {/* CTA */}
