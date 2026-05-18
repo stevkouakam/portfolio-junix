@@ -1,6 +1,6 @@
 # Portfolio — Steeve JuniX
 
-Portfolio personnel de **Steeve JuniX**, développeur logiciel spécialisé en IA & LLM Engineering.
+Portfolio personnel de **Steeve JuniX**, développeur logiciel spécialisé en IA.
 ---
 
 ## Stack technique
