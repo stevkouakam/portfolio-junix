@@ -130,7 +130,7 @@ export default function Projects() {
           >
             <div className={`p-[1px] rounded-2xl bg-gradient-to-r ${featured.accentFrom} ${featured.accentTo}`}>
               <div className="bg-[#080f20] rounded-2xl p-7 md:p-8">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                <div className="flex flex-col md:flex-row md:items-start gap-8">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-3">
                       <span className="inline-block text-xs font-bold text-pink-300 bg-pink-500/15 border border-pink-500/25 px-3 py-1 rounded-lg tracking-wide uppercase">
@@ -143,23 +143,48 @@ export default function Projects() {
                     <h3 className="text-2xl font-bold text-slate-50 mb-3 group-hover:text-white transition-colors">
                       {featured.title}
                     </h3>
-                    <p className="text-slate-400 leading-relaxed mb-5 max-w-2xl">
+                    <p className="text-slate-400 leading-relaxed mb-5">
                       {featured.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {featured.tags.map((tag) => (
-                        <span key={tag} className="px-3 py-1.5 text-xs font-mono text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
+                        <span key={tag} className="px-3 py-1.5 text-xs font-mono text-pink-300 bg-pink-500/10 border border-pink-500/20 rounded-lg">
                           {tag}
                         </span>
                       ))}
                     </div>
                   </div>
-                  <div className="flex md:flex-col gap-2 shrink-0">
+                  <div className="flex md:flex-col gap-3 shrink-0 md:w-48">
+                    <div className="p-4 bg-white/[0.03] border border-white/5 rounded-xl space-y-3 flex-1 md:flex-none">
+                      <p className="text-slate-600 text-[10px] font-semibold uppercase tracking-widest">Project details</p>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-pink-400 shrink-0" />
+                          <span className="text-slate-400 text-xs">Team of 6 developers</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
+                          <span className="text-slate-400 text-xs">Angular frontend lead</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-pink-400 shrink-0" />
+                          <span className="text-slate-400 text-xs">GitFlow & code reviews</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
+                          <span className="text-slate-400 text-xs">CI/CD pipeline</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-pink-400 shrink-0" />
+                          <span className="text-slate-400 text-xs">Technical documentation</span>
+                        </div>
+                      </div>
+                    </div>
                     <a
                       href={featured.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-slate-300 text-sm font-medium rounded-xl transition-all"
+                      className="flex items-center justify-center gap-2 px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-slate-300 text-sm font-medium rounded-xl transition-all"
                     >
                       <FiGithub size={15} />
                       View on GitHub

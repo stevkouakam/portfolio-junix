@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowRight } from 'react-icons/fi';
 
 export default function Hero() {
-  const roles = ['Full-Stack Developer', 'IA Engineer', 'Dev AI Agentic '];
-  const techTags = ['OpenAI', 'React', 'Next.js', 'Java', 'Python', 'Docker'];
+  const roles = ['IA & Solfware Developer', 'Agentic IA', 'Full-Stack'];
+  const techTags = ['Claude', 'React', 'RAG', 'Java', 'Python', 'API REST', 'LangChain', 'Node.js'];
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative">
@@ -26,6 +26,8 @@ export default function Hero() {
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
                 Available — Looking for an internship
               </motion.div>
+
+
 
               {/* Titre principal */}
               <motion.h1
@@ -140,17 +142,6 @@ export default function Hero() {
                 {/* Gradient border card */}
                 <div className="p-[1px] rounded-2xl bg-gradient-to-br from-indigo-500/40 via-violet-500/25 to-cyan-500/40">
                   <div className="bg-[#080f20] rounded-2xl p-6 space-y-5">
-
-                    {/* Avatar + identité */}
-                    <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-indigo-500/40 shrink-0">
-                        SJ
-                      </div>
-                      <div>
-                        <p className="text-slate-100 font-bold">Steeve juniX</p>
-                        <p className="text-slate-500 text-sm">AI & Software Developer</p>
-                      </div>
-                    </div>
 
                     <div className="h-px bg-white/5" />
 
