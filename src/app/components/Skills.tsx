@@ -6,73 +6,36 @@ import {
   SiReact, SiAngular, SiVuedotjs, SiHtml5, SiTypescript,
   SiDocker, SiGit, SiPython, SiLinux, SiNextdotjs,
 } from 'react-icons/si';
-import { FiCode, FiServer } from 'react-icons/fi';
+import { FiCode, FiServer, FiZap } from 'react-icons/fi';
 
 export default function Skills() {
-  const categories = [
-    {
-      label: 'IA & LLM Engineering',
-      color: 'text-violet-400',
-      borderColor: 'border-violet-500/25',
-      pillBg: 'bg-violet-500/10 text-violet-300',
-      skills: [
-        'OpenAI API',
-        'Anthropic Claude',
-        'LangChain',
-        'RAG Systems',
-        'Prompt Engineering',
-        'Agents autonomes',
-        'Embeddings',
-        'Vector DBs',
-      ],
-    },
+  const aiSkills = [
+    'OpenAI API', 'Anthropic Claude', 'LangChain',
+    'RAG Systems', 'Prompt Engineering', 'Agents autonomes',
+    'Embeddings', 'Vector DBs',
+  ];
+
+  const otherCategories = [
     {
       label: 'Backend Development',
       color: 'text-cyan-400',
-      borderColor: 'border-cyan-500/25',
-      pillBg: 'bg-cyan-500/10 text-cyan-300',
-      skills: [
-        'Java',
-        'Spring Boot',
-        'Python',
-        'Node.js',
-        'Flask',
-        'API REST',
-        'JPA / Hibernate',
-        'JUnit',
-      ],
+      borderColor: 'border-cyan-500/20',
+      pillBg: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/15',
+      skills: ['Java', 'Spring Boot', 'Python', 'Node.js', 'Flask', 'API REST', 'JPA / Hibernate', 'JUnit'],
     },
     {
       label: 'Frontend Development',
       color: 'text-indigo-400',
-      borderColor: 'border-indigo-500/25',
-      pillBg: 'bg-indigo-500/10 text-indigo-300',
-      skills: [
-        'React',
-        'Next.js',
-        'Vue.js',
-        'Angular',
-        'TypeScript',
-        'HTML5 / CSS3',
-        'Tailwind CSS',
-        'Framer Motion',
-      ],
+      borderColor: 'border-indigo-500/20',
+      pillBg: 'bg-indigo-500/10 text-indigo-300 border-indigo-500/15',
+      skills: ['React', 'Next.js', 'Vue.js', 'Angular', 'TypeScript', 'HTML5 / CSS3', 'Tailwind CSS', 'Framer Motion'],
     },
     {
       label: 'DevOps & Outils',
       color: 'text-emerald-400',
-      borderColor: 'border-emerald-500/25',
-      pillBg: 'bg-emerald-500/10 text-emerald-300',
-      skills: [
-        'Docker',
-        'Git',
-        'CI/CD',
-        'Azure DevOps',
-        'PostgreSQL',
-        'MongoDB',
-        'Linux',
-        'Agile / Scrum',
-      ],
+      borderColor: 'border-emerald-500/20',
+      pillBg: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/15',
+      skills: ['Docker', 'Git', 'CI/CD', 'Azure DevOps', 'PostgreSQL', 'MongoDB', 'Linux', 'Agile / Scrum'],
     },
   ];
 
@@ -117,25 +80,62 @@ export default function Skills() {
             <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400" />
           </motion.div>
 
-          {/* Categories grid */}
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {categories.map((cat, index) => (
+          {/* IA & LLM — catégorie premium pleine largeur */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-6"
+          >
+            <div className="p-[1px] rounded-2xl bg-gradient-to-r from-violet-500/50 via-indigo-500/40 to-cyan-500/50">
+              <div className="bg-[#080f20] rounded-2xl p-6">
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-violet-500/15 flex items-center justify-center text-violet-400">
+                      <FiZap size={17} />
+                    </div>
+                    <h3 className="font-bold text-violet-300 text-sm uppercase tracking-wider">
+                      IA & LLM Engineering
+                    </h3>
+                  </div>
+                  <span className="text-xs font-semibold text-violet-400 bg-violet-500/10 border border-violet-500/20 px-3 py-1 rounded-lg">
+                    Core Expertise
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {aiSkills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1.5 text-sm font-medium text-violet-200 bg-violet-500/10 border border-violet-500/20 rounded-xl hover:bg-violet-500/20 transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Autres catégories — grille 3 colonnes */}
+          <div className="grid md:grid-cols-3 gap-5 mb-6">
+            {otherCategories.map((cat, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`p-6 bg-[#0d1526] border rounded-2xl hover:bg-[#111c35] transition-all duration-300 ${cat.borderColor}`}
+                className={`p-5 bg-[#0d1526] border rounded-2xl hover:bg-[#0f1a30] transition-all duration-300 ${cat.borderColor}`}
               >
-                <h3 className={`font-bold text-sm mb-4 uppercase tracking-wider ${cat.color}`}>
+                <h3 className={`font-bold text-xs mb-4 uppercase tracking-wider ${cat.color}`}>
                   {cat.label}
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {cat.skills.map((skill, i) => (
+                  {cat.skills.map((skill) => (
                     <span
-                      key={i}
-                      className={`px-3 py-1.5 text-xs font-medium rounded-lg border border-white/5 ${cat.pillBg}`}
+                      key={skill}
+                      className={`px-2.5 py-1.5 text-xs font-medium rounded-lg border ${cat.pillBg}`}
                     >
                       {skill}
                     </span>
@@ -145,12 +145,12 @@ export default function Skills() {
             ))}
           </div>
 
-          {/* Tech icons bar */}
+          {/* Barre d'icônes tech */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             className="p-6 bg-[#0d1526] border border-white/5 rounded-2xl"
           >
             <p className="text-slate-600 text-xs text-center mb-5 uppercase tracking-[0.15em] font-semibold">
