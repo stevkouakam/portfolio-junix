@@ -4,15 +4,20 @@ import { motion } from 'framer-motion';
 import {
   SiSpring, SiJunit5, SiMongodb, SiPostgresql,
   SiReact, SiAngular, SiVuedotjs, SiHtml5, SiTypescript,
-  SiDocker, SiGit, SiPython, SiLinux, SiNextdotjs,
+  SiDocker, SiGit, SiPython, SiLinux, SiNextdotjs, SiFastapi,
 } from 'react-icons/si';
-import { FiCode, FiServer, FiZap } from 'react-icons/fi';
+import { FiCode, FiServer, FiZap, FiCpu } from 'react-icons/fi';
 
 export default function Skills() {
-  const aiSkills = [
-    'OpenAI API', 'Anthropic Claude', 'LangChain',
-    'RAG Systems', 'Prompt Engineering', 'Autonomous Agents',
-    'Embeddings', 'Vector DBs',
+  const aiCoreSkills = [
+    'OpenAI API', 'Anthropic Claude', 'LangChain', 'LangGraph',
+    'RAG Systems', 'Prompt Engineering', 'Embeddings', 'Vector DBs',
+    'LlamaIndex', 'ChromaDB',
+  ];
+
+  const agentStack = [
+    'Autonomous Agents', 'Multi-Agent Systems', 'Function Calling',
+    'OpenAI Assistants API', 'Agent Pipelines', 'FastAPI',
   ];
 
   const otherCategories = [
@@ -21,7 +26,7 @@ export default function Skills() {
       color: 'text-cyan-400',
       borderColor: 'border-cyan-500/20',
       pillBg: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/15',
-      skills: ['Java', 'Spring Boot', 'Python', 'Node.js', 'Flask', 'API REST', 'JPA / Hibernate', 'JUnit'],
+      skills: ['Java', 'Spring Boot', 'Python', 'Node.js', 'FastAPI', 'Flask', 'API REST', 'JPA / Hibernate'],
     },
     {
       label: 'Frontend Development',
@@ -41,6 +46,7 @@ export default function Skills() {
 
   const techIcons = [
     { icon: <SiPython />, label: 'Python', color: 'hover:text-yellow-400' },
+    { icon: <SiFastapi />, label: 'FastAPI', color: 'hover:text-teal-400' },
     { icon: <SiReact />, label: 'React', color: 'hover:text-cyan-400' },
     { icon: <SiNextdotjs />, label: 'Next.js', color: 'hover:text-white' },
     { icon: <SiVuedotjs />, label: 'Vue.js', color: 'hover:text-green-400' },
@@ -80,7 +86,7 @@ export default function Skills() {
             <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400" />
           </motion.div>
 
-          {/* IA & LLM — catégorie premium pleine largeur */}
+          {/* ── AI & LLM Engineering — carte premium ── */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -90,34 +96,54 @@ export default function Skills() {
           >
             <div className="p-[1px] rounded-2xl bg-gradient-to-r from-violet-500/50 via-indigo-500/40 to-cyan-500/50">
               <div className="bg-[#080f20] rounded-2xl p-6">
+
+                {/* Header */}
                 <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-xl bg-violet-500/15 flex items-center justify-center text-violet-400">
                       <FiZap size={17} />
                     </div>
-                    <h3 className="font-bold text-violet-300 text-sm uppercase tracking-wider">
-                      IA & LLM Engineering
-                    </h3>
+                    <div>
+                      <h3 className="font-bold text-violet-200 text-sm uppercase tracking-wider">
+                        AI & LLM Engineering
+                      </h3>
+                      <p className="text-violet-500 text-xs mt-0.5">LLMs · RAG · Agents · Embeddings</p>
+                    </div>
                   </div>
                   <span className="text-xs font-semibold text-violet-400 bg-violet-500/10 border border-violet-500/20 px-3 py-1 rounded-lg">
                     Core Expertise
                   </span>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {aiSkills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 text-sm font-medium text-violet-200 bg-violet-500/10 border border-violet-500/20 rounded-xl hover:bg-violet-500/20 transition-colors"
-                    >
+
+                {/* LLM Core */}
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {aiCoreSkills.map((skill) => (
+                    <span key={skill} className="px-3 py-1.5 text-sm font-medium text-violet-200 bg-violet-500/10 border border-violet-500/20 rounded-xl hover:bg-violet-500/20 transition-colors">
                       {skill}
                     </span>
                   ))}
                 </div>
+
+                {/* Agent Dev Stack */}
+                <div className="pt-4 border-t border-violet-500/10">
+                  <div className="flex items-center gap-2 mb-3">
+                    <FiCpu size={13} className="text-fuchsia-400" />
+                    <span className="text-fuchsia-400 text-xs font-semibold uppercase tracking-wider">Agent Development Stack</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {agentStack.map((skill) => (
+                      <span key={skill} className="px-3 py-1.5 text-xs font-semibold text-fuchsia-300 bg-fuchsia-500/10 border border-fuchsia-500/20 rounded-xl hover:bg-fuchsia-500/20 transition-colors">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
               </div>
             </div>
           </motion.div>
 
-          {/* Autres catégories — grille 3 colonnes */}
+          {/* ── Autres catégories ── */}
           <div className="grid md:grid-cols-3 gap-5 mb-6">
             {otherCategories.map((cat, index) => (
               <motion.div
@@ -133,10 +159,7 @@ export default function Skills() {
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {cat.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className={`px-2.5 py-1.5 text-xs font-medium rounded-lg border ${cat.pillBg}`}
-                    >
+                    <span key={skill} className={`px-2.5 py-1.5 text-xs font-medium rounded-lg border ${cat.pillBg}`}>
                       {skill}
                     </span>
                   ))}
@@ -145,7 +168,7 @@ export default function Skills() {
             ))}
           </div>
 
-          {/* Barre d'icônes tech */}
+          {/* ── Tech icons bar ── */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -158,11 +181,7 @@ export default function Skills() {
             </p>
             <div className="flex flex-wrap justify-center gap-5 text-slate-600">
               {techIcons.map(({ icon, label, color }, i) => (
-                <span
-                  key={i}
-                  title={label}
-                  className={`text-2xl transition-colors duration-200 cursor-default ${color}`}
-                >
+                <span key={i} title={label} className={`text-2xl transition-colors duration-200 cursor-default ${color}`}>
                   {icon}
                 </span>
               ))}
