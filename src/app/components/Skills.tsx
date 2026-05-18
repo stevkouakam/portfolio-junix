@@ -11,7 +11,7 @@ import { FiCode, FiServer, FiZap } from 'react-icons/fi';
 export default function Skills() {
   const aiSkills = [
     'OpenAI API', 'Anthropic Claude', 'LangChain',
-    'RAG Systems', 'Prompt Engineering', 'Agents autonomes',
+    'RAG Systems', 'Prompt Engineering', 'Autonomous Agents',
     'Embeddings', 'Vector DBs',
   ];
 
@@ -31,7 +31,7 @@ export default function Skills() {
       skills: ['React', 'Next.js', 'Vue.js', 'Angular', 'TypeScript', 'HTML5 / CSS3', 'Tailwind CSS', 'Framer Motion'],
     },
     {
-      label: 'DevOps & Outils',
+      label: 'DevOps & Tools',
       color: 'text-emerald-400',
       borderColor: 'border-emerald-500/20',
       pillBg: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/15',
@@ -72,10 +72,10 @@ export default function Skills() {
             className="mb-16"
           >
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3 block">
-              Compétences
+              Skills
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-              Ma stack technique
+              My tech stack
             </h2>
             <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400" />
           </motion.div>
@@ -154,7 +154,7 @@ export default function Skills() {
             className="p-6 bg-[#0d1526] border border-white/5 rounded-2xl"
           >
             <p className="text-slate-600 text-xs text-center mb-5 uppercase tracking-[0.15em] font-semibold">
-              Technologies maîtrisées
+              Technologies I work with
             </p>
             <div className="flex flex-wrap justify-center gap-5 text-slate-600">
               {techIcons.map(({ icon, label, color }, i) => (

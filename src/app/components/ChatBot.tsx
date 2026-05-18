@@ -25,10 +25,10 @@ export default function ChatBot() {
 
   // Suggestions de questions prédéfinies
   const suggestedQuestions = [
-    "Quels sont tes projets principaux ?",
-    "Quelles technologies maîtrises-tu ?",
-    "Parle-moi de ton expérience avec les LLM",
-    "Comment te contacter ?",
+    "What are your main projects?",
+    "What technologies do you master?",
+    "Tell me about your LLM experience",
+    "How can I contact you?",
   ];
 
   const scrollToBottom = () => {
@@ -107,7 +107,7 @@ export default function ChatBot() {
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: 'Désolé, une erreur est survenue. Veuillez réessayer.',
+        content: 'Sorry, an error occurred. Please try again.',
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
@@ -160,7 +160,7 @@ export default function ChatBot() {
                   </div>
                   <div>
                     <h3 className="text-white font-mono font-bold">juniXbot</h3>
-                    <p className="text-gray-400 text-xs font-mono">Assistant IA • En ligne</p>
+                    <p className="text-gray-400 text-xs font-mono">AI Assistant • Online</p>
                   </div>
                 </div>
                 <button
@@ -184,14 +184,14 @@ export default function ChatBot() {
                     </div>
                     <div className="bg-slate-800/50 border border-purple-600/20 p-3 rounded-lg max-w-[80%]">
                       <p className="text-gray-300 text-sm">
-                        👋 Bonjour ! Je suis <span className="text-purple-400 font-bold">juniXbot</span>, l&apos;assistant virtuel de Steeve. Posez-moi des questions sur son parcours, ses projets ou ses compétences !
+                        👋 Hi! I&apos;m <span className="text-purple-400 font-bold">juniXbot</span>, Steeve&apos;s virtual assistant. Ask me anything about his background, projects, or skills!
                       </p>
                     </div>
                   </div>
 
                   {/* Suggestions de questions */}
                   <div className="space-y-2 ml-10">
-                    <p className="text-gray-500 text-xs font-mono mb-2">Questions suggérées :</p>
+                    <p className="text-gray-500 text-xs font-mono mb-2">Suggested questions:</p>
                     {suggestedQuestions.map((question, index) => (
                       <button
                         key={index}
@@ -269,7 +269,7 @@ export default function ChatBot() {
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Posez votre question..."
+                  placeholder="Ask me anything..."
                   className="flex-1 px-4 py-2 bg-slate-900 border border-purple-600/30 focus:border-purple-600 text-white text-sm font-mono outline-none rounded"
                   disabled={isLoading}
                 />

@@ -14,25 +14,24 @@ export default function Navbar() {
   }, []);
 
   const menuItems = [
-    { label: 'Accueil', href: '#home' },
-    { label: 'À Propos', href: '#about' },
-    { label: 'Projets', href: '#projects' },
-    { label: 'Compétences', href: '#skills' },
+    { label: 'Home', href: '#home' },
+    { label: 'About', href: '#about' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Skills', href: '#skills' },
     { label: 'Contact', href: '#contact' },
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
         ? 'bg-[#060b18]/95 backdrop-blur-md border-b border-white/5'
         : 'bg-transparent'
-    }`}>
+      }`}>
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center h-20">
 
           {/* Logo */}
           <a href="#home" className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-            Steeve JuniX
+            Steeve juniX
           </a>
 
           {/* Desktop Menu */}
@@ -50,7 +49,7 @@ export default function Navbar() {
               href="#contact"
               className="ml-3 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-indigo-500/20"
             >
-              Me contacter
+              Contact Me
             </a>
           </div>
 
@@ -83,7 +82,7 @@ export default function Navbar() {
                 className="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-semibold text-sm text-center mt-1 transition-all"
                 onClick={() => setIsOpen(false)}
               >
-                Me contacter
+                Contact Me
               </a>
             </div>
           </div>

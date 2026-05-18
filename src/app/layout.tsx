@@ -14,17 +14,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Steeve JuniX - AI Software Developer | Portfolio",
-  description: "Portfolio de Steeve JuniX, développeur logiciel spécialisé en Intelligence Artificielle et Machine Learning. Expertise en Python, Java, React, et intégration de LLM.",
-  keywords: ["Steeve JuniX", "AI Developer", "Machine Learning", "LLM", "Python", "Java", "React", "Développeur IA", "Portfolio", "Software Engineer"],
+  description: "Portfolio of Steeve JuniX, software developer specialized in Artificial Intelligence and LLM Engineering. Expertise in Python, Java, React, and LLM integration.",
+  keywords: ["Steeve JuniX", "AI Developer", "Machine Learning", "LLM", "Python", "Java", "React", "LLM Engineer", "Portfolio", "Software Engineer"],
   authors: [{ name: "Steeve JuniX", url: "https://github.com/stevkouakam" }],
   creator: "Steeve JuniX",
   publisher: "Steeve JuniX",
   openGraph: {
     type: "website",
-    locale: "fr_CA",
+    locale: "en_US",
     url: "https://steeve-junix.vercel.app",
     title: "Steeve JuniX - AI Software Developer",
-    description: "Portfolio professionnel de Steeve JuniX, développeur spécialisé en Intelligence Artificielle et solutions logicielles innovantes.",
+    description: "Professional portfolio of Steeve JuniX, software developer specialized in Artificial Intelligence and innovative software solutions.",
     siteName: "Steeve JuniX Portfolio",
     images: [
       {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Steeve JuniX - AI Software Developer",
-    description: "Développeur logiciel spécialisé en IA et Machine Learning",
+    description: "Software developer specialized in AI and LLM Engineering",
     images: ["/og-image.png"],
   },
   robots: {
@@ -66,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

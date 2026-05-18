@@ -59,8 +59,8 @@ export default function Contact() {
     },
     {
       icon: <FiClock size={18} />,
-      label: 'Délai de réponse',
-      value: '24 – 48 heures',
+      label: 'Response time',
+      value: '24 – 48 hours',
       href: null,
     },
   ];
@@ -85,11 +85,11 @@ export default function Contact() {
               Contact
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-              Travaillons ensemble
+              Let&apos;s work together
             </h2>
             <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400 mx-auto mb-5" />
             <p className="text-slate-400 max-w-md mx-auto">
-              Une idée de projet ou une opportunité ? Je suis disponible et à l&apos;écoute.
+              Have a project idea or an opportunity? I&apos;m available and all ears.
             </p>
           </motion.div>
 
@@ -141,7 +141,7 @@ export default function Contact() {
                 <div>
                   <label className="flex items-center gap-1.5 text-slate-400 text-xs font-medium mb-2">
                     <FiUser size={12} />
-                    Nom
+                    Name
                   </label>
                   <input
                     type="text"
@@ -150,7 +150,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className={inputClass}
-                    placeholder="Votre nom"
+                    placeholder="Your name"
                   />
                 </div>
 
@@ -182,7 +182,7 @@ export default function Contact() {
                     required
                     rows={5}
                     className={`${inputClass} resize-none`}
-                    placeholder="Votre message..."
+                    placeholder="Your message..."
                   />
                 </div>
 
@@ -194,14 +194,14 @@ export default function Contact() {
                   {status === 'sending' ? (
                     <>
                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Envoi en cours...
+                      Sending...
                     </>
                   ) : status === 'success' ? (
-                    'Message envoyé !'
+                    'Message sent!'
                   ) : (
                     <>
                       <FiSend size={15} className="group-hover:translate-x-0.5 transition-transform" />
-                      Envoyer le message
+                      Send message
                     </>
                   )}
                 </button>
@@ -212,7 +212,7 @@ export default function Contact() {
                     animate={{ opacity: 1, y: 0 }}
                     className="p-3.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm rounded-xl"
                   >
-                    ✓ Message envoyé avec succès !
+                    ✓ Message sent successfully!
                   </motion.div>
                 )}
 
@@ -222,7 +222,7 @@ export default function Contact() {
                     animate={{ opacity: 1, y: 0 }}
                     className="p-3.5 bg-red-500/10 border border-red-500/20 text-red-400 text-sm rounded-xl"
                   >
-                    ✗ Erreur lors de l&apos;envoi. Réessayez.
+                    ✗ An error occurred. Please try again.
                   </motion.div>
                 )}
               </form>

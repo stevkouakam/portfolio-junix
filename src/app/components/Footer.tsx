@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
 
           <p className="text-slate-600 text-xs">
-            © {new Date().getFullYear()} Steeve JuniX — Tous droits réservés
+            © {new Date().getFullYear()} Steeve JuniX — All rights reserved
           </p>
 
         </div>

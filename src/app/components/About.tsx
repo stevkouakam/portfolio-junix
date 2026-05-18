@@ -7,8 +7,8 @@ export default function About() {
   const areas = [
     {
       icon: <FiCpu size={18} />,
-      title: 'IA & LLM Engineering',
-      description: "Intégration de modèles de langage (OpenAI, Claude) pour créer des chatbots, assistants intelligents, systèmes RAG et automatisations basées sur l'IA.",
+      title: 'AI Engineering',
+      description: "Integration of language models (OpenAI, Claude) to build chatbots, intelligent assistants, RAG systems, and AI-powered automations.",
       color: 'text-violet-400',
       bg: 'bg-violet-500/10',
       border: 'border-violet-500/15',
@@ -16,8 +16,8 @@ export default function About() {
     },
     {
       icon: <FiCode size={18} />,
-      title: 'Génie Logiciel',
-      description: "Conception d'applications robustes basées sur des architectures propres (API, MVC, Clean Code) et des pratiques professionnelles (Git, tests, CI/CD).",
+      title: 'Software Engineering',
+      description: "Building robust applications based on clean architectures (API, MVC, Clean Code) and professional practices (Git, testing, CI/CD).",
       color: 'text-indigo-400',
       bg: 'bg-indigo-500/10',
       border: 'border-indigo-500/15',
@@ -25,8 +25,8 @@ export default function About() {
     },
     {
       icon: <FiLayers size={18} />,
-      title: 'Développement Web',
-      description: "Développement d'interfaces performantes et d'APIs backend avec React, Vue, Next.js, Node et Flask, pour des produits web complets et scalables.",
+      title: 'Web Development',
+      description: "Building performant UIs and backend APIs with React, Vue, Next.js, Node, and Flask — delivering complete, scalable web products.",
       color: 'text-cyan-400',
       bg: 'bg-cyan-500/10',
       border: 'border-cyan-500/15',
@@ -48,10 +48,10 @@ export default function About() {
             className="mb-16"
           >
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3 block">
-              À propos
+              About
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-              Qui suis-je ?
+              Who am I?
             </h2>
             <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400" />
           </motion.div>
@@ -70,13 +70,13 @@ export default function About() {
                 <div className="w-px bg-gradient-to-b from-indigo-500/60 via-violet-500/40 to-transparent shrink-0 mt-1" />
                 <div className="space-y-5 text-slate-400 leading-relaxed">
                   <p>
-                    Développeur logiciel passionné par l&apos;IA, je combine ingénierie logicielle rigoureuse et intégration de modèles LLMs pour construire des produits à fort impact. Avec 3 ans d&apos;expérience et plus de 15 projets livrés, je conçois des architectures propres, performantes et orientées résultats.
+                    Software developer with a deep passion for AI, I combine rigorous software engineering with LLM integration to build high-impact products. With 3+ years of experience and 15+ projects delivered, I design clean, performant, results-driven architectures.
                   </p>
                   <p>
-                    Je m&apos;épanouis dans la création d&apos;applications full-stack robustes et scalables, en exploitant la puissance des technologies d&apos;IA modernes — automatisation intelligente, assistants conversationnels, systèmes RAG — pour résoudre des problèmes réels.
+                    I thrive building robust and scalable full-stack applications, leveraging the power of modern AI technologies — intelligent automation, conversational assistants, RAG systems — to solve real-world problems.
                   </p>
                   <p>
-                    Mon objectif : rejoindre une équipe technique ambitieuse pour contribuer à des projets d&apos;envergure, en apportant à la fois solidité technique et vision orientée IA.
+                    My goal: join an ambitious technical team to contribute to large-scale projects, bringing both solid engineering foundations and an AI-first mindset.
                   </p>
                 </div>
               </div>
@@ -120,9 +120,9 @@ export default function About() {
             className="grid grid-cols-2 md:grid-cols-4 gap-4"
           >
             {[
-              { label: 'Projets réalisés', value: '15+', color: 'from-indigo-400 to-violet-400' },
+              { label: 'Projects delivered', value: '15+', color: 'from-indigo-400 to-violet-400' },
               { label: 'Technologies', value: '20+', color: 'from-violet-400 to-cyan-400' },
-              { label: "Années d'exp.", value: '3+', color: 'from-cyan-400 to-blue-400' },
+              { label: 'Years of exp.', value: '3+', color: 'from-cyan-400 to-blue-400' },
               { label: 'Passion', value: '100%', color: 'from-blue-400 to-indigo-400' },
             ].map((stat, index) => (
               <div

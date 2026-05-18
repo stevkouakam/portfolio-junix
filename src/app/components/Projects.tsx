@@ -8,7 +8,7 @@ export default function Projects() {
     {
       title: 'UTasks — LLM Task Manager',
       description:
-        "Application de gestion de tâches avec assistant IA intégré. L'agent LLM (OpenAI) analyse les tâches, propose des priorités, génère des sous-tâches et répond aux questions contextuelles de l'utilisateur.",
+        "Task management app with an integrated AI assistant. The LLM agent (OpenAI) analyzes tasks, suggests priorities, generates subtasks, and answers contextual questions from the user.",
       tags: ['React', 'MongoDB', 'OpenAI', 'LLM', 'API'],
       github: 'https://github.com/stevkouakam',
       demo: null,
@@ -20,7 +20,7 @@ export default function Projects() {
     {
       title: 'Logiciel de découpe CNC',
       description:
-        "Logiciel personnalisé permettant d'utiliser une table de découpe CNC (AVID 5x10) comme une scie à panneaux traditionnelle. Génération de fichiers GCODE optimisés et interface intuitive pour opérateurs non-techniques.",
+        "Custom software enabling a CNC cutting table (AVID 5x10) to function as a traditional panel saw. Optimized GCODE file generation and an intuitive interface for non-technical operators.",
       tags: ['Java', 'Swing', 'GCODE', 'UML'],
       github: 'https://github.com/stevkouakam',
       demo: null,
@@ -32,7 +32,7 @@ export default function Projects() {
     {
       title: 'UFood',
       description:
-        "Application web de localisation de restaurants et de partage de favoris entre amis. Intégration d'une API REST pour la recherche géolocalisée et gestion des listes collaboratives.",
+        "Web app for restaurant discovery and sharing favorite spots with friends. REST API integration for geolocation-based search and real-time collaborative list management.",
       tags: ['Vue.js', 'Vuetify', 'JavaScript', 'API REST'],
       github: 'https://github.com/stevkouakam',
       demo: null,
@@ -44,7 +44,7 @@ export default function Projects() {
     {
       title: 'SplitUL',
       description:
-        "Application de partage de factures entre amis avec gestion des groupes, dettes et remboursements. Backend Java avec persistance PostgreSQL et API REST documentée.",
+        "Bill-splitting app for friends with group management, debt tracking, and reimbursements. Java backend with PostgreSQL persistence and a documented REST API.",
       tags: ['Java', 'PostgreSQL', 'Docker', 'API REST'],
       github: 'https://github.com/stevkouakam',
       demo: null,
@@ -71,10 +71,10 @@ export default function Projects() {
             className="mb-16"
           >
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3 block">
-              Projets
+              Projects
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-              Ce que j&apos;ai construit
+              What I&apos;ve built
             </h2>
             <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400" />
           </motion.div>
@@ -123,7 +123,7 @@ export default function Projects() {
                       className="flex items-center gap-2 px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-slate-300 text-sm font-medium rounded-xl transition-all"
                     >
                       <FiGithub size={15} />
-                      GitHub
+                      View on GitHub
                     </a>
                     {featured.demo && (
                       <a
@@ -206,7 +206,7 @@ export default function Projects() {
               className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-slate-300 font-medium rounded-xl transition-all duration-200"
             >
               <FiGithub size={17} />
-              Voir tous mes projets sur GitHub
+              View all my projects on GitHub
             </a>
           </motion.div>
 

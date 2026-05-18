@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowRight } from 'react-icons/fi';
 
 export default function Hero() {
-  const roles = ['Full-Stack Developer', 'LLM Engineer', 'AI Builder'];
+  const roles = ['Full-Stack Developer', 'IA Engineer', 'Dev AI Agentic '];
   const techTags = ['OpenAI', 'React', 'Next.js', 'Java', 'Python', 'Docker'];
 
   return (
@@ -24,7 +24,7 @@ export default function Hero() {
                 className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-sm font-medium mb-10"
               >
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                Disponible — Recherche de stage
+                Available — Looking for an internship
               </motion.div>
 
               {/* Titre principal */}
@@ -36,7 +36,7 @@ export default function Hero() {
               >
                 <span className="text-slate-50">Steeve </span>
                 <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
-                  JuniX
+                  juniX
                 </span>
               </motion.h1>
 
@@ -64,7 +64,7 @@ export default function Hero() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="text-slate-400 text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 mb-10"
               >
-                Passionné par le développement logiciel et l&apos;intelligence artificielle, je construis des applications robustes qui ont un impact réel — en unissant ingénierie propre et puissance des LLMs pour créer des solutions qui automatisent, assistent et innovent.
+                Passionate about software development and artificial intelligence, I build robust applications with real-world impact — combining clean engineering with the power of LLMs to create solutions that automate, assist, and innovate.
               </motion.p>
 
               {/* CTA */}
@@ -78,7 +78,7 @@ export default function Hero() {
                   href="#projects"
                   className="group inline-flex items-center gap-2 px-7 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:-translate-y-0.5"
                 >
-                  Voir mes projets
+                  View my projects
                   <FiArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
@@ -87,7 +87,7 @@ export default function Hero() {
                   className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-slate-200 font-semibold rounded-xl transition-all duration-200"
                 >
                   <FiDownload size={17} />
-                  Télécharger CV
+                  Download Resume
                 </a>
               </motion.div>
 
@@ -147,7 +147,7 @@ export default function Hero() {
                         SJ
                       </div>
                       <div>
-                        <p className="text-slate-100 font-bold">Steeve JuniX</p>
+                        <p className="text-slate-100 font-bold">Steeve juniX</p>
                         <p className="text-slate-500 text-sm">AI & Software Developer</p>
                       </div>
                     </div>
@@ -187,7 +187,7 @@ export default function Hero() {
                     {/* Statut */}
                     <div className="flex items-center gap-2.5 p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                      <span className="text-emerald-400 text-xs font-medium">Disponible pour un stage</span>
+                      <span className="text-emerald-400 text-xs font-medium">Available for an internship</span>
                     </div>
                   </div>
                 </div>
@@ -199,7 +199,7 @@ export default function Hero() {
                   transition={{ duration: 0.4, delay: 0.9 }}
                   className="absolute -top-3 -right-3 px-3 py-1.5 bg-[#0d1526] border border-violet-500/40 rounded-xl shadow-lg shadow-violet-500/10"
                 >
-                  <span className="text-violet-400 text-xs font-mono">LLM Engineer</span>
+                  <span className="text-violet-400 text-xs font-mono">IA developer</span>
                 </motion.div>
 
                 {/* Badge flottant bas-gauche */}
