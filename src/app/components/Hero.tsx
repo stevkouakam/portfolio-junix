@@ -84,7 +84,7 @@ export default function Hero() {
                   <FiArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
-                  href="/cv/CV-Steeve-Junix.pdf"
+                  href="/cv/cv_Steeve_Master1 (1).pdf"
                   download="CV-Steeve-Junix.pdf"
                   className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-slate-200 font-semibold rounded-xl transition-all duration-200"
                 >
