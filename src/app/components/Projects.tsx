@@ -48,6 +48,22 @@ export default function Projects() {
       github: 'https://github.com/stevkouakam',
       badge: 'Agent',
     },
+    {
+      title: "Y'TILIKAN — AI News Monitoring & Newsletter Pipeline",
+      description:
+        "End-to-end AI pipeline for Africa-focused news monitoring: automated RSS ingestion, semantic deduplication via embeddings, and LLM summarization (Mistral API), fully automated. Deployed to production via GitHub Actions with a scheduled pipeline and newsletter delivery.",
+      tags: ['Python', 'Mistral API', 'FastAPI', 'SQLite', 'Streamlit'],
+      github: 'https://github.com/stevkouakam',
+      badge: 'Pipeline · In progress',
+    },
+    {
+      title: 'NestIQ — AI Housing Search Agent',
+      description:
+        "Multi-agent pipeline (LangGraph) combining NLP extraction, Playwright scraping, and GPT-4o-mini analysis for real-time rental search across Kijiji, LesPAC, and Marketplace. RAG-based price comparison by neighborhood, plus a React 19 interface with AI listing scoring and scam detection.",
+      tags: ['Python', 'FastAPI', 'LangGraph', 'GPT-4o-mini', 'ChromaDB', 'React 19'],
+      github: 'https://github.com/stevkouakam',
+      badge: 'Multi-Agent',
+    },
   ];
 
   const otherProjects = [
@@ -70,6 +86,13 @@ export default function Projects() {
       description:
         "Bill-splitting app for friends with group management, debt tracking, and reimbursements. Java backend with PostgreSQL persistence and a documented REST API.",
       tags: ['Java', 'PostgreSQL', 'Docker', 'API REST'],
+      github: 'https://github.com/stevkouakam',
+    },
+    {
+      title: 'USpace — Space Cruise Booking Platform',
+      description:
+        "Space cruise booking platform built for Université Laval's software quality course. Hexagonal, SOLID-based architecture with a full test pyramid (JUnit 5, Cypress, Cucumber) and automated JaCoCo/Checkstyle quality gates.",
+      tags: ['Java', 'Vue.js 3', 'Hibernate', 'JUnit 5', 'Cypress'],
       github: 'https://github.com/stevkouakam',
     },
   ];
@@ -163,7 +186,7 @@ export default function Projects() {
             <div className="h-px flex-1 bg-white/10" />
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 gap-5 mb-14 items-stretch">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14 items-stretch">
             {aiProjects.map((project, index) => (
               <motion.div
                 key={index}
