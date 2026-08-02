@@ -73,7 +73,7 @@ export default function About() {
                     Software developer with a deep passion for AI, I combine rigorous software engineering with LLM integration to build high-impact products. With 3+ years of experience and 15+ projects delivered, I design clean, performant, results-driven architectures.
                   </p>
                   <p>
-                    I thrive building robust and scalable full-stack applications, leveraging the power of modern AI technologies — intelligent automation, conversational assistants, RAG systems — to solve real-world problems.
+                    I thrive building robust and scalable full-stack applications, leveraging the power of modern AI technologies intelligent automation, conversational assistants, RAG systems to solve real-world problems.
                   </p>
                   <p>
                     My goal: join an ambitious technical team to contribute to large-scale projects, bringing both solid engineering foundations and an AI-first mindset.

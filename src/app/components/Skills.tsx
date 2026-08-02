@@ -75,27 +75,27 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="border border-white/15 hover:border-white/30 rounded-2xl p-7 transition-colors duration-300"
+              className="border border-violet-500/15 hover:border-violet-500/30 rounded-2xl p-7 transition-colors duration-300"
             >
               <div className="flex items-center gap-2.5 mb-1">
-                <FiZap size={16} className="text-indigo-400" />
-                <h3 className="font-bold text-slate-100">AI & Agentic Engineering</h3>
+                <FiZap size={16} className="text-violet-400" />
+                <h3 className="font-bold text-violet-200">AI & Agentic Engineering</h3>
               </div>
               <p className="text-slate-400 text-xs mb-6">LLMs · RAG · Multi-agent systems · Embeddings</p>
 
-              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-2.5">Core</span>
+              <span className="text-[11px] font-mono uppercase tracking-wider text-violet-400/80 block mb-2.5">Core</span>
               <div className="flex flex-wrap gap-2 mb-6">
                 {aiCoreSkills.map((skill) => (
-                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-slate-200 border border-white/15 rounded-md">
+                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-violet-200 border border-violet-500/25 rounded-md">
                     {skill}
                   </span>
                 ))}
               </div>
 
-              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-2.5">Agent stack</span>
+              <span className="text-[11px] font-mono uppercase tracking-wider text-violet-400/80 block mb-2.5">Agent stack</span>
               <div className="flex flex-wrap gap-2">
                 {agentStack.map((skill) => (
-                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-slate-200 border border-white/15 rounded-md">
+                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-violet-200 border border-violet-500/25 rounded-md">
                     {skill}
                   </span>
                 ))}
@@ -108,27 +108,27 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.08 }}
-              className="border border-white/15 hover:border-white/30 rounded-2xl p-7 transition-colors duration-300"
+              className="border border-indigo-500/15 hover:border-indigo-500/30 rounded-2xl p-7 transition-colors duration-300"
             >
               <div className="flex items-center gap-2.5 mb-1">
                 <FiCode size={16} className="text-indigo-400" />
-                <h3 className="font-bold text-slate-100">Software Development</h3>
+                <h3 className="font-bold text-indigo-200">Software Development</h3>
               </div>
               <p className="text-slate-400 text-xs mb-6">Full-stack · Backend · Frontend</p>
 
-              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-2.5">Backend</span>
+              <span className="text-[11px] font-mono uppercase tracking-wider text-indigo-400/80 block mb-2.5">Backend</span>
               <div className="flex flex-wrap gap-2 mb-6">
                 {backendSkills.map((skill) => (
-                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-slate-200 border border-white/15 rounded-md">
+                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-indigo-200 border border-indigo-500/25 rounded-md">
                     {skill}
                   </span>
                 ))}
               </div>
 
-              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-2.5">Frontend</span>
+              <span className="text-[11px] font-mono uppercase tracking-wider text-indigo-400/80 block mb-2.5">Frontend</span>
               <div className="flex flex-wrap gap-2">
                 {frontendSkills.map((skill) => (
-                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-slate-200 border border-white/15 rounded-md">
+                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-indigo-200 border border-indigo-500/25 rounded-md">
                     {skill}
                   </span>
                 ))}
@@ -143,12 +143,12 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="border border-white/15 rounded-xl p-5 mb-6"
+            className="border border-cyan-500/15 rounded-xl p-5 mb-6"
           >
-            <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider block mb-3">DevOps & Tools</span>
+            <span className="text-cyan-400/80 text-xs font-semibold uppercase tracking-wider block mb-3">DevOps & Tools</span>
             <div className="flex flex-wrap gap-2">
               {devopsSkills.map((skill) => (
-                <span key={skill} className="px-2.5 py-1 text-xs font-mono text-slate-200 border border-white/15 rounded-md">
+                <span key={skill} className="px-2.5 py-1 text-xs font-mono text-cyan-200 border border-cyan-500/25 rounded-md">
                   {skill}
                 </span>
               ))}

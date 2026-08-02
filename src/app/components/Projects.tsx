@@ -58,6 +58,7 @@ export default function Projects() {
     },
     {
       title: 'NestIQ — AI Housing Search Agent',
+      color: 'text-cyan-400',
       description:
         "Multi-agent pipeline (LangGraph) combining NLP extraction, Playwright scraping, and GPT-4o-mini analysis for real-time rental search across Kijiji, LesPAC, and Marketplace. RAG-based price comparison by neighborhood, plus a React 19 interface with AI listing scoring and scam detection.",
       tags: ['Python', 'FastAPI', 'LangGraph', 'GPT-4o-mini', 'ChromaDB', 'React 19'],
@@ -143,7 +144,7 @@ export default function Projects() {
                   </p>
                   <div className="flex flex-wrap gap-2 notranslate" translate="no">
                     {featured.tags.map((tag) => (
-                      <span key={tag} className="px-2.5 py-1 text-xs font-mono text-slate-400 border border-white/10 rounded-md">
+                      <span key={tag} className="px-2.5 py-1 text-xs font-mono text-slate-400 border border-white/5 rounded-md">
                         {tag}
                       </span>
                     ))}
@@ -211,7 +212,7 @@ export default function Projects() {
                 <p className="text-slate-500 text-sm leading-relaxed mb-5 flex-1">{project.description}</p>
                 <div className="flex flex-wrap gap-1.5 mt-auto notranslate" translate="no">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="px-2 py-0.5 text-[11px] font-mono text-slate-500 border border-white/10 rounded">{tag}</span>
+                    <span key={tag} className="px-2 py-0.5 text-[11px] font-mono text-slate-500 border border-white/5 rounded">{tag}</span>
                   ))}
                 </div>
               </motion.div>
@@ -252,7 +253,7 @@ export default function Projects() {
                 <p className="text-slate-500 text-sm leading-relaxed mb-5 flex-1">{project.description}</p>
                 <div className="flex flex-wrap gap-1.5 mt-auto notranslate" translate="no">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="px-2 py-0.5 text-[11px] font-mono text-slate-500 border border-white/10 rounded">{tag}</span>
+                    <span key={tag} className="px-2 py-0.5 text-[11px] font-mono text-slate-500 border border-white/5 rounded">{tag}</span>
                   ))}
                 </div>
               </motion.div>
