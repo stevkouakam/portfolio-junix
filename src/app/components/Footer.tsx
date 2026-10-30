@@ -3,7 +3,7 @@
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 
 const socialLink =
-  'size-9 inline-flex items-center justify-center rounded-lg border border-line text-subtle hover:text-foreground hover:border-line-strong transition-colors duration-200';
+  'size-10 inline-flex items-center justify-center rounded-full border border-line text-subtle hover:text-foreground hover:border-line-strong transition-colors duration-200';
 
 export default function Footer() {
   return (
@@ -12,11 +12,11 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 py-12">
 
           <div className="text-center md:text-left">
-            <p className="flex items-center justify-center md:justify-start gap-2.5 font-semibold tracking-tight text-foreground mb-1.5">
-              <span aria-hidden className="size-2 rounded-[3px] bg-accent" />
+            <p className="flex items-center justify-center md:justify-start gap-2.5 font-display text-lg font-semibold tracking-tight text-foreground mb-1">
+              <span aria-hidden className="size-2.5 rounded-full bg-accent shadow-[0_0_14px_3px_rgb(124_131_255/0.55)]" />
               Steeve JuniX
             </p>
-            <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-subtle">AI & Software Developer</p>
+            <p className="text-sm text-subtle">AI & Software Developer</p>
           </div>
 
           <div className="flex gap-2">

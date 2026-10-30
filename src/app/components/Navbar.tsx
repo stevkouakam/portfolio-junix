@@ -23,41 +23,46 @@ export default function Navbar() {
     { label: 'Contact', href: '#contact' },
   ];
 
+  const floating = scrolled || isOpen;
+
   return (
-    <nav
-      className={cx(
-        'fixed top-0 inset-x-0 z-50 border-b transition-[background-color,border-color] duration-300 ease-soft',
-        scrolled || isOpen ? 'bg-canvas/80 backdrop-blur-xl border-line' : 'bg-transparent border-transparent',
-      )}
-    >
-      <div className="mx-auto w-full max-w-content px-6">
-        <div className="flex justify-between items-center h-16">
+    <nav className="fixed top-0 inset-x-0 z-50 px-3 pt-3 md:pt-4">
+      <div
+        className={cx(
+          'mx-auto w-full max-w-content border transition-[background-color,border-color,box-shadow,border-radius] duration-500',
+          isOpen ? 'rounded-3xl' : 'rounded-full',
+          floating
+            ? 'glass border-line shadow-[0_12px_40px_-12px_rgb(0_0_0/0.6)]'
+            : 'bg-transparent border-transparent',
+        )}
+      >
+        <div className="flex justify-between items-center h-14 pl-5 pr-2.5">
 
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2.5 text-[0.9375rem] font-semibold tracking-tight text-foreground">
-            <span aria-hidden className="size-2 rounded-[3px] bg-accent" />
+          <a href="#home" className="flex items-center gap-2.5 font-display text-[1.0625rem] font-semibold tracking-tight text-foreground">
+            <span aria-hidden className="size-2.5 rounded-full bg-accent shadow-[0_0_14px_3px_rgb(124_131_255/0.55)]" />
             Steeve juniX
           </a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-0.5">
             {menuItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="px-3 py-2 text-sm text-muted hover:text-foreground transition-colors duration-200"
+                className="px-3.5 h-9 inline-flex items-center rounded-full text-sm text-muted hover:text-foreground hover:bg-surface-raised/70 transition-colors"
               >
                 {item.label}
               </a>
             ))}
-            <Button href="#contact" variant="secondary" size="sm" className="ml-4">
+            <Button href="#contact" size="sm" className="ml-3">
               Contact Me
             </Button>
           </div>
 
           {/* Mobile Toggle */}
           <button
-            className="md:hidden -mr-2 p-2 text-muted hover:text-foreground transition-colors"
+            className="md:hidden size-10 inline-flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-surface-raised/70 transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -67,13 +72,13 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-6 pt-2 animate-fadeIn">
-            <div className="flex flex-col border-t border-line pt-4">
+          <div className="md:hidden px-5 pb-5 animate-fadeIn">
+            <div className="flex flex-col border-t border-line pt-3">
               {menuItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="py-3 text-base text-muted hover:text-foreground transition-colors"
+                  className="py-3 font-display text-xl font-medium text-muted hover:text-foreground transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
