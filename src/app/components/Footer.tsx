@@ -2,17 +2,21 @@
 
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 
+const socialLink =
+  'size-9 inline-flex items-center justify-center rounded-lg border border-line text-subtle hover:text-foreground hover:border-line-strong transition-colors duration-200';
+
 export default function Footer() {
   return (
-    <footer className="relative z-10 border-t border-white/5 bg-[#060b18]">
-      <div className="container mx-auto px-6 py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+    <footer className="relative z-10 border-t border-line">
+      <div className="mx-auto w-full max-w-content px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 py-12">
 
           <div className="text-center md:text-left">
-            <p className="font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent mb-0.5">
+            <p className="flex items-center justify-center md:justify-start gap-2.5 font-semibold tracking-tight text-foreground mb-1.5">
+              <span aria-hidden className="size-2 rounded-[3px] bg-accent" />
               Steeve JuniX
             </p>
-            <p className="text-slate-600 text-xs">AI & Software Developer</p>
+            <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-subtle">AI & Software Developer</p>
           </div>
 
           <div className="flex gap-2">
@@ -20,33 +24,34 @@ export default function Footer() {
               href="https://github.com/stevkouakam"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-slate-600 hover:text-slate-300 hover:bg-white/5 rounded-lg transition-all"
+              className={socialLink}
               aria-label="GitHub"
             >
-              <FiGithub size={18} />
+              <FiGithub size={16} />
             </a>
             <a
               href="https://www.linkedin.com/in/steeve-junix-044659284"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-slate-600 hover:text-slate-300 hover:bg-white/5 rounded-lg transition-all"
+              className={socialLink}
               aria-label="LinkedIn"
             >
-              <FiLinkedin size={18} />
+              <FiLinkedin size={16} />
             </a>
             <a
               href="mailto:kouakamsteve782@gmail.com"
-              className="p-2 text-slate-600 hover:text-slate-300 hover:bg-white/5 rounded-lg transition-all"
+              className={socialLink}
               aria-label="Email"
             >
-              <FiMail size={18} />
+              <FiMail size={16} />
             </a>
           </div>
+        </div>
 
-          <p className="text-slate-600 text-xs">
+        <div className="border-t border-line py-6 text-center md:text-left">
+          <p className="text-subtle text-xs">
             © {new Date().getFullYear()} Steeve JuniX — All rights reserved
           </p>
-
         </div>
       </div>
     </footer>
