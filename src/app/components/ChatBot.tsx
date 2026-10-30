@@ -9,6 +9,7 @@ import {
   FiUser,
   FiCpu
 } from 'react-icons/fi';
+import { EASE_SOFT } from './ui/motion';
 
 interface Message {
   id: string;
@@ -115,26 +116,29 @@ export default function ChatBot() {
     }
   };
 
+
   return (
     <>
       {/* Bouton flottant avec label */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-2">
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          className="p-4 bg-purple-600 hover:bg-purple-700 text-white rounded-full shadow-lg transition-colors"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          className="size-14 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white rounded-full shadow-[0_8px_30px_-6px_rgb(99_102_241/0.55)] ring-1 ring-white/10 transition-colors duration-200"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.96 }}
+          transition={{ duration: 0.3, ease: EASE_SOFT }}
           aria-label="Ouvrir le chat"
         >
-          {isOpen ? <FiX size={24} /> : <FiMessageCircle size={24} />}
+          {isOpen ? <FiX size={22} /> : <FiMessageCircle size={22} />}
         </motion.button>
         {!isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-slate-900/95 backdrop-blur-sm border border-purple-600/30 px-3 py-1.5 rounded-full shadow-lg"
+            transition={{ duration: 0.4, ease: EASE_SOFT }}
+            className="bg-surface/90 backdrop-blur-md border border-line px-2.5 h-6 inline-flex items-center rounded-full"
           >
-            <p className="text-white font-mono text-xs font-bold whitespace-nowrap">
+            <p className="text-muted font-mono text-[0.6875rem] font-medium whitespace-nowrap">
               juniXbot
             </p>
           </motion.div>
@@ -145,27 +149,30 @@ export default function ChatBot() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 0, y: 16, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 md:inset-auto md:bottom-24 md:right-6 z-50 md:w-[400px] md:h-[650px] w-full h-full bg-slate-900 border-0 md:border border-purple-600/30 md:shadow-2xl flex flex-col md:rounded-lg"
+            exit={{ opacity: 0, y: 16, scale: 0.98 }}
+            transition={{ duration: 0.3, ease: EASE_SOFT }}
+            className="fixed inset-0 md:inset-auto md:bottom-24 md:right-6 z-50 md:w-[400px] md:h-[650px] md:max-h-[calc(100svh-8rem)] w-full h-full bg-surface border-0 md:border border-line md:shadow-[0_30px_80px_-20px_rgb(0_0_0/0.75)] flex flex-col md:rounded-2xl overflow-hidden origin-bottom-right"
           >
             {/* Header */}
-            <div className="p-4 border-b border-purple-600/30 bg-slate-800/50">
+            <div className="px-5 py-4 border-b border-line bg-surface-raised/40">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-purple-600/20 flex items-center justify-center">
-                    <FiCpu className="text-purple-400" size={20} />
+                  <div className="size-9 rounded-lg border border-line bg-surface-raised flex items-center justify-center">
+                    <FiCpu className="text-accent-hover" size={17} />
                   </div>
                   <div>
-                    <h3 className="text-white font-mono font-bold">juniXbot</h3>
-                    <p className="text-gray-400 text-xs font-mono">AI Assistant • Online</p>
+                    <h3 className="text-foreground text-sm font-semibold tracking-tight">juniXbot</h3>
+                    <p className="flex items-center gap-1.5 text-subtle text-[0.6875rem] font-mono mt-0.5">
+                      <span aria-hidden className="size-1.5 rounded-full bg-success" />
+                      AI Assistant • Online
+                    </p>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
+                  className="md:hidden p-2 -mr-2 text-muted hover:text-foreground transition-colors"
                   aria-label="Fermer le chat"
                 >
                   <FiX size={20} />
@@ -174,29 +181,29 @@ export default function ChatBot() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div className="flex-1 overflow-y-auto px-5 py-5 space-y-4">
               {/* Message de bienvenue */}
               {messages.length === 0 && (
                 <>
                   <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0">
-                      <FiCpu className="text-purple-400" size={16} />
+                    <div className="size-7 rounded-md border border-line bg-surface-raised flex items-center justify-center flex-shrink-0">
+                      <FiCpu className="text-accent-hover" size={14} />
                     </div>
-                    <div className="bg-slate-800/50 border border-purple-600/20 p-3 rounded-lg max-w-[80%]">
-                      <p className="text-gray-300 text-sm">
-                        👋 Hi! I&apos;m <span className="text-purple-400 font-bold">juniXbot</span>, Steeve&apos;s virtual assistant. Ask me anything about his background, projects, or skills!
+                    <div className="bg-surface-raised border border-line px-3.5 py-3 rounded-xl rounded-tl-sm max-w-[85%]">
+                      <p className="text-foreground/90 text-sm leading-relaxed">
+                        👋 Hi! I&apos;m <span className="text-accent-hover font-semibold">juniXbot</span>, Steeve&apos;s virtual assistant. Ask me anything about his background, projects, or skills!
                       </p>
                     </div>
                   </div>
 
                   {/* Suggestions de questions */}
                   <div className="space-y-2 ml-10">
-                    <p className="text-gray-500 text-xs font-mono mb-2">Suggested questions:</p>
+                    <p className="text-subtle text-[0.6875rem] font-mono uppercase tracking-wider mb-3">Suggested questions:</p>
                     {suggestedQuestions.map((question, index) => (
                       <button
                         key={index}
                         onClick={() => setInput(question)}
-                        className="block w-full text-left px-3 py-2 text-sm text-gray-400 hover:text-white bg-slate-800/30 hover:bg-slate-800/60 border border-purple-600/20 hover:border-purple-600/50 rounded transition-all"
+                        className="block w-full text-left px-3.5 py-2.5 text-sm text-muted hover:text-foreground border border-line hover:border-line-strong hover:bg-surface-raised rounded-lg transition-colors duration-200"
                       >
                         {question}
                       </button>
@@ -214,27 +221,27 @@ export default function ChatBot() {
                   }`}
                 >
                   {/* Avatar */}
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                  <div className={`size-7 rounded-md border flex items-center justify-center flex-shrink-0 ${
                     message.role === 'user'
-                      ? 'bg-blue-600/20'
-                      : 'bg-purple-600/20'
+                      ? 'border-accent/25 bg-accent-soft'
+                      : 'border-line bg-surface-raised'
                   }`}>
                     {message.role === 'user' ? (
-                      <FiUser className="text-blue-400" size={16} />
+                      <FiUser className="text-accent-hover" size={14} />
                     ) : (
-                      <FiCpu className="text-purple-400" size={16} />
+                      <FiCpu className="text-accent-hover" size={14} />
                     )}
                   </div>
 
                   {/* Message */}
                   <div
-                    className={`p-3 rounded-lg max-w-[80%] ${
+                    className={`px-3.5 py-3 rounded-xl max-w-[85%] ${
                       message.role === 'user'
-                        ? 'bg-blue-600/20 border border-blue-600/30'
-                        : 'bg-slate-800/50 border border-purple-600/20'
+                        ? 'bg-accent-soft border border-accent/25 rounded-tr-sm'
+                        : 'bg-surface-raised border border-line rounded-tl-sm'
                     }`}
                   >
-                    <p className="text-gray-300 text-sm whitespace-pre-wrap">
+                    <p className="text-foreground/90 text-sm leading-relaxed whitespace-pre-wrap">
                       {message.content}
                     </p>
                   </div>
@@ -244,14 +251,14 @@ export default function ChatBot() {
               {/* Indicateur de chargement */}
               {isLoading && (
                 <div className="flex gap-3">
-                  <div className="w-8 h-8 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0">
-                    <FiCpu className="text-purple-400" size={16} />
+                  <div className="size-7 rounded-md border border-line bg-surface-raised flex items-center justify-center flex-shrink-0">
+                    <FiCpu className="text-accent-hover" size={14} />
                   </div>
-                  <div className="bg-slate-800/50 border border-purple-600/20 p-3 rounded-lg">
+                  <div className="bg-surface-raised border border-line px-3.5 py-3.5 rounded-xl rounded-tl-sm">
                     <div className="flex gap-1">
-                      <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                      <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                      <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                      <div className="size-1.5 bg-muted rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <div className="size-1.5 bg-muted rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <div className="size-1.5 bg-muted rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                     </div>
                   </div>
                 </div>
@@ -262,7 +269,7 @@ export default function ChatBot() {
             {/* Input */}
             <form
               onSubmit={handleSubmit}
-              className="p-4 border-t border-purple-600/30 bg-slate-800/50"
+              className="p-4 border-t border-line bg-surface-raised/40"
             >
               <div className="flex gap-2">
                 <input
@@ -270,15 +277,15 @@ export default function ChatBot() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask me anything..."
-                  className="flex-1 px-4 py-2 bg-slate-900 border border-purple-600/30 focus:border-purple-600 text-white text-sm font-mono outline-none rounded"
+                  className="flex-1 min-w-0 h-10 px-3.5 bg-canvas/70 border border-line hover:border-line-strong focus:border-accent/70 text-foreground placeholder:text-subtle text-sm outline-none rounded-lg transition-colors duration-200"
                   disabled={isLoading}
                 />
                 <button
                   type="submit"
                   disabled={isLoading || !input.trim()}
-                  className="px-4 py-2 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-600/50 text-white rounded transition-colors"
+                  className="size-10 shrink-0 inline-flex items-center justify-center bg-accent hover:bg-accent-hover disabled:opacity-40 disabled:hover:bg-accent text-white rounded-lg transition-colors duration-200"
                 >
-                  <FiSend size={16} />
+                  <FiSend size={15} />
                 </button>
               </div>
             </form>
