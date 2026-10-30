@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 import { DURATION, EASE_SOFT } from './motion';
 
@@ -15,11 +15,11 @@ type RevealProps = {
 };
 
 // Apparition discrète : fondu + léger glissement vers le haut.
+// prefers-reduced-motion est géré globalement par MotionProvider.
 export default function Reveal({ children, className, delay = 0, y = 12, trigger = 'view' }: RevealProps) {
-  const reduce = useReducedMotion();
-  const hidden = { opacity: 0, y: reduce ? 0 : y };
+  const hidden = { opacity: 0, y };
   const shown = { opacity: 1, y: 0 };
-  const transition = { duration: reduce ? 0 : DURATION, delay: reduce ? 0 : delay, ease: EASE_SOFT };
+  const transition = { duration: DURATION, delay, ease: EASE_SOFT };
 
   if (trigger === 'mount') {
     return (

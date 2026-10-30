@@ -66,29 +66,31 @@
 
   --radius-card: 1rem;
 
-  /* Courbe d'animation commune → ease-soft */
+  /* Courbe d'animation commune → ease-soft, et défaut de toutes les transitions */
   --ease-soft: cubic-bezier(0.23, 1, 0.32, 1);
+  --default-transition-timing-function: var(--ease-soft);
+  --default-transition-duration: 200ms;
 
-  --animate-spin-slow: spin-slow 6s linear infinite;
-  --animate-fadeIn: fadeIn 0.3s var(--ease-soft);
-  --animate-float: float 8s ease-in-out infinite;
-}
-
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  --animate-fadeIn: fadeIn 0.35s var(--ease-soft);
+  /* Halo lent autour d'un point de statut (remplace animate-ping) */
+  --animate-beacon: beacon 2.8s var(--ease-soft) infinite;
+  /* Points de saisie du chatbot (remplace animate-bounce) */
+  --animate-typing: typing 1.2s ease-in-out infinite;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
+  from { opacity: 0; transform: translateY(-6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
-  10% { opacity: 1; }
-  50% { transform: translateY(-100px) translateX(50px); opacity: 0.8; }
-  90% { opacity: 0.3; }
+@keyframes beacon {
+  0% { transform: scale(1); opacity: 0.5; }
+  70%, 100% { transform: scale(2.6); opacity: 0; }
+}
+
+@keyframes typing {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-2px); }
 }
 
 html {

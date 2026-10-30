@@ -30,7 +30,9 @@ export default function SectionHeader({ index, eyebrow, title, description, alig
         {title}
       </h2>
       {description && (
-        <p className={cx('mt-5 text-lead text-muted max-w-prose-tight', centered && 'mx-auto')}>{description}</p>
+        <Reveal delay={0.08}>
+          <p className={cx('mt-5 text-lead text-muted max-w-prose-tight', centered && 'mx-auto')}>{description}</p>
+        </Reveal>
       )}
     </Reveal>
   );

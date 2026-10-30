@@ -23,7 +23,7 @@ export default function Hero() {
             <Reveal trigger="mount">
               <div className="inline-flex items-center gap-2.5 h-8 pl-3 pr-4 rounded-full border border-line bg-surface/70 text-sm text-muted mb-10">
                 <span className="relative flex size-2 shrink-0">
-                  <span className="absolute inset-0 rounded-full bg-success opacity-60 animate-ping" />
+                  <span className="absolute inset-0 rounded-full bg-success animate-beacon" />
                   <span className="relative size-2 rounded-full bg-success" />
                 </span>
                 Available — Looking for an internship

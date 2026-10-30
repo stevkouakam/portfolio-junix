@@ -17,7 +17,7 @@ type ButtonProps = ButtonAsLink | ButtonAsButton;
 
 const base =
   'group inline-flex items-center justify-center gap-2 font-medium rounded-full whitespace-nowrap ' +
-  'transition-[background-color,border-color,color,transform] duration-300 ease-soft ' +
+  'transition-[background-color,border-color,color,transform] duration-300 ease-soft active:scale-[0.98] ' +
   'disabled:opacity-50 disabled:pointer-events-none';
 
 const variants: Record<Variant, string> = {

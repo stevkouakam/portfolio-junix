@@ -256,9 +256,9 @@ export default function ChatBot() {
                   </div>
                   <div className="bg-surface-raised border border-line px-3.5 py-3.5 rounded-xl rounded-tl-sm">
                     <div className="flex gap-1">
-                      <div className="size-1.5 bg-muted rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                      <div className="size-1.5 bg-muted rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                      <div className="size-1.5 bg-muted rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                      <div className="size-1.5 bg-muted rounded-full animate-typing" style={{ animationDelay: '0ms' }} />
+                      <div className="size-1.5 bg-muted rounded-full animate-typing" style={{ animationDelay: '150ms' }} />
+                      <div className="size-1.5 bg-muted rounded-full animate-typing" style={{ animationDelay: '300ms' }} />
                     </div>
                   </div>
                 </div>
