@@ -8,17 +8,18 @@ import {
 } from 'react-icons/si';
 import { FiCode, FiServer, FiZap } from 'react-icons/fi';
 import Card from './ui/Card';
+import ProjectVisual from './ui/ProjectVisual';
 import Reveal from './ui/Reveal';
 import Section from './ui/Section';
 import SectionHeader from './ui/SectionHeader';
 import Tag from './ui/Tag';
 
-// Sous-groupe d'un pilier : libellé mono + liste de tags
+// Sous-groupe d'un pilier : libellé + liste de tags
 function SkillGroup({ label, skills, className }: { label: ReactNode; skills: string[]; className?: string }) {
   return (
     <div className={className}>
-      <span className="block font-mono text-[0.6875rem] uppercase tracking-wider text-subtle mb-3">{label}</span>
-      <div className="flex flex-wrap gap-1.5">
+      <span className="block text-sm font-medium text-foreground/80 mb-3">{label}</span>
+      <div className="flex flex-wrap gap-2">
         {skills.map((skill) => (
           <Tag key={skill}>
             {skill}
@@ -69,50 +70,47 @@ export default function Skills() {
     <Section id="skills">
 
       {/* Section header */}
-      <SectionHeader index="03" eyebrow="Skills" title="My tech stack" />
+      <SectionHeader eyebrow="Skills" title="My tech stack" />
 
-      {/* ── Two pillars: AI Agentic Engineering & Software Development ── */}
-      <div className="grid md:grid-cols-2 gap-4 mb-4">
+      <Reveal>
+        {/* ── Two pillars: AI Agentic Engineering & Software Development ── */}
+        <div className="grid lg:grid-cols-12 gap-4 mb-4">
 
-        {/* AI & Agentic Engineering */}
-        <Reveal className="h-full">
-          <Card padding="lg" interactive className="h-full">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="size-8 rounded-lg border border-line bg-surface-raised flex items-center justify-center text-accent-hover">
-                <FiZap size={15} />
-              </span>
-              <h3 className="text-h3 font-medium text-foreground">AI & Agentic Engineering</h3>
+          {/* AI & Agentic Engineering */}
+          <Card size="tile" padding="lg" interactive className="lg:col-span-7 overflow-hidden">
+            <div aria-hidden className="absolute inset-x-0 top-0 h-48 opacity-35 [mask-image:linear-gradient(to_bottom,#000,transparent)] pointer-events-none">
+              <ProjectVisual kind="multi-agent" uid="skills-ai" />
             </div>
-            <p className="text-subtle text-sm mb-8">LLMs · RAG · Multi-agent systems · Embeddings</p>
+            <div className="relative">
+              <span className="size-12 rounded-2xl bg-accent-soft border border-accent/30 flex items-center justify-center text-accent-hover mb-8">
+                <FiZap size={20} />
+              </span>
+              <h3 className="text-[1.75rem] leading-[1.1] tracking-[-0.03em] font-semibold text-foreground mb-2">AI & Agentic Engineering</h3>
+              <p className="text-muted mb-10">LLMs · RAG · Multi-agent systems · Embeddings</p>
 
-            <SkillGroup label="Core" skills={aiCoreSkills} className="mb-7" />
-            <SkillGroup label="Agent stack" skills={agentStack} />
+              <SkillGroup label="Core" skills={aiCoreSkills} className="mb-8" />
+              <SkillGroup label="Agent stack" skills={agentStack} />
+            </div>
           </Card>
-        </Reveal>
 
-        {/* Software Development */}
-        <Reveal delay={0.06} className="h-full">
-          <Card padding="lg" interactive className="h-full">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="size-8 rounded-lg border border-line bg-surface-raised flex items-center justify-center text-accent-hover">
-                <FiCode size={15} />
-              </span>
-              <h3 className="text-h3 font-medium text-foreground">Software Development</h3>
-            </div>
-            <p className="text-subtle text-sm mb-8">Full-stack · Backend · Frontend</p>
+          {/* Software Development */}
+          <Card size="tile" padding="lg" interactive className="lg:col-span-5">
+            <span className="size-12 rounded-2xl bg-surface-raised border border-line-strong flex items-center justify-center text-foreground/80 mb-8">
+              <FiCode size={20} />
+            </span>
+            <h3 className="text-[1.75rem] leading-[1.1] tracking-[-0.03em] font-semibold text-foreground mb-2">Software Development</h3>
+            <p className="text-muted mb-10">Full-stack · Backend · Frontend</p>
 
-            <SkillGroup label="Backend" skills={backendSkills} className="mb-7" />
+            <SkillGroup label="Backend" skills={backendSkills} className="mb-8" />
             <SkillGroup label="Frontend" skills={frontendSkills} />
           </Card>
-        </Reveal>
 
-      </div>
+        </div>
 
-      {/* ── DevOps & Tools — supporting row ── */}
-      <Reveal>
-        <Card className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-          <span className="shrink-0 font-mono text-[0.6875rem] uppercase tracking-wider text-subtle">DevOps & Tools</span>
-          <div className="flex flex-wrap gap-1.5">
+        {/* ── DevOps & Tools — supporting row ── */}
+        <Card interactive className="flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
+          <span className="shrink-0 font-display text-lg font-semibold tracking-tight text-foreground">DevOps & Tools</span>
+          <div className="flex flex-wrap gap-2">
             {devopsSkills.map((skill) => (
               <Tag key={skill}>
                 {skill}
@@ -124,12 +122,16 @@ export default function Skills() {
 
       {/* ── Tech icons bar ── */}
       <Reveal className="mt-20 md:mt-28">
-        <p className="font-mono text-eyebrow uppercase text-subtle text-center mb-10">
+        <p className="text-sm text-subtle text-center mb-10">
           Technologies I work with
         </p>
-        <div className="flex flex-wrap justify-center gap-x-10 gap-y-8 text-subtle">
+        <div className="flex flex-wrap justify-center gap-3">
           {techIcons.map(({ icon, label }, i) => (
-            <span key={i} title={label} className="text-[1.75rem] transition-colors duration-300 ease-soft hover:text-foreground cursor-default">
+            <span
+              key={i}
+              title={label}
+              className="size-14 rounded-2xl border border-line glass flex items-center justify-center text-[1.5rem] text-subtle transition-colors duration-300 hover:text-foreground hover:border-accent/40 cursor-default"
+            >
               {icon}
             </span>
           ))}
