@@ -1,206 +1,164 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowRight } from 'react-icons/fi';
+import Button from './ui/Button';
+import Reveal from './ui/Reveal';
+import Tag from './ui/Tag';
+
+const socialLink = 'p-2 -m-0.5 text-subtle hover:text-foreground transition-colors duration-200';
 
 export default function Hero() {
   const roles = ['AI & Software Developer', 'Agentic AI', 'Full-Stack'];
   const techTags = ['Claude', 'React', 'RAG', 'Java', 'Python', 'API REST', 'LangChain', 'Node.js', 'Gemini', 'FastAPI'];
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-[1fr_320px] gap-12 lg:gap-20 items-center">
+    <section id="home" className="relative min-h-[100svh] flex items-center pt-32 pb-24">
+      <div className="mx-auto w-full max-w-content px-6">
+        <div className="grid lg:grid-cols-[1fr_340px] gap-16 lg:gap-20 items-center">
 
-            {/* ── Left: texte ── */}
-            <div className="text-center lg:text-left">
+          {/* ── Left: texte ── */}
+          <div className="text-center lg:text-left">
 
-              {/* Badge disponibilité */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-sm font-medium mb-10"
-              >
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+            {/* Badge disponibilité */}
+            <Reveal trigger="mount">
+              <div className="inline-flex items-center gap-2.5 h-8 pl-3 pr-4 rounded-full border border-line bg-surface/70 text-sm text-muted mb-10">
+                <span className="relative flex size-2 shrink-0">
+                  <span className="absolute inset-0 rounded-full bg-success opacity-60 animate-ping" />
+                  <span className="relative size-2 rounded-full bg-success" />
+                </span>
                 Available — Looking for an internship
-              </motion.div>
+              </div>
+            </Reveal>
 
-
-
-              {/* Titre principal */}
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-5xl md:text-7xl lg:text-7xl font-bold leading-tight mb-6 tracking-tight"
-              >
-                <span className="text-slate-50">Steeve </span>
-                <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
+            {/* Titre principal */}
+            <Reveal trigger="mount" delay={0.08} y={16}>
+              <h1 className="text-display font-semibold mb-8">
+                <span className="text-foreground">Steeve </span>
+                <span className="text-accent-hover">
                   juniX
                 </span>
-              </motion.h1>
+              </h1>
+            </Reveal>
 
-              {/* Badges rôles */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex flex-wrap justify-center lg:justify-start gap-2 mb-7"
-              >
+            {/* Badges rôles */}
+            <Reveal trigger="mount" delay={0.16}>
+              <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-8">
                 {roles.map((role) => (
-                  <span
-                    key={role}
-                    className="px-3 py-1.5 text-xs font-mono font-semibold text-slate-300 border border-white/15 rounded-lg"
-                  >
+                  <Tag key={role}>
                     {role}
-                  </span>
+                  </Tag>
                 ))}
-              </motion.div>
+              </div>
+            </Reveal>
 
-              {/* Description */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-slate-400 text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 mb-10"
-              >
+            {/* Description */}
+            <Reveal trigger="mount" delay={0.24}>
+              <p className="text-lead text-muted max-w-xl mx-auto lg:mx-0 mb-10">
                 Passionate about software development and artificial intelligence, I build robust solutions with real-world impact — combining AI engineering with the power of LLMs to create solutions that automate, assist, and innovate.
-              </motion.p>
+              </p>
+            </Reveal>
 
-              {/* CTA */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12"
-              >
-                <a
+            {/* CTA */}
+            <Reveal trigger="mount" delay={0.32}>
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mb-12">
+                <Button
                   href="#projects"
-                  className="group inline-flex items-center gap-2 px-7 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:-translate-y-0.5"
                 >
                   View my projects
-                  <FiArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />
-                </a>
-                <a
+                  <FiArrowRight size={16} className="transition-transform duration-300 ease-soft group-hover:translate-x-0.5" />
+                </Button>
+                <Button
                   href="/cv/Cv_steeve_master-1.pdf"
                   download="CV-Steeve-Junix.pdf"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-slate-200 font-semibold rounded-xl transition-all duration-200"
+                  variant="secondary"
                 >
-                  <FiDownload size={17} />
+                  <FiDownload size={16} />
                   Download Resume
-                </a>
-              </motion.div>
+                </Button>
+              </div>
+            </Reveal>
 
-              {/* Réseaux */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.55 }}
-                className="flex items-center justify-center lg:justify-start gap-2"
-              >
+            {/* Réseaux */}
+            <Reveal trigger="mount" delay={0.4} y={0}>
+              <div className="flex items-center justify-center lg:justify-start gap-4">
                 <a
                   href="https://github.com/stevkouakam"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 text-slate-500 hover:text-slate-200 hover:bg-white/5 rounded-xl transition-all"
+                  className={socialLink}
                   aria-label="GitHub"
                 >
-                  <FiGithub size={20} />
+                  <FiGithub size={18} />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/steeve-junix-044659284"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 text-slate-500 hover:text-slate-200 hover:bg-white/5 rounded-xl transition-all"
+                  className={socialLink}
                   aria-label="LinkedIn"
                 >
-                  <FiLinkedin size={20} />
+                  <FiLinkedin size={18} />
                 </a>
                 <a
                   href="mailto:kouakamsteve782@gmail.com"
-                  className="p-2.5 text-slate-500 hover:text-slate-200 hover:bg-white/5 rounded-xl transition-all"
+                  className={socialLink}
                   aria-label="Email"
                 >
-                  <FiMail size={20} />
+                  <FiMail size={18} />
                 </a>
-              </motion.div>
-            </div>
+              </div>
+            </Reveal>
+          </div>
 
-            {/* ── Right: carte profil flottante ── */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.5 }}
-              className="hidden lg:block"
-            >
-              <div className="relative">
-                {/* Lueur subtile derrière la carte */}
-                <div className="absolute inset-[-20px] bg-indigo-600/10 rounded-3xl blur-[60px] -z-10" />
+          {/* ── Right: carte profil ── */}
+          <Reveal trigger="mount" delay={0.45} y={20} className="hidden lg:block">
+            <div className="relative">
+              <div className="rounded-card border border-line bg-surface/70 backdrop-blur-sm">
 
-                <div className="border border-white/15 rounded-2xl p-6 space-y-5">
-
-                  {/* Stats */}
-                  <div className="grid grid-cols-3 gap-3 text-center">
-                    <div className="p-3 border border-white/10 rounded-xl">
-                      <div className="text-xl font-bold text-indigo-400">15+</div>
-                      <div className="text-xs text-slate-500 mt-0.5">Projets</div>
-                    </div>
-                    <div className="p-3 border border-white/10 rounded-xl">
-                      <div className="text-xl font-bold text-indigo-400">3+</div>
-                      <div className="text-xs text-slate-500 mt-0.5">Années</div>
-                    </div>
-                    <div className="p-3 border border-white/10 rounded-xl">
-                      <div className="text-xl font-bold text-indigo-400">20+</div>
-                      <div className="text-xs text-slate-500 mt-0.5">Techs</div>
-                    </div>
+                {/* Stats */}
+                <div className="grid grid-cols-3 divide-x divide-line border-b border-line">
+                  <div className="px-4 py-5">
+                    <div className="text-2xl font-semibold tracking-tight text-foreground">15+</div>
+                    <div className="font-mono text-[0.6875rem] uppercase tracking-wider text-subtle mt-1">Projets</div>
                   </div>
-
-                  <div className="h-px bg-white/10" />
-
-                  {/* Tech tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {techTags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-1 text-xs font-mono text-slate-300 border border-white/15 rounded-lg"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  <div className="px-4 py-5">
+                    <div className="text-2xl font-semibold tracking-tight text-foreground">3+</div>
+                    <div className="font-mono text-[0.6875rem] uppercase tracking-wider text-subtle mt-1">Années</div>
                   </div>
-
-                  {/* Statut */}
-                  <div className="flex items-center gap-2.5 p-3 border border-emerald-500/20 rounded-xl">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                    <span className="text-emerald-400 text-xs font-medium">Available for an internship</span>
+                  <div className="px-4 py-5">
+                    <div className="text-2xl font-semibold tracking-tight text-foreground">20+</div>
+                    <div className="font-mono text-[0.6875rem] uppercase tracking-wider text-subtle mt-1">Techs</div>
                   </div>
                 </div>
 
-                {/* Badge flottant haut-droite */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0.9 }}
-                  className="absolute -top-3 -right-3 px-3 py-1.5 bg-[#080f20] border border-white/15 rounded-xl"
-                >
-                  <span className="text-slate-300 text-xs font-mono">AI Developer</span>
-                </motion.div>
+                {/* Tech tags */}
+                <div className="flex flex-wrap gap-1.5 p-5 border-b border-line">
+                  {techTags.map((tag) => (
+                    <Tag key={tag}>
+                      {tag}
+                    </Tag>
+                  ))}
+                </div>
 
-                {/* Badge flottant bas-gauche */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 1.0 }}
-                  className="absolute -bottom-3 -left-3 px-3 py-1.5 bg-[#080f20] border border-white/15 rounded-xl"
-                >
-                  <span className="text-slate-300 text-xs font-mono">Full-Stack Dev</span>
-                </motion.div>
+                {/* Statut */}
+                <div className="flex items-center gap-2.5 px-5 py-4">
+                  <span className="size-1.5 rounded-full bg-success shrink-0" />
+                  <span className="text-success/90 text-xs font-medium">Available for an internship</span>
+                </div>
               </div>
-            </motion.div>
 
-          </div>
+              {/* Badge flottant haut-droite */}
+              <div className="absolute -top-3 right-5 px-2.5 h-6 inline-flex items-center rounded-md border border-line-strong bg-surface-raised">
+                <span className="text-muted text-[0.6875rem] font-mono">AI Developer</span>
+              </div>
+
+              {/* Badge flottant bas-gauche */}
+              <div className="absolute -bottom-3 left-5 px-2.5 h-6 inline-flex items-center rounded-md border border-line-strong bg-surface-raised">
+                <span className="text-muted text-[0.6875rem] font-mono">Full-Stack Dev</span>
+              </div>
+            </div>
+          </Reveal>
+
         </div>
       </div>
     </section>
