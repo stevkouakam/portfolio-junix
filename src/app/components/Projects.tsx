@@ -1,12 +1,21 @@
 'use client';
 
-import { FiGithub, FiArrowUpRight, FiZap } from 'react-icons/fi';
+import { FiGithub, FiArrowUpRight, FiZap, FiStar } from 'react-icons/fi';
 import Button from './ui/Button';
 import Card from './ui/Card';
+import ProjectVisual, { type VisualKind } from './ui/ProjectVisual';
 import Reveal from './ui/Reveal';
 import Section from './ui/Section';
 import SectionHeader from './ui/SectionHeader';
 import Tag from './ui/Tag';
+import { cx } from './ui/cx';
+
+// Motif décoratif associé à la catégorie (badge) d'un projet IA
+function visualForBadge(badge: string): VisualKind {
+  if (badge.startsWith('Pipeline')) return 'pipeline';
+  const kinds: Record<string, VisualKind> = { LLM: 'llm', RAG: 'rag', NLP: 'nlp', Agent: 'agent', 'Multi-Agent': 'multi-agent' };
+  return kinds[badge] ?? 'other';
+}
 
 export default function Projects() {
   const featured = {
@@ -107,25 +116,28 @@ export default function Projects() {
     <Section id="projects">
 
       {/* Section header */}
-      <SectionHeader index="02" eyebrow="Projects" title="What I&apos;ve built" />
+      <SectionHeader eyebrow="Projects" title="What I&apos;ve built" />
 
       {/* ── Featured: UGRam ── */}
-      <Reveal className="mb-24 md:mb-32">
-        <Card padding="lg" interactive>
-          <div className="grid lg:grid-cols-[1fr_15rem] gap-10 lg:gap-16">
-            <div className="max-w-2xl">
-              <div className="flex flex-wrap items-center gap-2.5 mb-6">
-                <Tag tone="accent">Featured</Tag>
+      <Reveal className="mb-6">
+        <Card size="tile" padding="none" interactive className="overflow-hidden">
+          <div className="grid lg:grid-cols-[1.2fr_1fr]">
+            <div className="p-7 md:p-12 flex flex-col">
+              <div className="flex flex-wrap items-center gap-2 mb-8">
+                <Tag tone="accent">
+                  <FiStar size={12} />
+                  Featured
+                </Tag>
                 <span className="text-subtle text-xs">·</span>
-                <span className="font-mono text-xs text-subtle notranslate" translate="no">{featured.badgeSub}</span>
+                <span className="text-sm text-subtle notranslate" translate="no">{featured.badgeSub}</span>
               </div>
-              <h3 className="text-[1.75rem] md:text-[2.25rem] leading-[1.15] tracking-[-0.03em] font-semibold text-foreground mb-5 notranslate" translate="no">
+              <h3 className="text-[2rem] md:text-[2.75rem] leading-[1.02] tracking-[-0.035em] font-semibold text-foreground mb-6 notranslate" translate="no">
                 {featured.title}
               </h3>
-              <p className="text-muted leading-relaxed mb-8">
+              <p className="text-muted leading-relaxed mb-8 max-w-xl">
                 {featured.description}
               </p>
-              <div className="flex flex-wrap gap-1.5 notranslate" translate="no">
+              <div className="flex flex-wrap gap-2 mt-auto notranslate" translate="no">
                 {featured.tags.map((tag) => (
                   <Tag key={tag}>
                     {tag}
@@ -133,8 +145,10 @@ export default function Projects() {
                 ))}
               </div>
             </div>
-            <div className="flex flex-col justify-between gap-8 lg:border-l lg:border-line lg:pl-10">
-              <ul className="space-y-3.5 text-sm text-muted [&>li]:flex [&>li]:items-center [&>li]:gap-3 [&>li]:before:size-1 [&>li]:before:rounded-full [&>li]:before:bg-accent [&>li]:before:shrink-0 [&>li]:before:content-['']">
+
+            <div className="relative flex flex-col justify-between gap-8 border-t lg:border-t-0 lg:border-l border-line bg-canvas/30 p-7 md:p-12 overflow-hidden">
+              <ProjectVisual kind="featured" uid="featured" className="absolute inset-0 opacity-50 [mask-image:linear-gradient(to_bottom,#000,transparent_75%)]" />
+              <ul className="relative space-y-4 text-[0.9375rem] text-foreground/90 [&>li]:flex [&>li]:items-center [&>li]:gap-3 [&>li]:before:size-1.5 [&>li]:before:rounded-full [&>li]:before:bg-success [&>li]:before:shrink-0 [&>li]:before:content-[''] mt-16 lg:mt-24">
                 <li>Team of 6 developers</li>
                 <li>Angular frontend lead</li>
                 <li>GitFlow & code reviews</li>
@@ -145,11 +159,11 @@ export default function Projects() {
                 href={featured.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/link inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent-hover transition-colors duration-200"
+                className="relative group/link self-start inline-flex items-center gap-2 h-11 px-5 rounded-full border border-line-strong text-sm font-medium text-foreground hover:bg-surface-raised transition-colors"
               >
                 <FiGithub size={15} />
                 View on GitHub
-                <FiArrowUpRight size={14} className="text-subtle transition-transform duration-300 ease-soft group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+                <FiArrowUpRight size={14} className="text-muted transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
               </a>
             </div>
           </div>
@@ -157,70 +171,91 @@ export default function Projects() {
       </Reveal>
 
       {/* ── AI Projects ── */}
-      <Reveal className="flex items-center gap-4 mb-8">
-        <div className="flex items-center gap-2 font-mono text-eyebrow uppercase text-muted">
-          <FiZap size={12} className="text-accent" />
-          <span>AI Projects</span>
-        </div>
-        <div className="h-px flex-1 bg-line" />
+      <Reveal className="flex items-center gap-3 mt-20 md:mt-24 mb-6">
+        <span className="size-8 rounded-full bg-accent-soft border border-accent/30 flex items-center justify-center text-accent-hover">
+          <FiZap size={14} />
+        </span>
+        <span className="font-display text-xl font-semibold tracking-tight text-foreground">AI Projects</span>
       </Reveal>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-24 md:mb-28 items-stretch">
-        {aiProjects.map((project, index) => (
-          <Reveal key={index} delay={(index % 3) * 0.06} className="h-full">
-            <Card interactive className="group flex flex-col h-full">
-              <div className="flex items-start justify-between mb-6">
-                <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-accent-hover notranslate" translate="no">
-                  {project.badge}
-                </span>
-                <a href={project.github} target="_blank" rel="noopener noreferrer"
-                  className="text-subtle hover:text-foreground transition-colors shrink-0"
-                  aria-label="GitHub"><FiGithub size={16} />
-                </a>
-              </div>
-              <h3 className="text-h3 font-medium text-foreground mb-3 notranslate" translate="no">
-                {project.title}
-              </h3>
-              <p className="text-muted text-sm leading-relaxed mb-6 flex-1">{project.description}</p>
-              <div className="flex flex-wrap gap-1.5 mt-auto pt-5 border-t border-line notranslate" translate="no">
-                {project.tags.map((tag) => (
-                  <Tag key={tag}>{tag}</Tag>
-                ))}
-              </div>
-            </Card>
-          </Reveal>
-        ))}
-      </div>
+      <Reveal>
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 lg:grid-flow-dense gap-4">
+          {aiProjects.map((project, index) => {
+            const big = index === aiProjects.length - 1;
+            return (
+              <Card
+                key={index}
+                size={big ? 'tile' : 'card'}
+                padding="none"
+                interactive
+                className={cx(
+                  'group flex flex-col overflow-hidden',
+                  big && 'md:col-span-2 lg:col-span-7 lg:row-span-2 lg:order-first',
+                  !big && (index < 2 ? 'lg:col-span-5' : 'lg:col-span-4'),
+                )}
+              >
+                {/* Visuel */}
+                <div className={cx('relative border-b border-line bg-canvas/30 overflow-hidden', big ? 'h-56 lg:h-auto lg:flex-1 lg:min-h-64' : 'h-32')}>
+                  <ProjectVisual
+                    kind={visualForBadge(project.badge)}
+                    uid={`ai-${index}`}
+                    className="absolute inset-0 opacity-80 transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
+                  <span className="absolute left-5 top-5 notranslate" translate="no">
+                    <Tag tone="accent" className="glass">{project.badge}</Tag>
+                  </span>
+                  <a href={project.github} target="_blank" rel="noopener noreferrer"
+                    className="absolute right-4 top-4 size-9 rounded-full glass border border-line flex items-center justify-center text-muted hover:text-foreground transition-colors"
+                    aria-label="GitHub"><FiGithub size={15} />
+                  </a>
+                </div>
+
+                {/* Contenu */}
+                <div className={cx('flex flex-col', big ? 'p-7 md:p-9' : 'p-6 flex-1')}>
+                  <h3 className={cx('font-semibold text-foreground mb-3 notranslate', big ? 'text-[1.75rem] leading-[1.1] tracking-[-0.03em]' : 'text-h3')} translate="no">
+                    {project.title}
+                  </h3>
+                  <p className={cx('text-muted leading-relaxed mb-6 flex-1', big ? 'text-[0.9375rem]' : 'text-sm')}>{project.description}</p>
+                  <div className="flex flex-wrap gap-1.5 mt-auto notranslate" translate="no">
+                    {project.tags.map((tag) => (
+                      <Tag key={tag} className="h-6 px-2.5 text-xs">{tag}</Tag>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            );
+          })}
+        </div>
+      </Reveal>
 
       {/* ── Other Projects ── */}
-      <Reveal className="flex items-center gap-4 mb-8">
-        <span className="font-mono text-eyebrow uppercase text-muted">Other projects</span>
-        <div className="h-px flex-1 bg-line" />
+      <Reveal className="flex items-center gap-3 mt-20 md:mt-24 mb-6">
+        <span className="font-display text-xl font-semibold tracking-tight text-foreground">Other projects</span>
       </Reveal>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
-        {otherProjects.map((project, index) => (
-          <Reveal key={index} delay={(index % 4) * 0.06} className="h-full">
-            <Card interactive className="group flex flex-col h-full">
-              <div className="flex items-start justify-between gap-3 mb-3">
-                <h3 className="text-base font-medium tracking-tight text-foreground notranslate" translate="no">
+      <Reveal>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {otherProjects.map((project, index) => (
+            <Card key={index} interactive className="group flex flex-col">
+              <div className="flex items-start justify-between gap-3 mb-4">
+                <h3 className="text-lg font-semibold tracking-tight text-foreground notranslate" translate="no">
                   {project.title}
                 </h3>
                 <a href={project.github} target="_blank" rel="noopener noreferrer"
-                  className="text-subtle hover:text-foreground transition-colors shrink-0"
+                  className="text-subtle hover:text-foreground transition-colors shrink-0 mt-1"
                   aria-label="GitHub"><FiGithub size={16} />
                 </a>
               </div>
               <p className="text-muted text-sm leading-relaxed mb-6 flex-1">{project.description}</p>
               <div className="flex flex-wrap gap-1.5 mt-auto notranslate" translate="no">
                 {project.tags.map((tag) => (
-                  <Tag key={tag}>{tag}</Tag>
+                  <Tag key={tag} className="h-6 px-2.5 text-xs">{tag}</Tag>
                 ))}
               </div>
             </Card>
-          </Reveal>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Reveal>
 
       {/* GitHub CTA */}
       <Reveal className="flex justify-center mt-16">
