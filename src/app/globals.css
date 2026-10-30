@@ -1,18 +1,76 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────
+   Palette — neutres gris légèrement chauds, un seul accent (indigo)
+   ───────────────────────────────────────────────────────────── */
 :root {
-  --background: #060b18;
-  --foreground: #f1f5f9;
+  --background: #0b0a0d;
+  --foreground: #f4f2f5;
+
+  --surface: #131217;
+  --surface-raised: #1a191f;
+  --line: #242229;
+  --line-strong: #34313a;
+
+  --muted: #a3a0aa;
+  --subtle: #6f6c77;
+
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --accent-soft: rgb(99 102 241 / 0.12);
+
+  --success: #34d399;
+
+  color-scheme: dark;
 }
 
 @theme inline {
+  /* Couleurs → bg-canvas, bg-surface, border-line, text-muted, text-accent… */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-canvas: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /* Échelle typographique → text-display, text-h2, text-h3, text-lead, text-eyebrow */
+  --text-display: clamp(2.75rem, 7vw, 5rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.04em;
+  --text-h2: clamp(2rem, 4.5vw, 3.25rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.03em;
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.35;
+  --text-h3--letter-spacing: -0.015em;
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.65;
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--line-height: 1;
+  --text-eyebrow--letter-spacing: 0.12em;
+
+  /* Espacements et largeurs → py-section, max-w-content, max-w-prose-tight */
+  --spacing-section: clamp(6rem, 12vw, 9rem);
+  --container-content: 68rem;
+  --container-prose-tight: 38rem;
+
+  --radius-card: 1rem;
+
+  /* Courbe d'animation commune → ease-soft */
+  --ease-soft: cubic-bezier(0.23, 1, 0.32, 1);
 
   --animate-spin-slow: spin-slow 6s linear infinite;
-  --animate-fadeIn: fadeIn 0.3s ease-in-out;
+  --animate-fadeIn: fadeIn 0.3s var(--ease-soft);
   --animate-float: float 8s ease-in-out infinite;
 }
 
@@ -40,21 +98,48 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #060b18;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #6366f1;
-  border-radius: 3px;
+  background: var(--line-strong);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #818cf8;
+  background: var(--subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
