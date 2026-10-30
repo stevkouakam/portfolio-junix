@@ -1,7 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { FiGithub, FiExternalLink, FiZap } from 'react-icons/fi';
+import { FiGithub, FiArrowUpRight, FiZap } from 'react-icons/fi';
+import Button from './ui/Button';
+import Card from './ui/Card';
+import Reveal from './ui/Reveal';
+import Section from './ui/Section';
+import SectionHeader from './ui/SectionHeader';
+import Tag from './ui/Tag';
 
 export default function Projects() {
   const featured = {
@@ -99,188 +104,137 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-24 relative">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-7xl mx-auto">
+    <Section id="projects">
 
-          {/* Section header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16"
-          >
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3 block">
-              Projects
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-              What I&apos;ve built
-            </h2>
-            <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400" />
-          </motion.div>
+      {/* Section header */}
+      <SectionHeader index="02" eyebrow="Projects" title="What I&apos;ve built" />
 
-          {/* ── Featured: UGRam ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16"
-          >
-            <div className="border border-white/10 hover:border-white/20 rounded-2xl p-8 md:p-10 transition-colors duration-300">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
-                <div className="flex-1 max-w-2xl">
-                  <div className="flex items-center gap-2 mb-4 text-xs">
-                    <span className="text-slate-300 font-semibold uppercase tracking-wider">Featured</span>
-                    <span className="text-slate-600">·</span>
-                    <span className="text-slate-500 notranslate" translate="no">{featured.badgeSub}</span>
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-slate-50 mb-4 notranslate" translate="no">
-                    {featured.title}
-                  </h3>
-                  <p className="text-slate-400 leading-relaxed mb-7">
-                    {featured.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 notranslate" translate="no">
-                    {featured.tags.map((tag) => (
-                      <span key={tag} className="px-2.5 py-1 text-xs font-mono text-slate-400 border border-white/5 rounded-md">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="shrink-0 md:w-56 space-y-6">
-                  <ul className="space-y-2.5">
-                    <li className="text-slate-400 text-sm">Team of 6 developers</li>
-                    <li className="text-slate-400 text-sm">Angular frontend lead</li>
-                    <li className="text-slate-400 text-sm">GitFlow & code reviews</li>
-                    <li className="text-slate-400 text-sm">CI/CD pipeline</li>
-                    <li className="text-slate-400 text-sm">Technical documentation</li>
-                  </ul>
-                  <a
-                    href={featured.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
-                  >
-                    <FiGithub size={15} />
-                    View on GitHub
-                  </a>
-                </div>
+      {/* ── Featured: UGRam ── */}
+      <Reveal className="mb-24 md:mb-32">
+        <Card padding="lg" interactive>
+          <div className="grid lg:grid-cols-[1fr_15rem] gap-10 lg:gap-16">
+            <div className="max-w-2xl">
+              <div className="flex flex-wrap items-center gap-2.5 mb-6">
+                <Tag tone="accent">Featured</Tag>
+                <span className="text-subtle text-xs">·</span>
+                <span className="font-mono text-xs text-subtle notranslate" translate="no">{featured.badgeSub}</span>
+              </div>
+              <h3 className="text-[1.75rem] md:text-[2.25rem] leading-[1.15] tracking-[-0.03em] font-semibold text-foreground mb-5 notranslate" translate="no">
+                {featured.title}
+              </h3>
+              <p className="text-muted leading-relaxed mb-8">
+                {featured.description}
+              </p>
+              <div className="flex flex-wrap gap-1.5 notranslate" translate="no">
+                {featured.tags.map((tag) => (
+                  <Tag key={tag}>
+                    {tag}
+                  </Tag>
+                ))}
               </div>
             </div>
-          </motion.div>
-
-          {/* ── AI Projects ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="flex items-center gap-3 mb-6"
-          >
-            <div className="flex items-center gap-1.5">
-              <FiZap size={13} className="text-slate-500" />
-              <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">AI Projects</span>
-            </div>
-            <div className="h-px flex-1 bg-white/10" />
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14 items-stretch">
-            {aiProjects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="group flex flex-col h-full border border-white/10 hover:border-white/25 rounded-xl p-6 transition-colors duration-300"
+            <div className="flex flex-col justify-between gap-8 lg:border-l lg:border-line lg:pl-10">
+              <ul className="space-y-3.5 text-sm text-muted [&>li]:flex [&>li]:items-center [&>li]:gap-3 [&>li]:before:size-1 [&>li]:before:rounded-full [&>li]:before:bg-accent [&>li]:before:shrink-0 [&>li]:before:content-['']">
+                <li>Team of 6 developers</li>
+                <li>Angular frontend lead</li>
+                <li>GitFlow & code reviews</li>
+                <li>CI/CD pipeline</li>
+                <li>Technical documentation</li>
+              </ul>
+              <a
+                href={featured.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/link inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent-hover transition-colors duration-200"
               >
-                <div className="flex items-start justify-between mb-3">
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-indigo-400/80 notranslate" translate="no">
-                    {project.badge}
-                  </span>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer"
-                    className="text-slate-600 hover:text-slate-300 transition-colors shrink-0"
-                    aria-label="GitHub"><FiGithub size={16} />
-                  </a>
-                </div>
-                <h3 className="text-base font-bold text-slate-100 group-hover:text-white transition-colors mb-2 notranslate" translate="no">
+                <FiGithub size={15} />
+                View on GitHub
+                <FiArrowUpRight size={14} className="text-subtle transition-transform duration-300 ease-soft group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+              </a>
+            </div>
+          </div>
+        </Card>
+      </Reveal>
+
+      {/* ── AI Projects ── */}
+      <Reveal className="flex items-center gap-4 mb-8">
+        <div className="flex items-center gap-2 font-mono text-eyebrow uppercase text-muted">
+          <FiZap size={12} className="text-accent" />
+          <span>AI Projects</span>
+        </div>
+        <div className="h-px flex-1 bg-line" />
+      </Reveal>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-24 md:mb-28 items-stretch">
+        {aiProjects.map((project, index) => (
+          <Reveal key={index} delay={(index % 3) * 0.06} className="h-full">
+            <Card interactive className="group flex flex-col h-full">
+              <div className="flex items-start justify-between mb-6">
+                <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-accent-hover notranslate" translate="no">
+                  {project.badge}
+                </span>
+                <a href={project.github} target="_blank" rel="noopener noreferrer"
+                  className="text-subtle hover:text-foreground transition-colors shrink-0"
+                  aria-label="GitHub"><FiGithub size={16} />
+                </a>
+              </div>
+              <h3 className="text-h3 font-medium text-foreground mb-3 notranslate" translate="no">
+                {project.title}
+              </h3>
+              <p className="text-muted text-sm leading-relaxed mb-6 flex-1">{project.description}</p>
+              <div className="flex flex-wrap gap-1.5 mt-auto pt-5 border-t border-line notranslate" translate="no">
+                {project.tags.map((tag) => (
+                  <Tag key={tag}>{tag}</Tag>
+                ))}
+              </div>
+            </Card>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* ── Other Projects ── */}
+      <Reveal className="flex items-center gap-4 mb-8">
+        <span className="font-mono text-eyebrow uppercase text-muted">Other projects</span>
+        <div className="h-px flex-1 bg-line" />
+      </Reveal>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+        {otherProjects.map((project, index) => (
+          <Reveal key={index} delay={(index % 4) * 0.06} className="h-full">
+            <Card interactive className="group flex flex-col h-full">
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <h3 className="text-base font-medium tracking-tight text-foreground notranslate" translate="no">
                   {project.title}
                 </h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-5 flex-1">{project.description}</p>
-                <div className="flex flex-wrap gap-1.5 mt-auto notranslate" translate="no">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="px-2 py-0.5 text-[11px] font-mono text-slate-500 border border-white/5 rounded">{tag}</span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* ── Other Projects ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="flex items-center gap-3 mb-6"
-          >
-            <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Other projects</span>
-            <div className="h-px flex-1 bg-white/10" />
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-5 items-stretch">
-            {otherProjects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="group flex flex-col h-full border border-white/10 hover:border-white/25 rounded-xl p-6 transition-colors duration-300"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-base font-bold text-slate-100 group-hover:text-white transition-colors pr-2 notranslate" translate="no">
-                    {project.title}
-                  </h3>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer"
-                    className="text-slate-600 hover:text-slate-300 transition-colors shrink-0"
-                    aria-label="GitHub"><FiGithub size={16} />
-                  </a>
-                </div>
-                <p className="text-slate-500 text-sm leading-relaxed mb-5 flex-1">{project.description}</p>
-                <div className="flex flex-wrap gap-1.5 mt-auto notranslate" translate="no">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="px-2 py-0.5 text-[11px] font-mono text-slate-500 border border-white/5 rounded">{tag}</span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* GitHub CTA */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-center mt-12"
-          >
-            <a
-              href="https://github.com/stevkouakam"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-slate-300 font-medium rounded-xl transition-all duration-200"
-            >
-              <FiGithub size={17} />
-              View all my projects on GitHub
-            </a>
-          </motion.div>
-
-        </div>
+                <a href={project.github} target="_blank" rel="noopener noreferrer"
+                  className="text-subtle hover:text-foreground transition-colors shrink-0"
+                  aria-label="GitHub"><FiGithub size={16} />
+                </a>
+              </div>
+              <p className="text-muted text-sm leading-relaxed mb-6 flex-1">{project.description}</p>
+              <div className="flex flex-wrap gap-1.5 mt-auto notranslate" translate="no">
+                {project.tags.map((tag) => (
+                  <Tag key={tag}>{tag}</Tag>
+                ))}
+              </div>
+            </Card>
+          </Reveal>
+        ))}
       </div>
-    </section>
+
+      {/* GitHub CTA */}
+      <Reveal className="flex justify-center mt-16">
+        <Button
+          href="https://github.com/stevkouakam"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="secondary"
+        >
+          <FiGithub size={16} />
+          View all my projects on GitHub
+        </Button>
+      </Reveal>
+
+    </Section>
   );
 }
