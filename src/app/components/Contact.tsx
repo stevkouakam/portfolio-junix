@@ -3,6 +3,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiUser, FiMessageSquare, FiSend, FiGithub, FiLinkedin, FiClock } from 'react-icons/fi';
+import Button from './ui/Button';
+import Card from './ui/Card';
+import Reveal from './ui/Reveal';
+import Section from './ui/Section';
+import SectionHeader from './ui/SectionHeader';
+import { EASE_SOFT } from './ui/motion';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -66,81 +72,62 @@ export default function Contact() {
   ];
 
   const inputClass =
-    'w-full px-4 py-3 bg-[#060b18] border border-white/10 focus:border-indigo-500/60 text-slate-100 placeholder-slate-600 text-sm rounded-xl outline-none transition-colors duration-200';
+    'w-full h-11 px-4 bg-canvas/60 border border-line hover:border-line-strong focus:border-accent/70 focus:bg-canvas text-foreground placeholder:text-subtle text-sm rounded-lg outline-none transition-colors duration-200';
+  const labelClass = 'flex items-center gap-2 font-mono text-[0.6875rem] uppercase tracking-wider text-subtle mb-2.5';
 
   return (
-    <section id="contact" className="py-24 relative">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto">
+    <Section id="contact">
 
-          {/* Section header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16 text-center"
-          >
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3 block">
-              Contact
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-              Let&apos;s work together
-            </h2>
-            <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400 mx-auto mb-5" />
-            <p className="text-slate-400 max-w-md mx-auto">
-              Have a project idea or an opportunity? I&apos;m available and all ears.
-            </p>
-          </motion.div>
+      {/* Section header */}
+      <SectionHeader
+        index="04"
+        eyebrow="Contact"
+        title="Let&apos;s work together"
+        description="Have a project idea or an opportunity? I&apos;m available and all ears."
+        align="center"
+      />
 
-          <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-[1fr_1.35fr] gap-4 max-w-5xl mx-auto">
 
-            {/* Contact info */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="space-y-4"
-            >
-              {contactLinks.map((link, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-4 p-4 bg-[#0d1526] border border-white/5 rounded-2xl"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 shrink-0">
-                    {link.icon}
-                  </div>
-                  <div>
-                    <p className="text-slate-500 text-xs mb-0.5">{link.label}</p>
-                    {link.href ? (
-                      <a
-                        href={link.href}
-                        target={link.external ? '_blank' : undefined}
-                        rel={link.external ? 'noopener noreferrer' : undefined}
-                        className="text-slate-200 text-sm font-medium hover:text-indigo-400 transition-colors"
-                      >
-                        {link.value}
-                      </a>
-                    ) : (
-                      <p className="text-slate-200 text-sm font-medium">{link.value}</p>
-                    )}
-                  </div>
+        {/* Contact info */}
+        <Reveal className="h-full">
+          <Card padding="none" className="h-full divide-y divide-line">
+            {contactLinks.map((link, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-4 px-6 py-5"
+              >
+                <div className="size-9 rounded-lg border border-line bg-surface-raised flex items-center justify-center text-muted shrink-0">
+                  {link.icon}
                 </div>
-              ))}
-            </motion.div>
+                <div className="min-w-0">
+                  <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-subtle mb-1">{link.label}</p>
+                  {link.href ? (
+                    <a
+                      href={link.href}
+                      target={link.external ? '_blank' : undefined}
+                      rel={link.external ? 'noopener noreferrer' : undefined}
+                      className="block truncate text-foreground text-sm font-medium hover:text-accent-hover transition-colors duration-200"
+                    >
+                      {link.value}
+                    </a>
+                  ) : (
+                    <p className="text-foreground text-sm font-medium">{link.value}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </Card>
+        </Reveal>
 
-            {/* Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Form */}
+        <Reveal delay={0.08}>
+          <Card padding="lg">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="flex items-center gap-1.5 text-slate-400 text-xs font-medium mb-2">
-                    <FiUser size={12} />
+                  <label className={labelClass}>
+                    <FiUser size={11} />
                     Name
                   </label>
                   <input
@@ -155,8 +142,8 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="flex items-center gap-1.5 text-slate-400 text-xs font-medium mb-2">
-                    <FiMail size={12} />
+                  <label className={labelClass}>
+                    <FiMail size={11} />
                     Email
                   </label>
                   <input
@@ -169,68 +156,70 @@ export default function Contact() {
                     placeholder="votre@email.com"
                   />
                 </div>
+              </div>
 
-                <div>
-                  <label className="flex items-center gap-1.5 text-slate-400 text-xs font-medium mb-2">
-                    <FiMessageSquare size={12} />
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className={`${inputClass} resize-none`}
-                    placeholder="Your message..."
-                  />
-                </div>
+              <div>
+                <label className={labelClass}>
+                  <FiMessageSquare size={11} />
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={5}
+                  className={`${inputClass} h-auto py-3 resize-none`}
+                  placeholder="Your message..."
+                />
+              </div>
 
-                <button
-                  type="submit"
-                  disabled={status === 'sending'}
-                  className="w-full px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 disabled:bg-indigo-600/50 text-white font-semibold text-sm rounded-xl transition-all duration-200 flex items-center justify-center gap-2 group shadow-lg shadow-indigo-500/20"
+              <Button
+                type="submit"
+                disabled={status === 'sending'}
+                className="w-full"
+              >
+                {status === 'sending' ? (
+                  <>
+                    <div className="size-4 border-2 border-canvas/30 border-t-canvas rounded-full animate-spin" />
+                    Sending...
+                  </>
+                ) : status === 'success' ? (
+                  'Message sent!'
+                ) : (
+                  <>
+                    <FiSend size={15} className="transition-transform duration-300 ease-soft group-hover:translate-x-0.5" />
+                    Send message
+                  </>
+                )}
+              </Button>
+
+              {status === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: EASE_SOFT }}
+                  className="px-4 py-3 border border-success/25 bg-success/10 text-success text-sm rounded-lg"
                 >
-                  {status === 'sending' ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Sending...
-                    </>
-                  ) : status === 'success' ? (
-                    'Message sent!'
-                  ) : (
-                    <>
-                      <FiSend size={15} className="group-hover:translate-x-0.5 transition-transform" />
-                      Send message
-                    </>
-                  )}
-                </button>
+                  ✓ Message sent successfully!
+                </motion.div>
+              )}
 
-                {status === 'success' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="p-3.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm rounded-xl"
-                  >
-                    ✓ Message sent successfully!
-                  </motion.div>
-                )}
+              {status === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: EASE_SOFT }}
+                  className="px-4 py-3 border border-red-400/25 bg-red-400/10 text-red-300 text-sm rounded-lg"
+                >
+                  ✗ An error occurred. Please try again.
+                </motion.div>
+              )}
+            </form>
+          </Card>
+        </Reveal>
 
-                {status === 'error' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="p-3.5 bg-red-500/10 border border-red-500/20 text-red-400 text-sm rounded-xl"
-                  >
-                    ✗ An error occurred. Please try again.
-                  </motion.div>
-                )}
-              </form>
-            </motion.div>
-
-          </div>
-        </div>
       </div>
-    </section>
+    </Section>
   );
 }
