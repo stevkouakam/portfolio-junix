@@ -1,12 +1,33 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import type { ReactNode } from 'react';
 import {
   SiSpring, SiJunit5, SiMongodb, SiPostgresql,
   SiReact, SiAngular, SiVuedotjs, SiHtml5, SiTypescript,
   SiDocker, SiGit, SiPython, SiLinux, SiNextdotjs, SiFastapi,
 } from 'react-icons/si';
 import { FiCode, FiServer, FiZap } from 'react-icons/fi';
+import Card from './ui/Card';
+import Reveal from './ui/Reveal';
+import Section from './ui/Section';
+import SectionHeader from './ui/SectionHeader';
+import Tag from './ui/Tag';
+
+// Sous-groupe d'un pilier : libellé mono + liste de tags
+function SkillGroup({ label, skills, className }: { label: ReactNode; skills: string[]; className?: string }) {
+  return (
+    <div className={className}>
+      <span className="block font-mono text-[0.6875rem] uppercase tracking-wider text-subtle mb-3">{label}</span>
+      <div className="flex flex-wrap gap-1.5">
+        {skills.map((skill) => (
+          <Tag key={skill}>
+            {skill}
+          </Tag>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Skills() {
   const aiCoreSkills = [
@@ -25,158 +46,96 @@ export default function Skills() {
   const devopsSkills = ['Docker', 'Git', 'CI/CD', 'Azure DevOps', 'PostgreSQL', 'MongoDB', 'Linux', 'Agile / Scrum'];
 
   const techIcons = [
-    { icon: <SiPython />, label: 'Python', color: 'hover:text-yellow-400' },
-    { icon: <SiFastapi />, label: 'FastAPI', color: 'hover:text-teal-400' },
-    { icon: <SiReact />, label: 'React', color: 'hover:text-cyan-400' },
-    { icon: <SiNextdotjs />, label: 'Next.js', color: 'hover:text-white' },
-    { icon: <SiVuedotjs />, label: 'Vue.js', color: 'hover:text-green-400' },
-    { icon: <SiAngular />, label: 'Angular', color: 'hover:text-red-400' },
-    { icon: <SiTypescript />, label: 'TypeScript', color: 'hover:text-blue-400' },
-    { icon: <SiHtml5 />, label: 'HTML5', color: 'hover:text-orange-400' },
-    { icon: <SiSpring />, label: 'Spring Boot', color: 'hover:text-green-500' },
-    { icon: <FiServer />, label: 'Node.js', color: 'hover:text-green-400' },
-    { icon: <FiCode />, label: 'Java', color: 'hover:text-orange-500' },
-    { icon: <SiDocker />, label: 'Docker', color: 'hover:text-blue-500' },
-    { icon: <SiMongodb />, label: 'MongoDB', color: 'hover:text-green-600' },
-    { icon: <SiPostgresql />, label: 'PostgreSQL', color: 'hover:text-blue-600' },
-    { icon: <SiGit />, label: 'Git', color: 'hover:text-orange-500' },
-    { icon: <SiLinux />, label: 'Linux', color: 'hover:text-yellow-300' },
-    { icon: <SiJunit5 />, label: 'JUnit', color: 'hover:text-red-400' },
+    { icon: <SiPython />, label: 'Python' },
+    { icon: <SiFastapi />, label: 'FastAPI' },
+    { icon: <SiReact />, label: 'React' },
+    { icon: <SiNextdotjs />, label: 'Next.js' },
+    { icon: <SiVuedotjs />, label: 'Vue.js' },
+    { icon: <SiAngular />, label: 'Angular' },
+    { icon: <SiTypescript />, label: 'TypeScript' },
+    { icon: <SiHtml5 />, label: 'HTML5' },
+    { icon: <SiSpring />, label: 'Spring Boot' },
+    { icon: <FiServer />, label: 'Node.js' },
+    { icon: <FiCode />, label: 'Java' },
+    { icon: <SiDocker />, label: 'Docker' },
+    { icon: <SiMongodb />, label: 'MongoDB' },
+    { icon: <SiPostgresql />, label: 'PostgreSQL' },
+    { icon: <SiGit />, label: 'Git' },
+    { icon: <SiLinux />, label: 'Linux' },
+    { icon: <SiJunit5 />, label: 'JUnit' },
   ];
 
   return (
-    <section id="skills" className="py-24 relative">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-7xl mx-auto">
+    <Section id="skills">
 
-          {/* Section header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16"
-          >
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3 block">
-              Skills
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-              My tech stack
-            </h2>
-            <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400" />
-          </motion.div>
+      {/* Section header */}
+      <SectionHeader index="03" eyebrow="Skills" title="My tech stack" />
 
-          {/* ── Two pillars: AI Agentic Engineering & Software Development ── */}
-          <div className="grid md:grid-cols-2 gap-5 mb-5">
+      {/* ── Two pillars: AI Agentic Engineering & Software Development ── */}
+      <div className="grid md:grid-cols-2 gap-4 mb-4">
 
-            {/* AI & Agentic Engineering */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
-              className="border border-violet-500/15 hover:border-violet-500/30 rounded-2xl p-7 transition-colors duration-300"
-            >
-              <div className="flex items-center gap-2.5 mb-1">
-                <FiZap size={16} className="text-violet-400" />
-                <h3 className="font-bold text-violet-200">AI & Agentic Engineering</h3>
-              </div>
-              <p className="text-slate-400 text-xs mb-6">LLMs · RAG · Multi-agent systems · Embeddings</p>
-
-              <span className="text-[11px] font-mono uppercase tracking-wider text-violet-400/80 block mb-2.5">Core</span>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {aiCoreSkills.map((skill) => (
-                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-violet-200 border border-violet-500/25 rounded-md">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-
-              <span className="text-[11px] font-mono uppercase tracking-wider text-violet-400/80 block mb-2.5">Agent stack</span>
-              <div className="flex flex-wrap gap-2">
-                {agentStack.map((skill) => (
-                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-violet-200 border border-violet-500/25 rounded-md">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Software Development */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.08 }}
-              className="border border-indigo-500/15 hover:border-indigo-500/30 rounded-2xl p-7 transition-colors duration-300"
-            >
-              <div className="flex items-center gap-2.5 mb-1">
-                <FiCode size={16} className="text-indigo-400" />
-                <h3 className="font-bold text-indigo-200">Software Development</h3>
-              </div>
-              <p className="text-slate-400 text-xs mb-6">Full-stack · Backend · Frontend</p>
-
-              <span className="text-[11px] font-mono uppercase tracking-wider text-indigo-400/80 block mb-2.5">Backend</span>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {backendSkills.map((skill) => (
-                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-indigo-200 border border-indigo-500/25 rounded-md">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-
-              <span className="text-[11px] font-mono uppercase tracking-wider text-indigo-400/80 block mb-2.5">Frontend</span>
-              <div className="flex flex-wrap gap-2">
-                {frontendSkills.map((skill) => (
-                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-indigo-200 border border-indigo-500/25 rounded-md">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-          </div>
-
-          {/* ── DevOps & Tools — supporting row ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="border border-cyan-500/15 rounded-xl p-5 mb-6"
-          >
-            <span className="text-cyan-400/80 text-xs font-semibold uppercase tracking-wider block mb-3">DevOps & Tools</span>
-            <div className="flex flex-wrap gap-2">
-              {devopsSkills.map((skill) => (
-                <span key={skill} className="px-2.5 py-1 text-xs font-mono text-cyan-200 border border-cyan-500/25 rounded-md">
-                  {skill}
-                </span>
-              ))}
+        {/* AI & Agentic Engineering */}
+        <Reveal className="h-full">
+          <Card padding="lg" interactive className="h-full">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="size-8 rounded-lg border border-line bg-surface-raised flex items-center justify-center text-accent-hover">
+                <FiZap size={15} />
+              </span>
+              <h3 className="text-h3 font-medium text-foreground">AI & Agentic Engineering</h3>
             </div>
-          </motion.div>
+            <p className="text-subtle text-sm mb-8">LLMs · RAG · Multi-agent systems · Embeddings</p>
 
-          {/* ── Tech icons bar ── */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="p-6 border border-white/15 rounded-2xl"
-          >
-            <p className="text-slate-500 text-xs text-center mb-5 uppercase tracking-[0.15em] font-semibold">
-              Technologies I work with
-            </p>
-            <div className="flex flex-wrap justify-center gap-5 text-slate-400">
-              {techIcons.map(({ icon, label, color }, i) => (
-                <span key={i} title={label} className={`text-2xl transition-colors duration-200 cursor-default ${color}`}>
-                  {icon}
-                </span>
-              ))}
+            <SkillGroup label="Core" skills={aiCoreSkills} className="mb-7" />
+            <SkillGroup label="Agent stack" skills={agentStack} />
+          </Card>
+        </Reveal>
+
+        {/* Software Development */}
+        <Reveal delay={0.06} className="h-full">
+          <Card padding="lg" interactive className="h-full">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="size-8 rounded-lg border border-line bg-surface-raised flex items-center justify-center text-accent-hover">
+                <FiCode size={15} />
+              </span>
+              <h3 className="text-h3 font-medium text-foreground">Software Development</h3>
             </div>
-          </motion.div>
+            <p className="text-subtle text-sm mb-8">Full-stack · Backend · Frontend</p>
 
-        </div>
+            <SkillGroup label="Backend" skills={backendSkills} className="mb-7" />
+            <SkillGroup label="Frontend" skills={frontendSkills} />
+          </Card>
+        </Reveal>
+
       </div>
-    </section>
+
+      {/* ── DevOps & Tools — supporting row ── */}
+      <Reveal>
+        <Card className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+          <span className="shrink-0 font-mono text-[0.6875rem] uppercase tracking-wider text-subtle">DevOps & Tools</span>
+          <div className="flex flex-wrap gap-1.5">
+            {devopsSkills.map((skill) => (
+              <Tag key={skill}>
+                {skill}
+              </Tag>
+            ))}
+          </div>
+        </Card>
+      </Reveal>
+
+      {/* ── Tech icons bar ── */}
+      <Reveal className="mt-20 md:mt-28">
+        <p className="font-mono text-eyebrow uppercase text-subtle text-center mb-10">
+          Technologies I work with
+        </p>
+        <div className="flex flex-wrap justify-center gap-x-10 gap-y-8 text-subtle">
+          {techIcons.map(({ icon, label }, i) => (
+            <span key={i} title={label} className="text-[1.75rem] transition-colors duration-300 ease-soft hover:text-foreground cursor-default">
+              {icon}
+            </span>
+          ))}
+        </div>
+      </Reveal>
+
+    </Section>
   );
 }
