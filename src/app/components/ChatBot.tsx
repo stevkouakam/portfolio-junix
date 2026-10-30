@@ -10,6 +10,7 @@ import {
   FiCpu
 } from 'react-icons/fi';
 import { EASE_SOFT } from './ui/motion';
+import { OPEN_CHATBOT_EVENT, suggestedQuestions } from '@/lib/chatbot-suggestions';
 
 interface Message {
   id: string;
@@ -23,14 +24,20 @@ export default function ChatBot() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  // Suggestions de questions prédéfinies
-  const suggestedQuestions = [
-    "What are your main projects?",
-    "What technologies do you master?",
-    "Tell me about your LLM experience",
-    "How can I contact you?",
-  ];
+  // Ouverture depuis la console du Hero (question éventuellement pré-remplie)
+  useEffect(() => {
+    const handleOpen = (e: Event) => {
+      const { question } = (e as CustomEvent<{ question?: string }>).detail ?? {};
+      setIsOpen(true);
+      if (question) setInput(question);
+      // Laisse la fenêtre s'afficher avant de donner le focus
+      setTimeout(() => inputRef.current?.focus(), 150);
+    };
+    window.addEventListener(OPEN_CHATBOT_EVENT, handleOpen);
+    return () => window.removeEventListener(OPEN_CHATBOT_EVENT, handleOpen);
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -153,7 +160,7 @@ export default function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.3, ease: EASE_SOFT }}
-            className="fixed inset-0 md:inset-auto md:bottom-24 md:right-6 z-50 md:w-[400px] md:h-[650px] md:max-h-[calc(100svh-8rem)] w-full h-full bg-surface border-0 md:border border-line md:shadow-[0_30px_80px_-20px_rgb(0_0_0/0.75)] flex flex-col md:rounded-2xl overflow-hidden origin-bottom-right"
+            className="fixed inset-0 md:inset-auto md:bottom-24 md:right-6 z-50 md:w-[400px] md:h-[650px] md:max-h-[calc(100svh-8rem)] w-full h-full bg-surface md:glass border-0 md:border border-line md:shadow-[0_30px_80px_-20px_rgb(0_0_0/0.75)] flex flex-col md:rounded-tile overflow-hidden origin-bottom-right"
           >
             {/* Header */}
             <div className="px-5 py-4 border-b border-line bg-surface-raised/40">
@@ -163,7 +170,7 @@ export default function ChatBot() {
                     <FiCpu className="text-accent-hover" size={17} />
                   </div>
                   <div>
-                    <h3 className="text-foreground text-sm font-semibold tracking-tight">juniXbot</h3>
+                    <h3 className="font-display text-foreground text-[0.9375rem] font-semibold tracking-tight">juniXbot</h3>
                     <p className="flex items-center gap-1.5 text-subtle text-[0.6875rem] font-mono mt-0.5">
                       <span aria-hidden className="size-1.5 rounded-full bg-success" />
                       AI Assistant • Online
@@ -198,12 +205,12 @@ export default function ChatBot() {
 
                   {/* Suggestions de questions */}
                   <div className="space-y-2 ml-10">
-                    <p className="text-subtle text-[0.6875rem] font-mono uppercase tracking-wider mb-3">Suggested questions:</p>
+                    <p className="text-subtle text-xs mb-3">Suggested questions:</p>
                     {suggestedQuestions.map((question, index) => (
                       <button
                         key={index}
                         onClick={() => setInput(question)}
-                        className="block w-full text-left px-3.5 py-2.5 text-sm text-muted hover:text-foreground border border-line hover:border-line-strong hover:bg-surface-raised rounded-lg transition-colors duration-200"
+                        className="block w-full text-left px-4 py-2 text-[0.8125rem] text-muted hover:text-foreground border border-line hover:border-accent/40 hover:bg-accent-soft rounded-full transition-colors duration-200"
                       >
                         {question}
                       </button>
@@ -273,6 +280,7 @@ export default function ChatBot() {
             >
               <div className="flex gap-2">
                 <input
+                  ref={inputRef}
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
