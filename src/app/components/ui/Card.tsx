@@ -1,27 +1,40 @@
-import type { HTMLAttributes } from 'react';
+'use client';
+
+import type { HTMLAttributes, PointerEvent } from 'react';
 import { cx } from './cx';
 
 type CardProps = HTMLAttributes<HTMLDivElement> & {
-  // Réagit au survol (bordure plus marquée, fond légèrement éclairci)
+  // Halo qui suit la souris + bordure éclairée au survol
   interactive?: boolean;
   padding?: 'none' | 'md' | 'lg';
+  // 'tile' : grandes tuiles (bento, panneaux) · 'card' : blocs courants
+  size?: 'tile' | 'card';
 };
 
 const paddings = {
   none: '',
-  md: 'p-6',
-  lg: 'p-8 md:p-10',
+  md: 'p-6 md:p-7',
+  lg: 'p-7 md:p-10',
 };
 
-// Carte sobre : fond à peine relevé, bordure fine, pas d'ombre.
-export default function Card({ interactive = false, padding = 'md', className, ...rest }: CardProps) {
+// Pose la position du pointeur en variables CSS, lues par .spotlight (globals.css)
+function trackPointer(e: PointerEvent<HTMLDivElement>) {
+  const rect = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+  e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`);
+}
+
+// Surface en verre dépoli, bordure fine ; la lumière vient du survol, pas d'ombre.
+export default function Card({ interactive = false, padding = 'md', size = 'card', className, onPointerMove, ...rest }: CardProps) {
   return (
     <div
       {...rest}
+      onPointerMove={interactive ? (e) => { trackPointer(e); onPointerMove?.(e); } : onPointerMove}
       className={cx(
-        'relative rounded-card border border-line bg-surface/60',
+        'relative glass border border-line',
+        size === 'tile' ? 'rounded-tile' : 'rounded-card',
         paddings[padding],
-        interactive && 'transition-colors duration-300 ease-soft hover:border-line-strong hover:bg-surface',
+        interactive && 'spotlight',
         className,
       )}
     />

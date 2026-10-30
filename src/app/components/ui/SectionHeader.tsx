@@ -3,8 +3,6 @@ import Reveal from './Reveal';
 import { cx } from './cx';
 
 type SectionHeaderProps = {
-  // Numéro décoratif de la section (« 01 », « 02 »…)
-  index?: string;
   eyebrow: ReactNode;
   title: ReactNode;
   description?: ReactNode;
@@ -12,26 +10,21 @@ type SectionHeaderProps = {
   className?: string;
 };
 
-export default function SectionHeader({ index, eyebrow, title, description, align = 'left', className }: SectionHeaderProps) {
+export default function SectionHeader({ eyebrow, title, description, align = 'left', className }: SectionHeaderProps) {
   const centered = align === 'center';
 
   return (
     <Reveal className={cx('mb-14 md:mb-20', centered && 'text-center', className)}>
-      <p className={cx('flex items-center gap-3 font-mono text-eyebrow uppercase text-subtle mb-6', centered && 'justify-center')}>
-        {index && (
-          <span aria-hidden className="text-accent">
-            {index}
-          </span>
-        )}
-        {index && <span aria-hidden className="h-px w-6 bg-line-strong" />}
-        <span>{eyebrow}</span>
+      <p className={cx('inline-flex items-center gap-2 text-eyebrow font-medium text-accent-hover mb-5', centered && 'justify-center')}>
+        <span aria-hidden className="size-1.5 rounded-full bg-accent shadow-[0_0_12px_2px_rgb(124_131_255/0.6)]" />
+        {eyebrow}
       </p>
       <h2 className={cx('text-h2 font-semibold text-foreground text-balance max-w-3xl', centered && 'mx-auto')}>
         {title}
       </h2>
       {description && (
         <Reveal delay={0.08}>
-          <p className={cx('mt-5 text-lead text-muted max-w-prose-tight', centered && 'mx-auto')}>{description}</p>
+          <p className={cx('mt-6 text-lead text-muted max-w-prose-tight', centered && 'mx-auto')}>{description}</p>
         </Reveal>
       )}
     </Reveal>
