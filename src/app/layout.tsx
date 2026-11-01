@@ -1,44 +1,53 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Police du texte courant
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Police du code (console juniXbot, tags mono) — non variable : graisses explicites
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+// Police des titres : grotesque à l'allure « startup »
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Steeve JuniX - AI Software Developer | Portfolio",
-  description: "Portfolio of Steeve JuniX, software developer specialized in Artificial Intelligence and LLM Engineering. Expertise in Python, Java, React, and LLM integration.",
-  keywords: ["Steeve JuniX", "AI Developer", "Machine Learning", "LLM", "Python", "Java", "React", "LLM Engineer", "Portfolio", "Software Engineer"],
+  title: "Steeve JuniX - Développeur logiciel IA | Portfolio",
+  description: "Portfolio de Steeve JuniX, développeur logiciel spécialisé en intelligence artificielle et en ingénierie LLM. Expertise en Python, Java, React et intégration de LLM.",
+  keywords: ["Steeve JuniX", "Développeur IA", "Apprentissage automatique", "LLM", "Python", "Java", "React", "Ingénieur LLM", "Portfolio", "Développeur logiciel"],
   authors: [{ name: "Steeve JuniX", url: "https://github.com/stevkouakam" }],
   creator: "Steeve JuniX",
   publisher: "Steeve JuniX",
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "fr_CA",
     url: "https://steeve-junix.vercel.app",
-    title: "Steeve JuniX - AI Software Developer",
-    description: "Professional portfolio of Steeve JuniX, software developer specialized in Artificial Intelligence and innovative software solutions.",
-    siteName: "Steeve JuniX Portfolio",
+    title: "Steeve JuniX - Développeur logiciel IA",
+    description: "Portfolio professionnel de Steeve JuniX, développeur logiciel spécialisé en intelligence artificielle et en solutions logicielles innovantes.",
+    siteName: "Portfolio de Steeve JuniX",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Steeve JuniX - AI Software Developer",
+        alt: "Steeve JuniX - Développeur logiciel IA",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Steeve JuniX - AI Software Developer",
-    description: "Software developer specialized in AI and LLM Engineering",
+    title: "Steeve JuniX - Développeur logiciel IA",
+    description: "Développeur logiciel spécialisé en IA et en ingénierie LLM",
     images: ["/og-image.png"],
   },
   robots: {
@@ -66,9 +75,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${dmSans.variable} ${spaceMono.variable} ${spaceGrotesk.variable} antialiased`}
       >
         {children}
       </body>

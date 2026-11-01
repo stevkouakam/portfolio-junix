@@ -1,14 +1,10 @@
-
-import { createOpenAI } from '@ai-sdk/openai';
+import { createGroq } from '@ai-sdk/groq';
 import { streamText } from 'ai';
 import { SYSTEM_PROMPT } from '@/lib/chatbot-context';
 
-
-
-
-// Initialiser le client OpenAI
-const openai = createOpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+// Initialiser le client Groq (offre gratuite)
+const groq = createGroq({
+  apiKey: process.env.GROQ_API_KEY,
 });
 
 // Configurer la route pour autoriser le streaming
@@ -19,12 +15,13 @@ export async function POST(req: Request) {
     // Extraire les messages de la requête
     const { messages } = await req.json();
 
-    // Créer le stream de réponse avec GPT
-    const result = await streamText({
-      model: openai('gpt-4o-mini'), // Modèle rapide et économique
+    // Créer le stream de réponse avec GPT-OSS 120B via Groq
+    const result = streamText({
+      model: groq('openai/gpt-oss-120b'), // Rapide, gratuit et bon en français
       system: SYSTEM_PROMPT,
       messages,
       temperature: 0.7, // Un peu de créativité
+      onError: ({ error }) => console.error('Erreur API Chat (stream):', error),
     });
 
     // Retourner la réponse en streaming

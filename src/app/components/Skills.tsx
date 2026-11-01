@@ -1,182 +1,183 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import type { ReactNode } from 'react';
 import {
-  SiSpring, SiJunit5, SiMongodb, SiPostgresql,
-  SiReact, SiAngular, SiVuedotjs, SiHtml5, SiTypescript,
-  SiDocker, SiGit, SiPython, SiLinux, SiNextdotjs, SiFastapi,
+  SiOpenai, SiAnthropic, SiGooglegemini, SiLangchain, SiStreamlit,
+  SiPython, SiOpenjdk, SiSpringboot, SiDotnet, SiFastapi, SiNodedotjs,
+  SiReact, SiNextdotjs, SiAngular, SiVuedotjs, SiTypescript, SiTailwindcss,
+  SiDocker, SiGit, SiGithubactions, SiPostgresql, SiMongodb, SiLinux,
+  SiJunit5, SiCypress,
 } from 'react-icons/si';
-import { FiCode, FiServer, FiZap } from 'react-icons/fi';
+import { FiCode, FiZap } from 'react-icons/fi';
+import Card from './ui/Card';
+import ProjectVisual from './ui/ProjectVisual';
+import Reveal from './ui/Reveal';
+import Section from './ui/Section';
+import SectionHeader from './ui/SectionHeader';
+import Tag from './ui/Tag';
+
+// Sous-groupe d'un pilier : libellé + liste de tags
+function SkillGroup({ label, skills, className }: { label: ReactNode; skills: string[]; className?: string }) {
+  return (
+    <div className={className}>
+      <span className="block text-sm font-medium text-foreground/80 mb-3">{label}</span>
+      <div className="flex flex-wrap gap-2 notranslate" translate="no">
+        {skills.map((skill) => (
+          <Tag key={skill}>
+            {skill}
+          </Tag>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Skills() {
-  const aiCoreSkills = [
-    'OpenAI API', 'Anthropic Claude', 'LangChain', 'LangGraph',
-    'RAG Systems', 'Prompt Engineering', 'Embeddings', 'Vector DBs',
-    'LlamaIndex', 'ChromaDB',
+  // ── Pilier 1 : IA agentique ──
+  const aiGroups = [
+    {
+      label: 'Modèles & API LLM',
+      skills: ['OpenAI (GPT-4o, GPT-4o-mini)', 'Anthropic Claude', 'Mistral', 'Gemini', 'Vercel AI SDK'],
+    },
+    {
+      label: 'Agents & orchestration',
+      skills: ['LangGraph', 'LangChain', 'Systèmes multi-agents', 'Agents autonomes', 'Function Calling / Tool Use', 'OpenAI Assistants API'],
+    },
+    {
+      label: 'RAG & données',
+      skills: ['LlamaIndex', 'ChromaDB', 'Embeddings', 'Bases vectorielles', 'Déduplication sémantique', 'Ingénierie de prompts'],
+    },
+    {
+      label: 'Mise en production',
+      skills: ['FastAPI', 'Streaming de réponses', 'Playwright (scraping)', 'Streamlit', 'Pipelines planifiés'],
+    },
   ];
 
-  const agentStack = [
-    'Autonomous Agents', 'Multi-Agent Systems', 'Function Calling',
-    'OpenAI Assistants API', 'Agent Pipelines', 'FastAPI',
+  // ── Pilier 2 : génie logiciel ──
+  const softwareGroups = [
+    {
+      label: 'Backend',
+      skills: ['Java', 'Spring Boot', 'C# / ASP.NET Core', 'Python', 'FastAPI', 'Flask', 'Node.js', 'API REST', 'JPA / Hibernate'],
+    },
+    {
+      label: 'Frontend',
+      skills: ['React 19', 'Next.js', 'Angular', 'Vue.js 3', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    },
+    {
+      label: 'Architecture & qualité',
+      skills: ['Architecture hexagonale', 'SOLID', 'Clean Code', 'MVC', 'JUnit 5', 'Cypress', 'Cucumber', 'JaCoCo', 'UML'],
+    },
   ];
 
-  const backendSkills = ['Java', 'Spring Boot', 'Python', 'Node.js', 'FastAPI', 'Flask', 'API REST', 'JPA / Hibernate'];
-  const frontendSkills = ['React', 'Next.js', 'Vue.js', 'Angular', 'TypeScript', 'HTML5 / CSS3', 'Tailwind CSS', 'Framer Motion'];
-  const devopsSkills = ['Docker', 'Git', 'CI/CD', 'Azure DevOps', 'PostgreSQL', 'MongoDB', 'Linux', 'Agile / Scrum'];
+  const devopsSkills = ['Docker', 'Git / GitFlow', 'GitHub Actions', 'CI/CD', 'Azure DevOps', 'PostgreSQL', 'MongoDB', 'SQLite', 'Linux', 'Agile / Scrum', 'Revues de code'];
 
   const techIcons = [
-    { icon: <SiPython />, label: 'Python', color: 'hover:text-yellow-400' },
-    { icon: <SiFastapi />, label: 'FastAPI', color: 'hover:text-teal-400' },
-    { icon: <SiReact />, label: 'React', color: 'hover:text-cyan-400' },
-    { icon: <SiNextdotjs />, label: 'Next.js', color: 'hover:text-white' },
-    { icon: <SiVuedotjs />, label: 'Vue.js', color: 'hover:text-green-400' },
-    { icon: <SiAngular />, label: 'Angular', color: 'hover:text-red-400' },
-    { icon: <SiTypescript />, label: 'TypeScript', color: 'hover:text-blue-400' },
-    { icon: <SiHtml5 />, label: 'HTML5', color: 'hover:text-orange-400' },
-    { icon: <SiSpring />, label: 'Spring Boot', color: 'hover:text-green-500' },
-    { icon: <FiServer />, label: 'Node.js', color: 'hover:text-green-400' },
-    { icon: <FiCode />, label: 'Java', color: 'hover:text-orange-500' },
-    { icon: <SiDocker />, label: 'Docker', color: 'hover:text-blue-500' },
-    { icon: <SiMongodb />, label: 'MongoDB', color: 'hover:text-green-600' },
-    { icon: <SiPostgresql />, label: 'PostgreSQL', color: 'hover:text-blue-600' },
-    { icon: <SiGit />, label: 'Git', color: 'hover:text-orange-500' },
-    { icon: <SiLinux />, label: 'Linux', color: 'hover:text-yellow-300' },
-    { icon: <SiJunit5 />, label: 'JUnit', color: 'hover:text-red-400' },
+    { icon: <SiOpenai />, label: 'OpenAI' },
+    { icon: <SiAnthropic />, label: 'Anthropic Claude' },
+    { icon: <SiGooglegemini />, label: 'Gemini' },
+    { icon: <SiLangchain />, label: 'LangChain / LangGraph' },
+    { icon: <SiPython />, label: 'Python' },
+    { icon: <SiFastapi />, label: 'FastAPI' },
+    { icon: <SiStreamlit />, label: 'Streamlit' },
+    { icon: <SiOpenjdk />, label: 'Java' },
+    { icon: <SiSpringboot />, label: 'Spring Boot' },
+    { icon: <SiDotnet />, label: 'ASP.NET Core' },
+    { icon: <SiNodedotjs />, label: 'Node.js' },
+    { icon: <SiTypescript />, label: 'TypeScript' },
+    { icon: <SiReact />, label: 'React' },
+    { icon: <SiNextdotjs />, label: 'Next.js' },
+    { icon: <SiAngular />, label: 'Angular' },
+    { icon: <SiVuedotjs />, label: 'Vue.js' },
+    { icon: <SiTailwindcss />, label: 'Tailwind CSS' },
+    { icon: <SiDocker />, label: 'Docker' },
+    { icon: <SiGithubactions />, label: 'GitHub Actions' },
+    { icon: <SiGit />, label: 'Git' },
+    { icon: <SiPostgresql />, label: 'PostgreSQL' },
+    { icon: <SiMongodb />, label: 'MongoDB' },
+    { icon: <SiLinux />, label: 'Linux' },
+    { icon: <SiJunit5 />, label: 'JUnit 5' },
+    { icon: <SiCypress />, label: 'Cypress' },
   ];
 
   return (
-    <section id="skills" className="py-24 relative">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-7xl mx-auto">
+    <Section id="skills">
 
-          {/* Section header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16"
-          >
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3 block">
-              Skills
+      {/* Section header */}
+      <SectionHeader
+        eyebrow="Compétences"
+        title="Deux expertises, un même produit"
+        description="L’IA agentique pour rendre les applications intelligentes, le génie logiciel pour les rendre fiables, maintenables et prêtes pour la production."
+      />
+
+      <Reveal>
+        {/* ── Deux piliers : IA agentique & génie logiciel ── */}
+        <div className="grid lg:grid-cols-12 gap-4 mb-4">
+
+          {/* IA agentique */}
+          <Card size="tile" padding="lg" interactive className="lg:col-span-7 overflow-hidden">
+            <div aria-hidden className="absolute inset-x-0 top-0 h-48 opacity-35 [mask-image:linear-gradient(to_bottom,#000,transparent)] pointer-events-none">
+              <ProjectVisual kind="multi-agent" uid="skills-ai" />
+            </div>
+            <div className="relative">
+              <span className="size-12 rounded-2xl bg-accent-soft border border-accent/30 flex items-center justify-center text-accent-hover mb-8">
+                <FiZap size={20} />
+              </span>
+              <h3 className="text-[1.75rem] leading-[1.1] tracking-[-0.03em] font-semibold text-foreground mb-2">IA agentique & LLM</h3>
+              <p className="text-muted mb-10">Des agents qui raisonnent, utilisent des outils et s’appuient sur vos données.</p>
+
+              {aiGroups.map((group, i) => (
+                <SkillGroup key={group.label} label={group.label} skills={group.skills} className={i < aiGroups.length - 1 ? 'mb-8' : undefined} />
+              ))}
+            </div>
+          </Card>
+
+          {/* Génie logiciel */}
+          <Card size="tile" padding="lg" interactive className="lg:col-span-5">
+            <span className="size-12 rounded-2xl bg-surface-raised border border-line-strong flex items-center justify-center text-foreground/80 mb-8">
+              <FiCode size={20} />
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-              My tech stack
-            </h2>
-            <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400" />
-          </motion.div>
+            <h3 className="text-[1.75rem] leading-[1.1] tracking-[-0.03em] font-semibold text-foreground mb-2">Génie logiciel</h3>
+            <p className="text-muted mb-10">Des applications full-stack bien architecturées, testées et déployées en continu.</p>
 
-          {/* ── Two pillars: AI Agentic Engineering & Software Development ── */}
-          <div className="grid md:grid-cols-2 gap-5 mb-5">
-
-            {/* AI & Agentic Engineering */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
-              className="border border-violet-500/15 hover:border-violet-500/30 rounded-2xl p-7 transition-colors duration-300"
-            >
-              <div className="flex items-center gap-2.5 mb-1">
-                <FiZap size={16} className="text-violet-400" />
-                <h3 className="font-bold text-violet-200">AI & Agentic Engineering</h3>
-              </div>
-              <p className="text-slate-400 text-xs mb-6">LLMs · RAG · Multi-agent systems · Embeddings</p>
-
-              <span className="text-[11px] font-mono uppercase tracking-wider text-violet-400/80 block mb-2.5">Core</span>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {aiCoreSkills.map((skill) => (
-                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-violet-200 border border-violet-500/25 rounded-md">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-
-              <span className="text-[11px] font-mono uppercase tracking-wider text-violet-400/80 block mb-2.5">Agent stack</span>
-              <div className="flex flex-wrap gap-2">
-                {agentStack.map((skill) => (
-                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-violet-200 border border-violet-500/25 rounded-md">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Software Development */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.08 }}
-              className="border border-indigo-500/15 hover:border-indigo-500/30 rounded-2xl p-7 transition-colors duration-300"
-            >
-              <div className="flex items-center gap-2.5 mb-1">
-                <FiCode size={16} className="text-indigo-400" />
-                <h3 className="font-bold text-indigo-200">Software Development</h3>
-              </div>
-              <p className="text-slate-400 text-xs mb-6">Full-stack · Backend · Frontend</p>
-
-              <span className="text-[11px] font-mono uppercase tracking-wider text-indigo-400/80 block mb-2.5">Backend</span>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {backendSkills.map((skill) => (
-                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-indigo-200 border border-indigo-500/25 rounded-md">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-
-              <span className="text-[11px] font-mono uppercase tracking-wider text-indigo-400/80 block mb-2.5">Frontend</span>
-              <div className="flex flex-wrap gap-2">
-                {frontendSkills.map((skill) => (
-                  <span key={skill} className="px-2.5 py-1 text-xs font-mono text-indigo-200 border border-indigo-500/25 rounded-md">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-          </div>
-
-          {/* ── DevOps & Tools — supporting row ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="border border-cyan-500/15 rounded-xl p-5 mb-6"
-          >
-            <span className="text-cyan-400/80 text-xs font-semibold uppercase tracking-wider block mb-3">DevOps & Tools</span>
-            <div className="flex flex-wrap gap-2">
-              {devopsSkills.map((skill) => (
-                <span key={skill} className="px-2.5 py-1 text-xs font-mono text-cyan-200 border border-cyan-500/25 rounded-md">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* ── Tech icons bar ── */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="p-6 border border-white/15 rounded-2xl"
-          >
-            <p className="text-slate-500 text-xs text-center mb-5 uppercase tracking-[0.15em] font-semibold">
-              Technologies I work with
-            </p>
-            <div className="flex flex-wrap justify-center gap-5 text-slate-400">
-              {techIcons.map(({ icon, label, color }, i) => (
-                <span key={i} title={label} className={`text-2xl transition-colors duration-200 cursor-default ${color}`}>
-                  {icon}
-                </span>
-              ))}
-            </div>
-          </motion.div>
+            {softwareGroups.map((group, i) => (
+              <SkillGroup key={group.label} label={group.label} skills={group.skills} className={i < softwareGroups.length - 1 ? 'mb-8' : undefined} />
+            ))}
+          </Card>
 
         </div>
-      </div>
-    </section>
+
+        {/* ── DevOps & outils — rangée de soutien ── */}
+        <Card interactive className="flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
+          <span className="shrink-0 font-display text-lg font-semibold tracking-tight text-foreground">DevOps & méthodes</span>
+          <div className="flex flex-wrap gap-2 notranslate" translate="no">
+            {devopsSkills.map((skill) => (
+              <Tag key={skill}>
+                {skill}
+              </Tag>
+            ))}
+          </div>
+        </Card>
+      </Reveal>
+
+      {/* ── Bande d'icônes ── */}
+      <Reveal className="mt-20 md:mt-28">
+        <p className="text-sm text-subtle text-center mb-10">
+          Mon environnement de travail au quotidien
+        </p>
+        <div className="flex flex-wrap justify-center gap-3">
+          {techIcons.map(({ icon, label }) => (
+            <span
+              key={label}
+              title={label}
+              aria-label={label}
+              className="size-14 rounded-2xl border border-line glass flex items-center justify-center text-[1.5rem] text-subtle transition-colors duration-300 hover:text-foreground hover:border-accent/40 cursor-default"
+            >
+              {icon}
+            </span>
+          ))}
+        </div>
+      </Reveal>
+
+    </Section>
   );
 }

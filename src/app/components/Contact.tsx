@@ -3,6 +3,11 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiUser, FiMessageSquare, FiSend, FiGithub, FiLinkedin, FiClock } from 'react-icons/fi';
+import Button from './ui/Button';
+import ProjectVisual from './ui/ProjectVisual';
+import Reveal from './ui/Reveal';
+import Section from './ui/Section';
+import { EASE_SOFT } from './ui/motion';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -39,7 +44,7 @@ export default function Contact() {
   const contactLinks = [
     {
       icon: <FiMail size={18} />,
-      label: 'Email',
+      label: 'Courriel',
       value: 'kouakamsteve782@gmail.com',
       href: 'mailto:kouakamsteve782@gmail.com',
     },
@@ -59,90 +64,84 @@ export default function Contact() {
     },
     {
       icon: <FiClock size={18} />,
-      label: 'Response time',
-      value: '24 – 48 hours',
+      label: 'Délai de réponse',
+      value: '24 à 48 heures',
       href: null,
     },
   ];
 
+  // Champ « étiquette intégrée » : l'étiquette vit dans le cadre, qui s'éclaire au focus
+  const fieldClass =
+    'group/field block rounded-control border border-line bg-canvas/50 px-4 pt-3 pb-1 transition-[border-color,box-shadow,background-color] ' +
+    'hover:border-line-strong focus-within:border-accent/70 focus-within:bg-canvas/80 focus-within:shadow-[0_0_0_4px_rgb(124_131_255/0.12)]';
+  const labelClass =
+    'flex items-center gap-1.5 text-xs font-medium text-subtle transition-colors group-focus-within/field:text-accent-hover';
   const inputClass =
-    'w-full px-4 py-3 bg-[#060b18] border border-white/10 focus:border-indigo-500/60 text-slate-100 placeholder-slate-600 text-sm rounded-xl outline-none transition-colors duration-200';
+    'w-full h-10 bg-transparent text-foreground placeholder:text-subtle/70 text-[0.9375rem] outline-none';
 
   return (
-    <section id="contact" className="py-24 relative">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto">
+    <Section id="contact">
+      <Reveal>
+        <div className="grid lg:grid-cols-[1fr_1.3fr] rounded-tile border border-line overflow-hidden">
 
-          {/* Section header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16 text-center"
-          >
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3 block">
-              Contact
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-              Let&apos;s work together
-            </h2>
-            <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400 mx-auto mb-5" />
-            <p className="text-slate-400 max-w-md mx-auto">
-              Have a project idea or an opportunity? I&apos;m available and all ears.
-            </p>
-          </motion.div>
+          {/* ── Panneau indigo : titre + contacts ── */}
+          <div className="relative overflow-hidden p-8 md:p-12 bg-[radial-gradient(120%_90%_at_0%_0%,var(--accent-deep)_0%,#1a1f5c_35%,var(--surface)_80%)]">
+            <div aria-hidden className="absolute -right-24 -bottom-24 size-[28rem] opacity-40 pointer-events-none">
+              <ProjectVisual kind="other" uid="contact" />
+            </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+            <div className="relative">
+              <p className="inline-flex items-center gap-2 text-eyebrow font-medium text-accent-hover mb-5">
+                <span aria-hidden className="size-1.5 rounded-full bg-accent-hover shadow-[0_0_12px_2px_rgb(165_170_255/0.6)]" />
+                Contact
+              </p>
+              <h2 className="text-h2 font-semibold text-white text-balance mb-5">
+                Travaillons ensemble
+              </h2>
+              <p className="text-lead text-white/70 max-w-sm mb-10">
+                Vous avez une idée de projet ou une opportunité ? Je suis disponible et à votre écoute.
+              </p>
 
-            {/* Contact info */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="space-y-4"
-            >
-              {contactLinks.map((link, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-4 p-4 bg-[#0d1526] border border-white/5 rounded-2xl"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 shrink-0">
-                    {link.icon}
+              {/* Contact info */}
+              <div className="space-y-2">
+                {contactLinks.map((link, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 rounded-control px-3 py-3 -mx-3 transition-colors hover:bg-white/[0.04]"
+                  >
+                    <div className="size-10 rounded-xl bg-white/[0.07] border border-white/10 flex items-center justify-center text-white/80 shrink-0">
+                      {link.icon}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs text-white/50 mb-0.5">{link.label}</p>
+                      {link.href ? (
+                        <a
+                          href={link.href}
+                          target={link.external ? '_blank' : undefined}
+                          rel={link.external ? 'noopener noreferrer' : undefined}
+                          className="block truncate text-white text-[0.9375rem] font-medium hover:text-accent-hover transition-colors"
+                        >
+                          {link.value}
+                        </a>
+                      ) : (
+                        <p className="text-white text-[0.9375rem] font-medium">{link.value}</p>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-slate-500 text-xs mb-0.5">{link.label}</p>
-                    {link.href ? (
-                      <a
-                        href={link.href}
-                        target={link.external ? '_blank' : undefined}
-                        rel={link.external ? 'noopener noreferrer' : undefined}
-                        className="text-slate-200 text-sm font-medium hover:text-indigo-400 transition-colors"
-                      >
-                        {link.value}
-                      </a>
-                    ) : (
-                      <p className="text-slate-200 text-sm font-medium">{link.value}</p>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
 
-            {/* Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="flex items-center gap-1.5 text-slate-400 text-xs font-medium mb-2">
+          {/* ── Form ── */}
+          <div className="glass p-8 md:p-12 border-t lg:border-t-0 lg:border-l border-line">
+            <form onSubmit={handleSubmit} className="space-y-4 h-full flex flex-col">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <label className={fieldClass}>
+                  <span className={labelClass}>
                     <FiUser size={12} />
-                    Name
-                  </label>
+                    Nom
+                  </span>
                   <input
                     type="text"
                     name="name"
@@ -150,15 +149,15 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className={inputClass}
-                    placeholder="Your name"
+                    placeholder="Votre nom"
                   />
-                </div>
+                </label>
 
-                <div>
-                  <label className="flex items-center gap-1.5 text-slate-400 text-xs font-medium mb-2">
+                <label className={fieldClass}>
+                  <span className={labelClass}>
                     <FiMail size={12} />
-                    Email
-                  </label>
+                    Courriel
+                  </span>
                   <input
                     type="email"
                     name="email"
@@ -168,69 +167,73 @@ export default function Contact() {
                     className={inputClass}
                     placeholder="votre@email.com"
                   />
-                </div>
+                </label>
+              </div>
 
-                <div>
-                  <label className="flex items-center gap-1.5 text-slate-400 text-xs font-medium mb-2">
-                    <FiMessageSquare size={12} />
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className={`${inputClass} resize-none`}
-                    placeholder="Your message..."
-                  />
-                </div>
+              <label className={`${fieldClass} flex-1 flex flex-col`}>
+                <span className={labelClass}>
+                  <FiMessageSquare size={12} />
+                  Message
+                </span>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={6}
+                  className={`${inputClass} h-auto flex-1 min-h-40 py-2 resize-none`}
+                  placeholder="Votre message..."
+                />
+              </label>
 
-                <button
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
+                <Button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="w-full px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 disabled:bg-indigo-600/50 text-white font-semibold text-sm rounded-xl transition-all duration-200 flex items-center justify-center gap-2 group shadow-lg shadow-indigo-500/20"
+                  className="sm:w-auto w-full h-12 px-7"
                 >
                   {status === 'sending' ? (
                     <>
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Sending...
+                      <div className="size-4 border-2 border-canvas/30 border-t-canvas rounded-full animate-spin" />
+                      Envoi en cours...
                     </>
                   ) : status === 'success' ? (
-                    'Message sent!'
+                    'Message envoyé !'
                   ) : (
                     <>
-                      <FiSend size={15} className="group-hover:translate-x-0.5 transition-transform" />
-                      Send message
+                      <FiSend size={15} className="transition-transform duration-300 group-hover:translate-x-0.5" />
+                      Envoyer le message
                     </>
                   )}
-                </button>
+                </Button>
 
                 {status === 'success' && (
                   <motion.div
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="p-3.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm rounded-xl"
+                    initial={{ opacity: 0, x: -6 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, ease: EASE_SOFT }}
+                    className="flex-1 px-4 py-3 border border-success/25 bg-success/10 text-success text-sm rounded-control"
                   >
-                    ✓ Message sent successfully!
+                    ✓ Message envoyé avec succès !
                   </motion.div>
                 )}
 
                 {status === 'error' && (
                   <motion.div
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="p-3.5 bg-red-500/10 border border-red-500/20 text-red-400 text-sm rounded-xl"
+                    initial={{ opacity: 0, x: -6 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, ease: EASE_SOFT }}
+                    className="flex-1 px-4 py-3 border border-red-400/25 bg-red-400/10 text-red-300 text-sm rounded-control"
                   >
-                    ✗ An error occurred. Please try again.
+                    ✗ Une erreur est survenue. Veuillez réessayer.
                   </motion.div>
                 )}
-              </form>
-            </motion.div>
-
+              </div>
+            </form>
           </div>
+
         </div>
-      </div>
-    </section>
+      </Reveal>
+    </Section>
   );
 }

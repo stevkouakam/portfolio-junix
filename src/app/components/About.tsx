@@ -1,144 +1,86 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { FiCpu, FiCode, FiLayers } from 'react-icons/fi';
+import Card from './ui/Card';
+import Reveal from './ui/Reveal';
+import Section from './ui/Section';
+import SectionHeader from './ui/SectionHeader';
 
 export default function About() {
   const areas = [
     {
-      icon: <FiCpu size={18} />,
-      title: 'AI Engineering',
-      description: "Integration of language models (OpenAI, Claude) to build chatbots, intelligent assistants, RAG systems, and AI-powered automations.",
-      color: 'text-violet-400',
-      bg: 'bg-violet-500/10',
-      border: 'border-violet-500/15',
-      glow: 'hover:shadow-[0_4px_24px_rgba(139,92,246,0.12)]',
+      icon: <FiCpu size={20} />,
+      title: 'IA agentique & LLM',
+      description: "Agents autonomes et systèmes multi-agents (LangGraph), RAG sur documents, function calling et intégration d'OpenAI, de Claude et de Mistral dans des produits concrets.",
     },
     {
-      icon: <FiCode size={18} />,
-      title: 'Software Engineering',
-      description: "Building robust applications based on clean architectures (API, MVC, Clean Code) and professional practices (Git, testing, CI/CD).",
-      color: 'text-indigo-400',
-      bg: 'bg-indigo-500/10',
-      border: 'border-indigo-500/15',
-      glow: 'hover:shadow-[0_4px_24px_rgba(99,102,241,0.12)]',
+      icon: <FiCode size={20} />,
+      title: 'Génie logiciel',
+      description: "Architecture hexagonale et principes SOLID, tests du niveau unitaire jusqu'au bout en bout (JUnit 5, Cypress, Cucumber), revues de code et GitFlow en équipe.",
     },
     {
-      icon: <FiLayers size={18} />,
-      title: 'Web Development',
-      description: "Building performant UIs and backend APIs with React, Vue, Next.js, Node, and Flask — delivering complete, scalable web products.",
-      color: 'text-cyan-400',
-      bg: 'bg-cyan-500/10',
-      border: 'border-cyan-500/15',
-      glow: 'hover:shadow-[0_4px_24px_rgba(6,182,212,0.12)]',
+      icon: <FiLayers size={20} />,
+      title: 'Full-stack & mise en production',
+      description: "Interfaces React, Angular et Vue, API Spring Boot, ASP.NET Core et FastAPI, conteneurisées avec Docker et livrées par des pipelines CI/CD.",
     },
   ];
 
   return (
-    <section id="about" className="py-24 relative">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
+    <Section id="about">
 
-          {/* Section header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16"
-          >
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3 block">
-              About
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-              Who am I?
-            </h2>
-            <div className="w-12 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400" />
-          </motion.div>
+      {/* Section header */}
+      <SectionHeader eyebrow="À propos" title="Qui suis-je ?" />
 
-          <div className="grid md:grid-cols-2 gap-16 mb-12">
-
-            {/* Bio */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              {/* Ligne verticale décorative */}
-              <div className="flex gap-5">
-                <div className="w-px bg-gradient-to-b from-indigo-500/60 via-violet-500/40 to-transparent shrink-0 mt-1" />
-                <div className="space-y-5 text-slate-400 leading-relaxed">
-                  <p>
-                    Software developer with a deep passion for AI, I combine rigorous software engineering with LLM integration to build high-impact products. With 3+ years of experience and 15+ projects delivered, I design clean, performant, results-driven architectures.
-                  </p>
-                  <p>
-                    I thrive building robust and scalable full-stack applications, leveraging the power of modern AI technologies intelligent automation, conversational assistants, RAG systems to solve real-world problems.
-                  </p>
-                  <p>
-                    My goal: join an ambitious technical team to contribute to large-scale projects, bringing both solid engineering foundations and an AI-first mindset.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Expertise cards */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="space-y-4"
-            >
-              {areas.map((area, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                  className={`group flex gap-4 p-5 bg-[#0d1526] border rounded-2xl hover:bg-[#0f1a30] transition-all duration-300 ${area.border} ${area.glow}`}
-                >
-                  <div className={`shrink-0 w-10 h-10 rounded-xl ${area.bg} flex items-center justify-center ${area.color} group-hover:scale-110 transition-transform duration-300`}>
-                    {area.icon}
-                  </div>
-                  <div>
-                    <h3 className={`font-semibold mb-1.5 ${area.color}`}>{area.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{area.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4"
-          >
-            {[
-              { label: 'Projects delivered', value: '15+', color: 'from-indigo-400 to-violet-400' },
-              { label: 'Technologies', value: '20+', color: 'from-violet-400 to-cyan-400' },
-              { label: 'Years of exp.', value: '3+', color: 'from-cyan-400 to-blue-400' },
-              { label: 'Passion', value: '100%', color: 'from-blue-400 to-indigo-400' },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="text-center p-6 bg-[#0d1526] border border-white/5 rounded-2xl hover:border-white/10 hover:-translate-y-0.5 transition-all duration-300"
-              >
-                <div className={`text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1.5`}>
-                  {stat.value}
-                </div>
-                <div className="text-slate-500 text-sm">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
-
+      {/* Bio */}
+      <Reveal className="mb-20 md:mb-24">
+        <p className="font-display text-[1.5rem] md:text-[2.125rem] leading-[1.3] tracking-[-0.02em] font-normal text-foreground max-w-4xl text-pretty">
+          Je construis des logiciels qui raisonnent — et qui tiennent la route. J’allie la rigueur du génie logiciel à la conception d’agents IA pour créer des produits utiles, fiables et maintenables. Plus de 3 ans d’expérience et plus de 15 projets livrés.
+        </p>
+        <div className="grid md:grid-cols-2 gap-6 md:gap-12 mt-10 max-w-4xl text-muted leading-relaxed">
+          <p>
+            Côté IA, je conçois des agents qui orchestrent plusieurs étapes, interrogent des bases de connaissances, appellent des outils et automatisent des tâches réelles — de la veille d’actualités à la recherche de logement.
+          </p>
+          <p>
+            Côté logiciel, je m’appuie sur des architectures propres, des tests à tous les niveaux et l’intégration continue. Mon objectif : rejoindre une équipe ambitieuse en stage et contribuer à des produits où l’IA crée une vraie valeur.
+          </p>
         </div>
-      </div>
-    </section>
+      </Reveal>
+
+      {/* Expertise cards */}
+      <Reveal>
+        <div className="grid md:grid-cols-3 gap-4 mb-4">
+          {areas.map((area, index) => (
+            <Card key={index} interactive padding="lg" className="group">
+              <div className="size-12 rounded-2xl bg-accent-soft border border-accent/30 flex items-center justify-center text-accent-hover mb-10 transition-transform duration-500 group-hover:-translate-y-1">
+                {area.icon}
+              </div>
+              <h3 className="text-h3 font-semibold text-foreground mb-3">{area.title}</h3>
+              <p className="text-muted text-[0.9375rem] leading-relaxed">{area.description}</p>
+            </Card>
+          ))}
+        </div>
+
+        {/* Stats */}
+        <Card padding="none" size="card" className="grid grid-cols-2 md:grid-cols-4">
+          {[
+            { label: 'Projets livrés', value: '15+' },
+            { label: 'Technologies', value: '20+' },
+            { label: 'Années d’exp.', value: '3+' },
+            { label: 'Passion', value: '100%' },
+          ].map((stat, index) => (
+            <div
+              key={index}
+              className="px-6 py-8 md:px-8 md:py-10 border-line max-md:odd:border-r max-md:[&:nth-child(-n+2)]:border-b md:[&:not(:last-child)]:border-r"
+            >
+              <div className="font-display text-[2.75rem] md:text-[3.5rem] font-semibold tracking-[-0.045em] leading-none text-foreground mb-3">
+                {stat.value}
+              </div>
+              <div className="text-sm text-muted">{stat.label}</div>
+            </div>
+          ))}
+        </Card>
+      </Reveal>
+
+    </Section>
   );
 }

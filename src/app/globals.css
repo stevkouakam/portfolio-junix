@@ -1,36 +1,184 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────
+   Palette — ardoise bleu profond, indigo électrique, menthe pour les statuts
+   ───────────────────────────────────────────────────────────── */
 :root {
-  --background: #060b18;
-  --foreground: #f1f5f9;
+  --background: #0a0e1a;
+  --foreground: #e8eaf6;
+
+  --surface: #111729;
+  --surface-raised: #182037;
+  --line: #222b4a;
+  --line-strong: #323d66;
+
+  --muted: #8a90b0;
+  --subtle: #5c6385;
+
+  --accent: #7c83ff;
+  --accent-hover: #a5aaff;
+  --accent-soft: rgb(124 131 255 / 0.12);
+  --accent-deep: #2b2f8f;
+
+  --success: #5eead4;
+
+  color-scheme: dark;
 }
 
 @theme inline {
+  /* Couleurs → bg-canvas, bg-surface, border-line, text-muted, text-accent… */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-canvas: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-deep: var(--accent-deep);
+  --color-success: var(--success);
 
-  --animate-spin-slow: spin-slow 6s linear infinite;
-  --animate-fadeIn: fadeIn 0.3s ease-in-out;
-  --animate-float: float 8s ease-in-out infinite;
-}
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-display: var(--font-space-grotesk), var(--font-dm-sans), ui-sans-serif, sans-serif;
 
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  /* Échelle typographique → text-display, text-h2, text-h3, text-lead, text-eyebrow */
+  --text-display: clamp(3.25rem, 9vw, 7rem);
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.045em;
+  --text-h2: clamp(2.25rem, 5vw, 3.75rem);
+  --text-h2--line-height: 1.02;
+  --text-h2--letter-spacing: -0.035em;
+  --text-h3: 1.3125rem;
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.02em;
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.65;
+  --text-eyebrow: 0.875rem;
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0;
+
+  /* Espacements et largeurs → py-section, max-w-content, max-w-prose-tight */
+  --spacing-section: clamp(6rem, 12vw, 9.5rem);
+  --container-content: 74rem;
+  --container-prose-tight: 38rem;
+
+  /* Hiérarchie d'arrondis : grandes tuiles > cartes > contrôles */
+  --radius-tile: 1.75rem;
+  --radius-card: 1.125rem;
+  --radius-control: 0.75rem;
+
+  /* Courbe d'animation commune → ease-soft, et défaut de toutes les transitions */
+  --ease-soft: cubic-bezier(0.23, 1, 0.32, 1);
+  --default-transition-timing-function: var(--ease-soft);
+  --default-transition-duration: 200ms;
+
+  --animate-fadeIn: fadeIn 0.35s var(--ease-soft);
+  /* Halo lent autour d'un point de statut (remplace animate-ping) */
+  --animate-beacon: beacon 2.8s var(--ease-soft) infinite;
+  /* Points de saisie du chatbot (remplace animate-bounce) */
+  --animate-typing: typing 1.2s ease-in-out infinite;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
+  from { opacity: 0; transform: translateY(-6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
-  10% { opacity: 1; }
-  50% { transform: translateY(-100px) translateX(50px); opacity: 0.8; }
-  90% { opacity: 0.3; }
+@keyframes beacon {
+  0% { transform: scale(1); opacity: 0.5; }
+  70%, 100% { transform: scale(2.6); opacity: 0; }
+}
+
+@keyframes typing {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-2px); }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Surfaces signature
+   ───────────────────────────────────────────────────────────── */
+
+/* Verre dépoli : surface translucide + reflet supérieur (utilitaire → accepte md:glass…) */
+@utility glass {
+  background: linear-gradient(180deg, rgb(24 32 55 / 0.72), rgb(17 23 41 / 0.55));
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05);
+}
+
+/* Cadre des cartes : surface bleu nuit teintée d'indigo + bordure en dégradé
+   (indigo en haut à gauche → ardoise → menthe discrète), dans l'esprit de la console juniXbot */
+@utility frame {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(180deg, rgb(25 30 64 / 0.78), rgb(14 19 38 / 0.72)) padding-box,
+    linear-gradient(155deg, rgb(124 131 255 / 0.5), rgb(50 61 102 / 0.45) 30%, rgb(34 43 74 / 0.35) 70%, rgb(94 234 212 / 0.22)) border-box;
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 24px 60px -32px rgb(43 47 143 / 0.55);
+}
+
+/* Halo qui suit la souris (--mx / --my posés par Card) : lueur de fond + bordure éclairée */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.spotlight::before,
+.spotlight::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-soft);
+}
+
+.spotlight::before {
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 50%), rgb(124 131 255 / 0.13), transparent 60%);
+}
+
+.spotlight::after {
+  inset: -1px;
+  padding: 1px;
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgb(165 170 255 / 0.6), transparent 65%);
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+}
+
+.spotlight:hover::before,
+.spotlight:hover::after {
+  opacity: 1;
+}
+
+/* Bordure en dégradé (console juniXbot) */
+.ring-gradient {
+  position: relative;
+  isolation: isolate;
+}
+
+.ring-gradient::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(140deg, rgb(165 170 255 / 0.7), rgb(124 131 255 / 0.12) 35%, rgb(94 234 212 / 0.06) 65%, rgb(94 234 212 / 0.45));
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+}
+
+@media (hover: none) {
+  .spotlight::before,
+  .spotlight::after {
+    display: none;
+  }
 }
 
 html {
@@ -40,21 +188,57 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+  }
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #060b18;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #6366f1;
-  border-radius: 3px;
+  background: var(--line-strong);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #818cf8;
+  background: var(--subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

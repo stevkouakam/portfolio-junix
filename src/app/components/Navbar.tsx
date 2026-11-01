@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
+import Button from './ui/Button';
+import { cx } from './ui/cx';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,76 +16,77 @@ export default function Navbar() {
   }, []);
 
   const menuItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
+    { label: 'Accueil', href: '#home' },
+    { label: 'À propos', href: '#about' },
+    { label: 'Projets', href: '#projects' },
+    { label: 'Compétences', href: '#skills' },
     { label: 'Contact', href: '#contact' },
   ];
 
+  const floating = scrolled || isOpen;
+
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
-        ? 'bg-[#060b18]/95 backdrop-blur-md border-b border-white/5'
-        : 'bg-transparent'
-      }`}>
-      <div className="container mx-auto px-6">
-        <div className="flex justify-between items-center h-20">
+    <nav className="fixed top-0 inset-x-0 z-50 px-3 pt-3 md:pt-4">
+      <div
+        className={cx(
+          'mx-auto w-full max-w-content border transition-[background-color,border-color,box-shadow,border-radius] duration-500',
+          isOpen ? 'rounded-3xl' : 'rounded-full',
+          floating
+            ? 'glass border-line shadow-[0_12px_40px_-12px_rgb(0_0_0/0.6)]'
+            : 'bg-transparent border-transparent',
+        )}
+      >
+        <div className="flex justify-between items-center h-14 pl-5 pr-2.5">
 
           {/* Logo */}
-          <a href="#home" className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+          <a href="#home" className="flex items-center gap-2.5 font-display text-[1.0625rem] font-semibold tracking-tight text-foreground">
+            <span aria-hidden className="size-2.5 rounded-full bg-accent shadow-[0_0_14px_3px_rgb(124_131_255/0.55)]" />
             Steeve juniX
           </a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-0.5">
             {menuItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="px-4 py-2 text-slate-400 hover:text-slate-100 text-sm font-medium transition-colors rounded-lg hover:bg-white/5"
+                className="px-3.5 h-9 inline-flex items-center rounded-full text-sm text-muted hover:text-foreground hover:bg-surface-raised/70 transition-colors"
               >
                 {item.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              className="ml-3 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-indigo-500/20"
-            >
-              Contact Me
-            </a>
+            <Button href="#contact" size="sm" className="ml-3">
+              Me contacter
+            </Button>
           </div>
 
           {/* Mobile Toggle */}
           <button
-            className="md:hidden p-2 text-slate-300 hover:text-white transition-colors"
+            className="md:hidden size-10 inline-flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-surface-raised/70 transition-colors"
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
+            aria-label="Ouvrir ou fermer le menu"
           >
-            {isOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+            {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-4">
-            <div className="flex flex-col gap-1 bg-[#0d1526] rounded-2xl p-3 border border-white/5">
+          <div className="md:hidden px-5 pb-5 animate-fadeIn">
+            <div className="flex flex-col border-t border-line pt-3">
               {menuItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="px-4 py-2.5 text-slate-300 hover:text-white hover:bg-white/5 rounded-xl text-sm font-medium transition-colors"
+                  className="py-3 font-display text-xl font-medium text-muted hover:text-foreground transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
                 </a>
               ))}
-              <a
-                href="#contact"
-                className="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-semibold text-sm text-center mt-1 transition-all"
-                onClick={() => setIsOpen(false)}
-              >
-                Contact Me
-              </a>
+              <Button href="#contact" variant="primary" className="mt-4" onClick={() => setIsOpen(false)}>
+                Me contacter
+              </Button>
             </div>
           </div>
         )}
