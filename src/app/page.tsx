@@ -12,10 +12,10 @@ export default function Home() {
   return (
     <MotionProvider>
       <main className="min-h-screen bg-canvas relative overflow-hidden">
-        {/* Grille fine, visible seulement sous le hero puis fondue */}
+        {/* Grille fine (carreaux de 72px) sur toute la hauteur de la page */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-[900px] bg-[linear-gradient(to_right,var(--line)_1px,transparent_1px),linear-gradient(to_bottom,var(--line)_1px,transparent_1px)] bg-[size:72px_72px] opacity-40 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_30%,transparent_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,var(--line)_1px,transparent_1px),linear-gradient(to_bottom,var(--line)_1px,transparent_1px)] bg-[size:72px_72px] opacity-30"
         />
 
         {/* Halo unique et discret en haut de page */}

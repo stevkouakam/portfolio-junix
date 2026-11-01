@@ -1,9 +1,9 @@
 // Suggestions de questions prédéfinies, partagées par le ChatBot et la console du Hero
 export const suggestedQuestions = [
-  "What are your main projects?",
-  "What technologies do you master?",
-  "Tell me about your LLM experience",
-  "How can I contact you?",
+  "Quels sont tes principaux projets ?",
+  "Quelles technologies maîtrises-tu ?",
+  "Parle-moi de ton expérience avec les LLM",
+  "Comment puis-je te contacter ?",
 ];
 
 // Événement qui ouvre juniXbot depuis n'importe où, avec une question pré-remplie optionnelle

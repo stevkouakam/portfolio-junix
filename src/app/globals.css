@@ -42,9 +42,9 @@
   --color-accent-deep: var(--accent-deep);
   --color-success: var(--success);
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
-  --font-display: var(--font-bricolage), var(--font-geist-sans), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-display: var(--font-space-grotesk), var(--font-dm-sans), ui-sans-serif, sans-serif;
 
   /* Échelle typographique → text-display, text-h2, text-h3, text-lead, text-eyebrow */
   --text-display: clamp(3.25rem, 9vw, 7rem);
@@ -108,6 +108,17 @@
   background: linear-gradient(180deg, rgb(24 32 55 / 0.72), rgb(17 23 41 / 0.55));
   backdrop-filter: blur(18px) saturate(140%);
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05);
+}
+
+/* Cadre des cartes : surface bleu nuit teintée d'indigo + bordure en dégradé
+   (indigo en haut à gauche → ardoise → menthe discrète), dans l'esprit de la console juniXbot */
+@utility frame {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(180deg, rgb(25 30 64 / 0.78), rgb(14 19 38 / 0.72)) padding-box,
+    linear-gradient(155deg, rgb(124 131 255 / 0.5), rgb(50 61 102 / 0.45) 30%, rgb(34 43 74 / 0.35) 70%, rgb(94 234 212 / 0.22)) border-box;
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 24px 60px -32px rgb(43 47 143 / 0.55);
 }
 
 /* Halo qui suit la souris (--mx / --my posés par Card) : lueur de fond + bordure éclairée */

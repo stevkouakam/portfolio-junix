@@ -28,8 +28,8 @@ function NameLine({ children, delay }: { children: React.ReactNode; delay: numbe
 }
 
 export default function Hero() {
-  const roles = ['AI & Software Developer', 'Agentic AI', 'Full-Stack'];
-  const techTags = ['Claude', 'React', 'RAG', 'Java', 'Python', 'API REST', 'LangChain', 'Node.js', 'Gemini', 'FastAPI'];
+  const roles = ['Développeur logiciel', 'IA agentique & LLM', 'Full-Stack'];
+  const techTags = ['Python', 'Java', 'TypeScript', 'LangGraph', 'LangChain', 'RAG', 'OpenAI', 'Claude', 'FastAPI', 'Spring Boot', 'React', 'Docker'];
 
   return (
     <section id="home" className="relative min-h-[100svh] flex flex-col pt-32 md:pt-40">
@@ -46,7 +46,7 @@ export default function Hero() {
                   <span className="absolute inset-0 rounded-full bg-success animate-beacon" />
                   <span className="relative size-2 rounded-full bg-success" />
                 </span>
-                Available — Looking for an internship
+                Disponible — À la recherche d’un stage
               </div>
             </Reveal>
 
@@ -76,7 +76,7 @@ export default function Hero() {
             {/* Description */}
             <Reveal trigger="mount" delay={0.48}>
               <p className="text-lead text-muted max-w-xl mb-10">
-                Passionate about software development and artificial intelligence, I build robust solutions with real-world impact — combining AI engineering with the power of LLMs to create solutions that automate, assist, and innovate.
+                Développeur logiciel passionné d’IA agentique, je conçois des agents LLM capables de raisonner, d’utiliser des outils et d’exploiter vos données — puis je les intègre dans des applications full-stack robustes, testées et prêtes pour la production.
               </p>
             </Reveal>
 
@@ -86,7 +86,7 @@ export default function Hero() {
                 <Button
                   href="#projects"
                 >
-                  View my projects
+                  Voir mes projets
                   <FiArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5" />
                 </Button>
                 <Button
@@ -95,7 +95,7 @@ export default function Hero() {
                   variant="secondary"
                 >
                   <FiDownload size={16} />
-                  Download Resume
+                  Télécharger mon CV
                 </Button>
 
                 {/* Réseaux */}
@@ -121,7 +121,7 @@ export default function Hero() {
                   <a
                     href="mailto:kouakamsteve782@gmail.com"
                     className={socialLink}
-                    aria-label="Email"
+                    aria-label="Courriel"
                   >
                     <FiMail size={17} />
                   </a>
@@ -148,13 +148,13 @@ export default function Hero() {
                       <span className="font-display text-[0.9375rem] font-semibold leading-none text-foreground">juniXbot</span>
                       <span className="flex items-center gap-1.5 text-xs leading-none text-success/90">
                         <span aria-hidden className="size-1.5 rounded-full bg-success" />
-                        Available for an internship
+                        Disponible pour un stage
                       </span>
                     </div>
                   </div>
                   <div className="hidden sm:flex gap-1.5">
-                    <Tag className="h-6 px-2.5 text-xs">AI Developer</Tag>
-                    <Tag className="h-6 px-2.5 text-xs">Full-Stack Dev</Tag>
+                    <Tag className="h-6 px-2.5 text-xs">Développeur IA</Tag>
+                    <Tag className="h-6 px-2.5 text-xs">Dév Full-Stack</Tag>
                   </div>
                 </div>
 
@@ -167,7 +167,7 @@ export default function Hero() {
                   >
                     <span className="font-mono text-accent text-sm">&gt;</span>
                     <span className="flex-1 font-mono text-sm text-subtle group-hover:text-muted transition-colors">
-                      Ask me anything...
+                      Posez-moi une question...
                       <span aria-hidden className="inline-block w-[7px] h-4 -mb-0.5 ml-1 bg-accent/70 animate-pulse" />
                     </span>
                     <span className="size-10 rounded-[0.6rem] bg-accent text-white flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
@@ -177,7 +177,7 @@ export default function Hero() {
 
                   {/* Suggestions → ouvrent le chatbot avec la question */}
                   <div className="mt-4">
-                    <p className="text-xs text-subtle mb-3">Suggested questions:</p>
+                    <p className="text-xs text-subtle mb-3">Questions suggérées :</p>
                     <div className="flex flex-wrap gap-2">
                       {suggestedQuestions.map((question) => (
                         <button

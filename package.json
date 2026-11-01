@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^2.0.56",
+    "@ai-sdk/groq": "^2.0.60",
     "@ai-sdk/openai": "^2.0.88",
     "ai": "^5.0.116",
     "framer-motion": "^12.23.26",

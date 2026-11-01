@@ -24,14 +24,14 @@ function trackPointer(e: PointerEvent<HTMLDivElement>) {
   e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`);
 }
 
-// Surface en verre dépoli, bordure fine ; la lumière vient du survol, pas d'ombre.
+// Surface bleu nuit en verre dépoli, bordure en dégradé indigo ; la lumière vient du survol.
 export default function Card({ interactive = false, padding = 'md', size = 'card', className, onPointerMove, ...rest }: CardProps) {
   return (
     <div
       {...rest}
       onPointerMove={interactive ? (e) => { trackPointer(e); onPointerMove?.(e); } : onPointerMove}
       className={cx(
-        'relative glass border border-line',
+        'relative frame',
         size === 'tile' ? 'rounded-tile' : 'rounded-card',
         paddings[padding],
         interactive && 'spotlight',

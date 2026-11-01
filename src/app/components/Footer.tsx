@@ -16,7 +16,7 @@ export default function Footer() {
               <span aria-hidden className="size-2.5 rounded-full bg-accent shadow-[0_0_14px_3px_rgb(124_131_255/0.55)]" />
               Steeve JuniX
             </p>
-            <p className="text-sm text-subtle">AI & Software Developer</p>
+            <p className="text-sm text-subtle">Développeur logiciel & IA</p>
           </div>
 
           <div className="flex gap-2">
@@ -41,7 +41,7 @@ export default function Footer() {
             <a
               href="mailto:kouakamsteve782@gmail.com"
               className={socialLink}
-              aria-label="Email"
+              aria-label="Courriel"
             >
               <FiMail size={16} />
             </a>
@@ -50,7 +50,7 @@ export default function Footer() {
 
         <div className="border-t border-line py-6 text-center md:text-left">
           <p className="text-subtle text-xs">
-            © {new Date().getFullYear()} Steeve JuniX — All rights reserved
+            © {new Date().getFullYear()} Steeve JuniX — Tous droits réservés
           </p>
         </div>
       </div>

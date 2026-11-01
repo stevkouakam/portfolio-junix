@@ -110,12 +110,17 @@ export default function ChatBot() {
           }
         });
       }
+
+      // Flux vide : l'API a échoué côté serveur (clé invalide, crédits épuisés…)
+      if (!assistantMessage.trim()) {
+        throw new Error('Réponse vide du serveur');
+      }
     } catch (error) {
       console.error('Erreur:', error);
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: 'Sorry, an error occurred. Please try again.',
+        content: 'Désolé, une erreur est survenue. Veuillez réessayer.',
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
@@ -173,7 +178,7 @@ export default function ChatBot() {
                     <h3 className="font-display text-foreground text-[0.9375rem] font-semibold tracking-tight">juniXbot</h3>
                     <p className="flex items-center gap-1.5 text-subtle text-[0.6875rem] font-mono mt-0.5">
                       <span aria-hidden className="size-1.5 rounded-full bg-success" />
-                      AI Assistant • Online
+                      Assistant IA • En ligne
                     </p>
                   </div>
                 </div>
@@ -198,14 +203,14 @@ export default function ChatBot() {
                     </div>
                     <div className="bg-surface-raised border border-line px-3.5 py-3 rounded-xl rounded-tl-sm max-w-[85%]">
                       <p className="text-foreground/90 text-sm leading-relaxed">
-                        👋 Hi! I&apos;m <span className="text-accent-hover font-semibold">juniXbot</span>, Steeve&apos;s virtual assistant. Ask me anything about his background, projects, or skills!
+                        👋 Salut ! Je suis <span className="text-accent-hover font-semibold">juniXbot</span>, l’assistant virtuel de Steeve. Posez-moi vos questions sur son parcours, ses projets ou ses compétences !
                       </p>
                     </div>
                   </div>
 
                   {/* Suggestions de questions */}
                   <div className="space-y-2 ml-10">
-                    <p className="text-subtle text-xs mb-3">Suggested questions:</p>
+                    <p className="text-subtle text-xs mb-3">Questions suggérées :</p>
                     {suggestedQuestions.map((question, index) => (
                       <button
                         key={index}
@@ -284,7 +289,7 @@ export default function ChatBot() {
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask me anything..."
+                  placeholder="Posez-moi une question..."
                   className="flex-1 min-w-0 h-10 px-3.5 bg-canvas/70 border border-line hover:border-line-strong focus:border-accent/70 text-foreground placeholder:text-subtle text-sm outline-none rounded-lg transition-colors duration-200"
                   disabled={isLoading}
                 />

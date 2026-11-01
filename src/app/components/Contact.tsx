@@ -44,7 +44,7 @@ export default function Contact() {
   const contactLinks = [
     {
       icon: <FiMail size={18} />,
-      label: 'Email',
+      label: 'Courriel',
       value: 'kouakamsteve782@gmail.com',
       href: 'mailto:kouakamsteve782@gmail.com',
     },
@@ -64,8 +64,8 @@ export default function Contact() {
     },
     {
       icon: <FiClock size={18} />,
-      label: 'Response time',
-      value: '24 – 48 hours',
+      label: 'Délai de réponse',
+      value: '24 à 48 heures',
       href: null,
     },
   ];
@@ -96,10 +96,10 @@ export default function Contact() {
                 Contact
               </p>
               <h2 className="text-h2 font-semibold text-white text-balance mb-5">
-                Let&apos;s work together
+                Travaillons ensemble
               </h2>
               <p className="text-lead text-white/70 max-w-sm mb-10">
-                Have a project idea or an opportunity? I&apos;m available and all ears.
+                Vous avez une idée de projet ou une opportunité ? Je suis disponible et à votre écoute.
               </p>
 
               {/* Contact info */}
@@ -140,7 +140,7 @@ export default function Contact() {
                 <label className={fieldClass}>
                   <span className={labelClass}>
                     <FiUser size={12} />
-                    Name
+                    Nom
                   </span>
                   <input
                     type="text"
@@ -149,14 +149,14 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className={inputClass}
-                    placeholder="Your name"
+                    placeholder="Votre nom"
                   />
                 </label>
 
                 <label className={fieldClass}>
                   <span className={labelClass}>
                     <FiMail size={12} />
-                    Email
+                    Courriel
                   </span>
                   <input
                     type="email"
@@ -182,7 +182,7 @@ export default function Contact() {
                   required
                   rows={6}
                   className={`${inputClass} h-auto flex-1 min-h-40 py-2 resize-none`}
-                  placeholder="Your message..."
+                  placeholder="Votre message..."
                 />
               </label>
 
@@ -195,14 +195,14 @@ export default function Contact() {
                   {status === 'sending' ? (
                     <>
                       <div className="size-4 border-2 border-canvas/30 border-t-canvas rounded-full animate-spin" />
-                      Sending...
+                      Envoi en cours...
                     </>
                   ) : status === 'success' ? (
-                    'Message sent!'
+                    'Message envoyé !'
                   ) : (
                     <>
                       <FiSend size={15} className="transition-transform duration-300 group-hover:translate-x-0.5" />
-                      Send message
+                      Envoyer le message
                     </>
                   )}
                 </Button>
@@ -214,7 +214,7 @@ export default function Contact() {
                     transition={{ duration: 0.4, ease: EASE_SOFT }}
                     className="flex-1 px-4 py-3 border border-success/25 bg-success/10 text-success text-sm rounded-control"
                   >
-                    ✓ Message sent successfully!
+                    ✓ Message envoyé avec succès !
                   </motion.div>
                 )}
 
@@ -225,7 +225,7 @@ export default function Contact() {
                     transition={{ duration: 0.4, ease: EASE_SOFT }}
                     className="flex-1 px-4 py-3 border border-red-400/25 bg-red-400/10 text-red-300 text-sm rounded-control"
                   >
-                    ✗ An error occurred. Please try again.
+                    ✗ Une erreur est survenue. Veuillez réessayer.
                   </motion.div>
                 )}
               </div>

@@ -10,18 +10,18 @@ export default function About() {
   const areas = [
     {
       icon: <FiCpu size={20} />,
-      title: 'AI Engineering',
-      description: "Integration of language models (OpenAI, Claude) to build chatbots, intelligent assistants, RAG systems, and AI-powered automations.",
+      title: 'IA agentique & LLM',
+      description: "Agents autonomes et systèmes multi-agents (LangGraph), RAG sur documents, function calling et intégration d'OpenAI, de Claude et de Mistral dans des produits concrets.",
     },
     {
       icon: <FiCode size={20} />,
-      title: 'Software Engineering',
-      description: "Building robust applications based on clean architectures (API, MVC, Clean Code) and professional practices (Git, testing, CI/CD).",
+      title: 'Génie logiciel',
+      description: "Architecture hexagonale et principes SOLID, tests du niveau unitaire jusqu'au bout en bout (JUnit 5, Cypress, Cucumber), revues de code et GitFlow en équipe.",
     },
     {
       icon: <FiLayers size={20} />,
-      title: 'Web Development',
-      description: "Building performant UIs and backend APIs with React, Vue, Next.js, Node, and Flask — delivering complete, scalable web products.",
+      title: 'Full-stack & mise en production',
+      description: "Interfaces React, Angular et Vue, API Spring Boot, ASP.NET Core et FastAPI, conteneurisées avec Docker et livrées par des pipelines CI/CD.",
     },
   ];
 
@@ -29,19 +29,19 @@ export default function About() {
     <Section id="about">
 
       {/* Section header */}
-      <SectionHeader eyebrow="About" title="Who am I?" />
+      <SectionHeader eyebrow="À propos" title="Qui suis-je ?" />
 
       {/* Bio */}
       <Reveal className="mb-20 md:mb-24">
         <p className="font-display text-[1.5rem] md:text-[2.125rem] leading-[1.3] tracking-[-0.02em] font-normal text-foreground max-w-4xl text-pretty">
-          Software developer with a deep passion for AI, I combine rigorous software engineering with LLM integration to build high-impact products. With 3+ years of experience and 15+ projects delivered, I design clean, performant, results-driven architectures.
+          Je construis des logiciels qui raisonnent — et qui tiennent la route. J’allie la rigueur du génie logiciel à la conception d’agents IA pour créer des produits utiles, fiables et maintenables. Plus de 3 ans d’expérience et plus de 15 projets livrés.
         </p>
         <div className="grid md:grid-cols-2 gap-6 md:gap-12 mt-10 max-w-4xl text-muted leading-relaxed">
           <p>
-            I thrive building robust and scalable full-stack applications, leveraging the power of modern AI technologies intelligent automation, conversational assistants, RAG systems to solve real-world problems.
+            Côté IA, je conçois des agents qui orchestrent plusieurs étapes, interrogent des bases de connaissances, appellent des outils et automatisent des tâches réelles — de la veille d’actualités à la recherche de logement.
           </p>
           <p>
-            My goal: join an ambitious technical team to contribute to large-scale projects, bringing both solid engineering foundations and an AI-first mindset.
+            Côté logiciel, je m’appuie sur des architectures propres, des tests à tous les niveaux et l’intégration continue. Mon objectif : rejoindre une équipe ambitieuse en stage et contribuer à des produits où l’IA crée une vraie valeur.
           </p>
         </div>
       </Reveal>
@@ -63,9 +63,9 @@ export default function About() {
         {/* Stats */}
         <Card padding="none" size="card" className="grid grid-cols-2 md:grid-cols-4">
           {[
-            { label: 'Projects delivered', value: '15+' },
+            { label: 'Projets livrés', value: '15+' },
             { label: 'Technologies', value: '20+' },
-            { label: 'Years of exp.', value: '3+' },
+            { label: 'Années d’exp.', value: '3+' },
             { label: 'Passion', value: '100%' },
           ].map((stat, index) => (
             <div

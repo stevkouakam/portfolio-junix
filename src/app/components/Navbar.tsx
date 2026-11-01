@@ -16,10 +16,10 @@ export default function Navbar() {
   }, []);
 
   const menuItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
+    { label: 'Accueil', href: '#home' },
+    { label: 'À propos', href: '#about' },
+    { label: 'Projets', href: '#projects' },
+    { label: 'Compétences', href: '#skills' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -56,7 +56,7 @@ export default function Navbar() {
               </a>
             ))}
             <Button href="#contact" size="sm" className="ml-3">
-              Contact Me
+              Me contacter
             </Button>
           </div>
 
@@ -64,7 +64,7 @@ export default function Navbar() {
           <button
             className="md:hidden size-10 inline-flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-surface-raised/70 transition-colors"
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
+            aria-label="Ouvrir ou fermer le menu"
           >
             {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>
@@ -85,7 +85,7 @@ export default function Navbar() {
                 </a>
               ))}
               <Button href="#contact" variant="primary" className="mt-4" onClick={() => setIsOpen(false)}>
-                Contact Me
+                Me contacter
               </Button>
             </div>
           </div>
